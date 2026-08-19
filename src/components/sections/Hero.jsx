@@ -10,6 +10,7 @@ import styles from "./hero.module.css";
 // pulled into the bundle and mounted once it's actually needed — keeps the
 // initial page weight down, especially on mobile.
 const HeroScene = lazy(() => import("../scenes/HeroScene/HeroScene.jsx"));
+const heroVideo = new URL("../../../asstes/4153410-hd_1920_1080_25fps.mp4", import.meta.url).href;
 
 export default function Hero() {
   const { t } = useTranslation();
@@ -18,6 +19,10 @@ export default function Hero() {
 
   return (
     <section id="top" className={styles.hero}>
+      <div className={styles.videoBg}>
+        <video className={styles.video} src={heroVideo} autoPlay muted loop playsInline />
+      </div>
+      <div className={styles.videoOverlay} />
       <div className={styles.grid}>
         <div className={styles.copy}>
           <motion.span
@@ -55,8 +60,22 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <a href="#work" className={styles.btnSolid}>{t("hero.cta_work")}</a>
-            <a href="#contact" className={styles.btnOutline}>{t("hero.cta_contact")}</a>
+            <motion.a
+              href="#work"
+              className={styles.btnSolid}
+              whileHover={reduced ? undefined : { scale: 1.03 }}
+              whileTap={reduced ? undefined : { scale: 0.98 }}
+            >
+              {t("hero.cta_work")}
+            </motion.a>
+            <motion.a
+              href="#contact"
+              className={styles.btnOutline}
+              whileHover={reduced ? undefined : { scale: 1.03 }}
+              whileTap={reduced ? undefined : { scale: 0.98 }}
+            >
+              {t("hero.cta_contact")}
+            </motion.a>
           </motion.div>
 
           <p className={styles.focus}>{t("hero.focus")}</p>

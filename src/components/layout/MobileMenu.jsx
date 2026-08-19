@@ -1,6 +1,7 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { AnimatePresence, motion } from "framer-motion";
+import { buttonHover } from "../ui/motionUtils.js";
 import useReducedMotion from "../../hooks/useReducedMotion.js";
 import styles from "./mobileMenu.module.css";
 
@@ -34,16 +35,36 @@ export default function MobileMenu({ open, onClose, links }) {
           exit={{ opacity: 0 }}
           transition={{ duration: reduced ? 0 : 0.25 }}
         >
-          <button ref={closeRef} className={styles.close} onClick={onClose} aria-label={t("nav.close")}>
+          <motion.button
+            ref={closeRef}
+            className={styles.close}
+            onClick={onClose}
+            aria-label={t("nav.close")}
+            variants={buttonHover}
+            initial="rest"
+            whileHover={reduced ? undefined : "hover"}
+            whileTap={reduced ? undefined : { scale: 0.98 }}
+          >
             {t("nav.close")}
-          </button>
-          <nav className={styles.links}>
+          </motion.button>
+          <motion.nav
+            className={styles.links}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: reduced ? 0 : 0.3, ease: "easeOut" }}
+          >
             {links.map((key) => (
-              <a key={key} href={`#${key}`} className={styles.link} onClick={onClose}>
+              <motion.a
+                key={key}
+                href={`#${key}`}
+                className={styles.link}
+                onClick={onClose}
+                whileHover={reduced ? undefined : { y: -2 }}
+              >
                 {t(`nav.${key}`)}
-              </a>
+              </motion.a>
             ))}
-          </nav>
+          </motion.nav>
         </motion.div>
       )}
     </AnimatePresence>

@@ -1,7 +1,11 @@
 import { useState } from "react";
+import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
+import { buttonHover } from "../ui/motionUtils.js";
 import Reveal from "../ui/Reveal.jsx";
 import styles from "./contact.module.css";
+
+const contactVideo = new URL("../../../asstes/4153407-hd_1920_1080_25fps.mp4", import.meta.url).href;
 
 // Set this to a real Formspree (or similar static-friendly) endpoint before
 // deploying, e.g. "https://formspree.io/f/xxxxxxx". Left empty by default so
@@ -60,6 +64,10 @@ export default function Contact() {
 
   return (
     <section id="contact" className={styles.section}>
+      <div className={styles.videoBg}>
+        <video className={styles.video} src={contactVideo} autoPlay muted loop playsInline />
+      </div>
+      <div className={styles.videoOverlay} />
       <Reveal className={styles.inner}>
         <span className={styles.eyebrow}>{t("contact.eyebrow")}</span>
         <h2 className={styles.heading}>{t("contact.heading")}</h2>
@@ -84,9 +92,17 @@ export default function Contact() {
             {errors.message && <span id="message-error" className={styles.error}>{errors.message}</span>}
           </div>
 
-          <button className={styles.submit} type="submit" disabled={status === "sending"}>
+          <motion.button
+            className={styles.submit}
+            type="submit"
+            disabled={status === "sending"}
+            variants={buttonHover}
+            initial="rest"
+            whileHover={status === "sending" ? undefined : "hover"}
+            whileTap={status === "sending" ? undefined : { scale: 0.98 }}
+          >
             {status === "sending" ? t("contact.sending") : t("contact.send")}
-          </button>
+          </motion.button>
 
           <div role="status" aria-live="polite" className={styles.statusMsg}>
             {status === "success" && t("contact.success")}

@@ -9,7 +9,14 @@ export default function useWebGLSupport() {
     try {
       const canvas = document.createElement("canvas");
       const gl = canvas.getContext("webgl") || canvas.getContext("experimental-webgl");
-      setSupported(!!gl);
+      if (!gl) {
+        setSupported(false);
+        return;
+      }
+
+      const requiredExtensions = ["ANGLE_instanced_arrays"];
+      const hasRequiredExtensions = requiredExtensions.every((name) => !!gl.getExtension(name));
+      setSupported(hasRequiredExtensions);
     } catch (e) {
       setSupported(false);
     }
