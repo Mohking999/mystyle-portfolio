@@ -1,0 +1,41 @@
+/* Design tokens. One refined accent (gold), a secondary "thread" teal for
+   supporting accents, dark theme by default, optional light theme. */
+:root,
+[data-theme="dark"] {
+  --bg: #0f1119;
+  --bg-alt: #161927;
+  --surface: #1b1f30;
+  --ink: #eee9e0;
+  --muted: #9296a8;
+  --gold: #c9a227;
+  --gold-soft: rgba(201, 162, 39, 0.14);
+  --thread: #5b8c85;
+  --line: rgba(238, 233, 224, 0.12);
+  --line-strong: rgba(238, 233, 224, 0.22);
+  --font-display: "Fraunces", serif;
+  --font-body: "Inter", sans-serif;
+  --font-mono: "JetBrains Mono", monospace;
+}
+
+[data-theme="light"] {
+  --bg: #f7f5f0;
+  --bg-alt: #ffffff;
+  --surface: #ffffff;
+  --ink: #14140f;
+  --muted: #5b5e6b;
+  --gold: #a5790f;
+  --gold-soft: rgba(165, 121, 15, 0.12);
+  --thread: #3f6b64;
+  --line: rgba(20, 20, 15, 0.1);
+  --line-strong: rgba(20, 20, 15, 0.2);
+}
+
+/* Arabic gets its own readable display/body pairing */
+[dir="rtl"] {
+  --font-display: "Cairo", sans-serif;
+  --font-body: "Cairo", sans-serif;
+}
+
+[dir="rtl"] body {
+  text-align: right;
+}

@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "about": "About",
+    "work": "Work",
+    "skills": "Skills",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Close"
+  },
+  "theme": { "light": "Light", "dark": "Dark", "toggle": "Toggle theme" },
+  "hero": {
+    "eyebrow": "Web & Mobile Developer",
+    "title_pre": "I build ",
+    "title_em": "practical digital products",
+    "title_post": " for real-world problems.",
+    "subtitle": "Full-stack web and mobile development, Java enterprise systems, and SaaS products — built to be used, not just shipped.",
+    "cta_work": "Explore My Work",
+    "cta_contact": "Contact Me",
+    "focus": "Currently building: MyStyle",
+    "scroll": "Scroll"
+  },
+  "about": {
+    "eyebrow": "About",
+    "p1": "I work across the stack: React and TypeScript on the frontend, Node.js, PHP and FastAPI on the backend, Flutter and Kotlin for mobile, and Java enterprise systems (EJB, Maven, multi-module EAR deployments) when the problem calls for it.",
+    "p2": "I'm most interested in products with a real operational model behind them — inventory, payments, bookings, bilingual interfaces — not just visual polish. MyStyle, my current focus, is a made-to-measure fashion platform with a 3D garment configurator and a zero-inventory production model.",
+    "p3": "My approach: understand the real workflow first, then choose the simplest stack that can carry it reliably.",
+    "stat_role": "Role",
+    "stat_role_v": "Web & Mobile Developer",
+    "stat_focus": "Focus",
+    "stat_focus_v": "Full-stack, mobile, Java enterprise, SaaS",
+    "stat_now": "Currently",
+    "stat_now_v": "Building MyStyle",
+    "stat_langs": "Languages",
+    "stat_langs_v": "English, French, Arabic"
+  },
+  "skills": {
+    "eyebrow": "Skills",
+    "heading": "Toolkit",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "mobile": "Mobile",
+    "databases": "Databases",
+    "tools": "Tools & DevOps",
+    "learning": "Currently learning",
+    "note": "Grouped by area, not ranked by percentage — some of these are daily tools, others are actively being learned."
+  },
+  "projects": {
+    "eyebrow": "Work",
+    "heading": "Featured Projects",
+    "filters": { "all": "All", "web": "Web", "mobile": "Mobile", "saas": "SaaS", "java": "Java" },
+    "status": { "completed": "Completed", "in_development": "In Development", "concept": "Concept" },
+    "role_label": "My role",
+    "stack_label": "Technologies",
+    "live_link": "Live demo",
+    "github_link": "GitHub",
+    "view_details": "View details",
+    "close": "Close",
+    "mystyle": {
+      "title": "MyStyle",
+      "problem": "Buying made-to-measure clothing online usually means guessing how it will fit.",
+      "description": "An AI-assisted fashion platform with 2D-to-3D garment generation, a FastAPI backend, and a React frontend. Built on a zero-inventory, made-to-measure production model for the Algerian market.",
+      "role": "Co-founder — product direction and the 3D/technical side of the platform."
+    },
+    "mohamed_service": {
+      "title": "Mohamed Service",
+      "problem": "Finding trustworthy electronics and repair advice locally is fragmented.",
+      "description": "An electronics services platform offering curated products, custom sourcing, and technical reviews for phones and computers, with an Arabic-first interface.",
+      "role": "Designed and built the platform end to end."
+    },
+    "resto": {
+      "title": "Resto Al Salam El Bayadh",
+      "problem": "A local restaurant needed an online presence for its menu and reservations.",
+      "description": "A responsive restaurant website covering menus, reservations, and local cuisine, with a clean, fast layout.",
+      "role": "Designed and built the site."
+    },
+    "adhahi": {
+      "title": "Adhahi App Preview",
+      "problem": "Stakeholders needed to validate an Android app's UI before committing to native development.",
+      "description": "An enterprise-ready presentation app in React and TypeScript, showcasing a Kotlin-built Android interface through interactive UI flows.",
+      "role": "Built the interactive React/TypeScript preview."
+    },
+    "gestionsalles": {
+      "title": "GestionSalles",
+      "problem": "Manual hall booking led to double-bookings and no bilingual support.",
+      "description": "A bilingual (French/Arabic) room reservation system with secure authentication, an admin dashboard, real-time availability, and double-booking prevention.",
+      "role": "Built the full PHP/MySQL system."
+    }
+  },
+  "scene": {
+    "loading": "Loading 3D scene…",
+    "fallback_title": "3D preview unavailable",
+    "fallback_body": "Your browser or device doesn't support WebGL, so the interactive scene is hidden — everything else on this site still works normally."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "heading": "Have a project or opportunity?",
+    "subheading": "Let's build something useful.",
+    "name": "Name",
+    "email": "Email",
+    "message": "Message",
+    "send": "Send message",
+    "sending": "Sending…",
+    "success": "Thanks — your message is on its way.",
+    "error": "Something went wrong. Please try again or email me directly.",
+    "error_required": "This field is required.",
+    "error_email": "Enter a valid email address.",
+    "or_email": "Or email directly:",
+    "not_configured": "This form needs a form endpoint (e.g. Formspree) configured before it can send messages — see README."
+  },
+  "footer": {
+    "built_with": "Built with React and Three.js",
+    "rights": "All rights reserved."
+  }
+}

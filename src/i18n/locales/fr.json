@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "about": "À propos",
+    "work": "Projets",
+    "skills": "Compétences",
+    "contact": "Contact",
+    "menu": "Menu",
+    "close": "Fermer"
+  },
+  "theme": { "light": "Clair", "dark": "Sombre", "toggle": "Changer de thème" },
+  "hero": {
+    "eyebrow": "Développeur Web & Mobile",
+    "title_pre": "Je construis des ",
+    "title_em": "produits numériques concrets",
+    "title_post": " pour des problèmes réels.",
+    "subtitle": "Développement web et mobile full-stack, systèmes Java d'entreprise et produits SaaS — conçus pour être utilisés, pas seulement livrés.",
+    "cta_work": "Voir mes projets",
+    "cta_contact": "Me contacter",
+    "focus": "En cours de développement : MyStyle",
+    "scroll": "Défiler"
+  },
+  "about": {
+    "eyebrow": "À propos",
+    "p1": "Je travaille sur l'ensemble de la pile technique : React et TypeScript côté frontend, Node.js, PHP et FastAPI côté backend, Flutter et Kotlin pour le mobile, et Java entreprise (EJB, Maven, déploiements EAR multi-modules) quand le projet l'exige.",
+    "p2": "Ce qui m'intéresse, ce sont les produits avec un vrai modèle opérationnel derrière — inventaire, paiements, réservations, interfaces bilingues — pas seulement l'aspect visuel. MyStyle, mon projet actuel, est une plateforme de mode sur-mesure avec un configurateur 3D et une production sans stock.",
+    "p3": "Ma méthode : comprendre d'abord le vrai flux de travail, puis choisir la pile la plus simple capable de le porter de façon fiable.",
+    "stat_role": "Rôle",
+    "stat_role_v": "Développeur Web & Mobile",
+    "stat_focus": "Domaine",
+    "stat_focus_v": "Full-stack, mobile, Java entreprise, SaaS",
+    "stat_now": "Actuellement",
+    "stat_now_v": "Développement de MyStyle",
+    "stat_langs": "Langues",
+    "stat_langs_v": "Anglais, Français, Arabe"
+  },
+  "skills": {
+    "eyebrow": "Compétences",
+    "heading": "Boîte à outils",
+    "frontend": "Frontend",
+    "backend": "Backend",
+    "mobile": "Mobile",
+    "databases": "Bases de données",
+    "tools": "Outils & DevOps",
+    "learning": "En cours d'apprentissage",
+    "note": "Regroupées par domaine, sans pourcentage — certaines sont des outils quotidiens, d'autres sont en cours d'apprentissage."
+  },
+  "projects": {
+    "eyebrow": "Projets",
+    "heading": "Projets phares",
+    "filters": { "all": "Tous", "web": "Web", "mobile": "Mobile", "saas": "SaaS", "java": "Java" },
+    "status": { "completed": "Terminé", "in_development": "En développement", "concept": "Concept" },
+    "role_label": "Mon rôle",
+    "stack_label": "Technologies",
+    "live_link": "Voir le site",
+    "github_link": "GitHub",
+    "view_details": "Voir les détails",
+    "close": "Fermer",
+    "mystyle": {
+      "title": "MyStyle",
+      "problem": "Acheter des vêtements sur-mesure en ligne revient souvent à deviner la coupe.",
+      "description": "Une plateforme de mode assistée par IA avec génération de vêtements 2D vers 3D, un backend FastAPI et un frontend React. Basée sur un modèle de production sur-mesure sans stock, pour le marché algérien.",
+      "role": "Cofondateur — direction produit et volet 3D/technique de la plateforme."
+    },
+    "mohamed_service": {
+      "title": "Mohamed Service",
+      "problem": "Trouver des conseils fiables en électronique et en réparation localement est fragmenté.",
+      "description": "Une plateforme de services électroniques proposant des produits sélectionnés, du sourcing sur mesure et des tests techniques pour téléphones et ordinateurs, avec une interface pensée pour l'arabe.",
+      "role": "Conception et développement complets de la plateforme."
+    },
+    "resto": {
+      "title": "Resto Al Salam El Bayadh",
+      "problem": "Un restaurant local avait besoin d'une présence en ligne pour son menu et ses réservations.",
+      "description": "Un site de restaurant responsive présentant menus, réservations et cuisine locale, avec une mise en page claire et rapide.",
+      "role": "Conception et développement du site."
+    },
+    "adhahi": {
+      "title": "Adhahi App Preview",
+      "problem": "Les parties prenantes devaient valider l'interface d'une application Android avant le développement natif.",
+      "description": "Une application de présentation en React et TypeScript, illustrant une interface Android conçue en Kotlin à travers des parcours interactifs.",
+      "role": "Développement de l'aperçu interactif React/TypeScript."
+    },
+    "gestionsalles": {
+      "title": "GestionSalles",
+      "problem": "La réservation manuelle des salles entraînait des doubles réservations et aucun support bilingue.",
+      "description": "Un système de réservation de salles bilingue (français/arabe) avec authentification sécurisée, tableau de bord admin, disponibilité en temps réel et prévention des doubles réservations.",
+      "role": "Développement complet du système PHP/MySQL."
+    }
+  },
+  "scene": {
+    "loading": "Chargement de la scène 3D…",
+    "fallback_title": "Aperçu 3D indisponible",
+    "fallback_body": "Votre navigateur ou appareil ne prend pas en charge WebGL, la scène interactive est donc masquée — le reste du site fonctionne normalement."
+  },
+  "contact": {
+    "eyebrow": "Contact",
+    "heading": "Un projet ou une opportunité ?",
+    "subheading": "Construisons quelque chose d'utile.",
+    "name": "Nom",
+    "email": "E-mail",
+    "message": "Message",
+    "send": "Envoyer le message",
+    "sending": "Envoi…",
+    "success": "Merci — votre message est en route.",
+    "error": "Une erreur est survenue. Réessayez ou écrivez-moi directement.",
+    "error_required": "Ce champ est requis.",
+    "error_email": "Saisissez une adresse e-mail valide.",
+    "or_email": "Ou écrivez directement à :",
+    "not_configured": "Ce formulaire a besoin d'un service configuré (ex. Formspree) pour envoyer des messages — voir le README."
+  },
+  "footer": {
+    "built_with": "Construit avec React et Three.js",
+    "rights": "Tous droits réservés."
+  }
+}

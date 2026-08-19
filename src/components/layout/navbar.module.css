@@ -1,0 +1,65 @@
+.nav {
+  position: fixed;
+  inset-inline: 0;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 22px 6vw;
+  backdrop-filter: blur(8px);
+  background: color-mix(in srgb, var(--bg) 70%, transparent);
+  border-bottom: 1px solid var(--line);
+}
+
+.brand {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-decoration: none;
+  color: var(--ink);
+  letter-spacing: 0.01em;
+}
+.brandAccent { color: var(--gold); }
+
+.linksDesktop {
+  display: none;
+  gap: 32px;
+}
+.link {
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--ink);
+  opacity: 0.72;
+  transition: opacity 0.2s;
+}
+.link:hover { opacity: 1; }
+
+.controls {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.burger {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  padding: 8px;
+}
+.burger span {
+  width: 20px;
+  height: 1.5px;
+  background: var(--ink);
+  display: block;
+}
+
+@media (min-width: 900px) {
+  .linksDesktop { display: flex; }
+  .burger { display: none; }
+}
