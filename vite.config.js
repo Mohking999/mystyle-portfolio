@@ -1,13 +1,13 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
 
-// IMPORTANT: change "base" to match your GitHub repo name for GitHub Pages.
-// For this repository, the site is served from:
-// https://mohking999.github.io/mystyle-portfolio/
-// If deploying to a custom domain or user/organization root page, set base to "/".
+// IMPORTANT: change "base" to match the GitHub Pages URL for the repository.
+// For a user/organization repo served at:
+// https://mohking999.github.io/portfolio/
+// the correct Vite base is "/portfolio/".
 export default defineConfig({
   plugins: [react()],
-  base: "/mystyle-portfolio/",
+  base: "/portfolio/",
   build: {
     chunkSizeWarningLimit: 700,
     rollupOptions: {
