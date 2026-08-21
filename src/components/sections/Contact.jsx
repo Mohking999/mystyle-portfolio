@@ -7,11 +7,7 @@ import styles from "./contact.module.css";
 
 const contactVideo = new URL("../../../asstes/4153407-hd_1920_1080_25fps.mp4", import.meta.url).href;
 
-// Set this to a real Formspree (or similar static-friendly) endpoint before
-// deploying, e.g. "https://formspree.io/f/xxxxxxx". Left empty by default so
-// the form honestly tells the visitor it isn't wired up yet, instead of
-// silently failing or pretending to send.
-const FORM_ENDPOINT = "";
+const CONTACT_EMAIL = "djebiriabdrazak@gmail.com";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -19,7 +15,7 @@ export default function Contact() {
   const { t } = useTranslation();
   const [values, setValues] = useState({ name: "", email: "", message: "" });
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("idle"); // idle | sending | success | error | unconfigured
+  const [status, setStatus] = useState("idle"); // idle | opening
 
   function validate() {
     const next = {};
@@ -31,26 +27,16 @@ export default function Contact() {
     return Object.keys(next).length === 0;
   }
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     if (!validate()) return;
 
-    if (!FORM_ENDPOINT) {
-      setStatus("unconfigured");
-      return;
-    }
-
-    setStatus("sending");
-    try {
-      const res = await fetch(FORM_ENDPOINT, {
-        method: "POST",
-        headers: { Accept: "application/json", "Content-Type": "application/json" },
-        body: JSON.stringify(values),
-      });
-      setStatus(res.ok ? "success" : "error");
-    } catch {
-      setStatus("error");
-    }
+    setStatus("opening");
+    const subject = encodeURIComponent(`Portfolio message from ${values.name.trim()}`);
+    const body = encodeURIComponent(
+      `Name: ${values.name.trim()}\nEmail: ${values.email.trim()}\n\n${values.message.trim()}`
+    );
+    window.location.href = `mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`;
   }
 
   function field(name) {
@@ -95,25 +81,24 @@ export default function Contact() {
           <motion.button
             className={styles.submit}
             type="submit"
-            disabled={status === "sending"}
+            disabled={status === "opening"}
             variants={buttonHover}
             initial="rest"
-            whileHover={status === "sending" ? undefined : "hover"}
-            whileTap={status === "sending" ? undefined : { scale: 0.98 }}
+            whileHover={status === "opening" ? undefined : "hover"}
+            whileTap={status === "opening" ? undefined : { scale: 0.98 }}
           >
-            {status === "sending" ? t("contact.sending") : t("contact.send")}
+            {t("contact.send")}
           </motion.button>
 
           <div role="status" aria-live="polite" className={styles.statusMsg}>
             {status === "success" && t("contact.success")}
             {status === "error" && t("contact.error")}
-            {status === "unconfigured" && t("contact.not_configured")}
           </div>
         </form>
 
         <p className={styles.directEmail}>
           {t("contact.or_email")}{" "}
-          <a href="mailto:djebiriabdrazak@gmail.com">djebiriabdrazak@gmail.com</a>
+          <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
         </p>
       </Reveal>
     </section>

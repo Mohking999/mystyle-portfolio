@@ -1,6 +1,6 @@
 # Mohamed Djebiri — Portfolio (React + Three.js)
 
-A redesign of [mohking999.github.io/portfilo](https://mohking999.github.io/portfilo/) as an
+A redesign of [mohking999.github.io/mystyle-portfolio](https://mohking999.github.io/mystyle-portfolio/) as an
 interactive 3D portfolio, built with React, Vite, React Three Fiber, drei, and Framer Motion.
 
 ## Summary of what changed
@@ -61,14 +61,10 @@ real benefit here.
 - No dates, employers, clients, awards, or certifications are shown, because none were
   provided — the "Journey/timeline" section from the brief was intentionally **left out**
   rather than filled with invented milestones.
-- **Contact form**: GitHub Pages has no backend, so the form currently has an *empty*
-  endpoint (`src/components/sections/Contact.jsx`, `FORM_ENDPOINT`). As shipped, it
-  validates input and — if submitted — tells the visitor honestly that sending isn't
-  configured yet, rather than pretending to succeed. To make it actually send:
-  1. Create a free form at [formspree.io](https://formspree.io) (or similar static-friendly
-     service).
-  2. Paste the endpoint URL into `FORM_ENDPOINT` in `Contact.jsx`.
-  A direct `mailto:` link is always shown underneath as a fallback either way.
+- **Contact form**: GitHub Pages has no backend, so the form validates input and opens a
+  prefilled email in the visitor's default mail client. A direct `mailto:` link is also
+  shown underneath. For server-side form delivery, replace the mailto handler in
+  `src/components/sections/Contact.jsx` with a Formspree (or similar) endpoint.
 - Placeholder visuals: the hero/3D scene uses abstract geometry and a monogram
   (`<MD />`) rather than a real screenshot or photo, since none were provided.
 
@@ -135,11 +131,11 @@ This repo already includes `gh-pages` as a dev dependency and a `deploy` script.
 
 1. In `vite.config.js`, confirm `base` matches your repo name exactly:
    ```js
-   base: "/portfilo/", // → https://mohking999.github.io/portfilo/
+  base: "/mystyle-portfolio/", // → https://mohking999.github.io/mystyle-portfolio/
    ```
    If you rename the repo, or deploy to a user/organization root page
    (`https://mohking999.github.io/`), update `base` to `"/"`.
-2. Push this project to the `portfilo` repository (replacing its current contents).
+2. Push this project to the `mystyle-portfolio` repository.
 3. Run:
    ```bash
    npm run deploy
@@ -150,8 +146,7 @@ This repo already includes `gh-pages` as a dev dependency and a `deploy` script.
 
 ## Before you ship
 
-- [ ] Set `FORM_ENDPOINT` in `Contact.jsx` (or intentionally leave it empty and keep the
-      "not configured" message + mailto fallback)
+- [x] Contact form opens a prefilled email with a mailto fallback
 - [ ] Swap the `<MD />` hero monogram / add a real screenshot if you'd like one
 - [ ] Double-check `base` in `vite.config.js` against your actual repo name
 - [ ] Run `npm run build` once more and skim the console for warnings

@@ -40,7 +40,7 @@ export const PROJECTS = [
     status: "completed",
     stack: ["PHP 8.2+", "MySQL", "PDO"],
     github: "https://github.com/Mohking999/reservesite",
-    live: "http://reservesite.liveblog365.com/login.php",
+    live: "https://reservesite.liveblog365.com/login.php",
   },
 ];
 
