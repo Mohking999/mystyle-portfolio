@@ -127,22 +127,11 @@ npm run preview   # optional: serve the production build locally to sanity-check
 
 ## Deploying to GitHub Pages
 
-This repo already includes `gh-pages` as a dev dependency and a `deploy` script.
+GitHub Actions builds the Vite app and publishes `dist/` through `.github/workflows/deploy.yml`.
 
-1. In `vite.config.js`, confirm `base` matches your repo name exactly:
-   ```js
-  base: "/mystyle-portfolio/", // → https://mohking999.github.io/mystyle-portfolio/
-   ```
-   If you rename the repo, or deploy to a user/organization root page
-   (`https://mohking999.github.io/`), update `base` to `"/"`.
-2. Push this project to the `mystyle-portfolio` repository.
-3. Run:
-   ```bash
-   npm run deploy
-   ```
-   This builds the project and pushes `dist/` to the `gh-pages` branch.
-4. In the repo's Settings → Pages, set the source to the `gh-pages` branch (root),
-   if it isn't already.
+1. Keep the repository Pages source set to **GitHub Actions**.
+2. Push changes to `main`, or run **Deploy to GitHub Pages** from the Actions tab.
+3. Keep `base` in `vite.config.js` set to `"/mystyle-portfolio/"` for this repository URL.
 
 ## Before you ship
 
