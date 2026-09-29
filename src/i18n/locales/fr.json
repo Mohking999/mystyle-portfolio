@@ -44,6 +44,12 @@
     "learning": "En cours d'apprentissage",
     "note": "Regroupées par domaine, sans pourcentage — certaines sont des outils quotidiens, d'autres sont en cours d'apprentissage."
   },
+  "certificates": {
+    "eyebrow": "Certifications",
+    "heading": "Certifications & Projets",
+    "subtitle": "Un aperçu des certificats, projets et réalisations de formation obtenus au fil du parcours.",
+    "view": "Ouvrir"
+  },
   "projects": {
     "eyebrow": "Projets",
     "heading": "Projets phares",
@@ -84,6 +90,18 @@
       "problem": "La réservation manuelle des salles entraînait des doubles réservations et aucun support bilingue.",
       "description": "Un système de réservation de salles bilingue (français/arabe) avec authentification sécurisée, tableau de bord admin, disponibilité en temps réel et prévention des doubles réservations.",
       "role": "Développement complet du système PHP/MySQL."
+    },
+    "salle_de_fetes": {
+      "title": "Salle de Fêtes",
+      "problem": "Les réservations de salles de réception nécessitaient un flux plus propre et plus fiable.",
+      "description": "Une application web orientée réservation pour gérer les salles d'événements, le suivi admin et la planification plus simple.",
+      "role": "Développement du système de réservation et de l'admin."
+    },
+    "zira3i": {
+      "title": "Zira3i",
+      "problem": "La gestion agricole avait besoin d'un moyen plus simple pour suivre les opérations et la planification quotidienne.",
+      "description": "Une plateforme agricole pratique conçue pour améliorer la visibilité des tâches, de la planification et de l'organisation.",
+      "role": "Conception et développement de la plateforme avec un angle workflow."
     }
   },
   "scene": {

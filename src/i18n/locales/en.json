@@ -44,6 +44,12 @@
     "learning": "Currently learning",
     "note": "Grouped by area, not ranked by percentage — some of these are daily tools, others are actively being learned."
   },
+  "certificates": {
+    "eyebrow": "Certificates",
+    "heading": "Certificates & Projects",
+    "subtitle": "A snapshot of the certificates, projects, and learning achievements I’ve earned along the way.",
+    "view": "Open"
+  },
   "projects": {
     "eyebrow": "Work",
     "heading": "Featured Projects",
@@ -84,6 +90,18 @@
       "problem": "Manual hall booking led to double-bookings and no bilingual support.",
       "description": "A bilingual (French/Arabic) room reservation system with secure authentication, an admin dashboard, real-time availability, and double-booking prevention.",
       "role": "Built the full PHP/MySQL system."
+    },
+    "salle_de_fetes": {
+      "title": "Salle de Fêtes",
+      "problem": "Event hall bookings needed a cleaner and more reliable reservation flow.",
+      "description": "A booking-focused web app for managing event space reservations, admin review, and easier scheduling.",
+      "role": "Built the reservation flow and admin tooling."
+    },
+    "zira3i": {
+      "title": "Zira3i",
+      "problem": "Farm management needed a simpler way to track operations and daily planning.",
+      "description": "A practical agricultural platform designed to improve visibility over farm work, planning, and operational coordination.",
+      "role": "Designed and built the platform with a workflow-first approach."
     }
   },
   "scene": {

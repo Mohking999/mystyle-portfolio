@@ -42,6 +42,22 @@ export const PROJECTS = [
     github: "https://github.com/Mohking999/reservesite",
     live: "https://reservesite.liveblog365.com/login.php",
   },
+  {
+    id: "salle_de_fetes",
+    category: ["web"],
+    status: "completed",
+    stack: ["PHP", "MySQL", "JavaScript"],
+    github: "https://github.com/Mohking999/salle_de_fetes.git",
+    live: null,
+  },
+  {
+    id: "zira3i",
+    category: ["web", "saas"],
+    status: "completed",
+    stack: ["React", "Node.js", "MongoDB"],
+    github: "https://github.com/Mohking999/zira3i.git",
+    live: null,
+  },
 ];
 
 export const FILTERS = ["all", "web", "mobile", "saas", "java"];

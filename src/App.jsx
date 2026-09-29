@@ -4,6 +4,7 @@ import Hero from "./components/sections/Hero.jsx";
 import About from "./components/sections/About.jsx";
 import Projects from "./components/sections/Projects.jsx";
 import Skills from "./components/sections/Skills.jsx";
+import Certificates from "./components/sections/Certificates.jsx";
 import Contact from "./components/sections/Contact.jsx";
 import useTheme from "./hooks/useTheme.js";
 
@@ -19,6 +20,7 @@ export default function App() {
         <About />
         <Projects />
         <Skills />
+        <Certificates />
         <Contact />
       </main>
       <Footer />
