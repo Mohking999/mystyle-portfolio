@@ -7,6 +7,7 @@ import ProjectCard from "./ProjectCard.jsx";
 import ProjectModal from "./ProjectModal.jsx";
 import useReducedMotion from "../../hooks/useReducedMotion.js";
 import useWebGLSupport from "../../hooks/useWebGLSupport.js";
+import useMediaQuery from "../../hooks/useMediaQuery.js";
 import { PROJECTS, FILTERS } from "../../data/projects.js";
 import styles from "./projects.module.css";
 
@@ -18,6 +19,7 @@ export default function Projects() {
   const { t } = useTranslation();
   const reduced = useReducedMotion();
   const webglOk = useWebGLSupport();
+  const wideViewport = useMediaQuery("(min-width: 960px)");
   const [filter, setFilter] = useState("all");
   const [openId, setOpenId] = useState(null);
   const [show3d, setShow3d] = useState(false);
@@ -55,7 +57,7 @@ export default function Projects() {
             </motion.button>
           ))}
         </div>
-        {webglOk && (
+        {wideViewport && webglOk && (
           <motion.button
             className={styles.toggle3d}
             onClick={() => setShow3d((v) => !v)}
@@ -69,7 +71,7 @@ export default function Projects() {
         )}
       </Reveal>
 
-      {show3d && webglOk && (
+      {show3d && wideViewport && webglOk && (
         <Reveal className={styles.sceneWrap}>
           <Suspense fallback={<div className={styles.sceneLoading} />}>
             <ProjectsScene onSelect={setOpenId} activeId={openId} />

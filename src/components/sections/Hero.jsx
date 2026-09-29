@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { motion } from "framer-motion";
 import useReducedMotion from "../../hooks/useReducedMotion.js";
 import useWebGLSupport from "../../hooks/useWebGLSupport.js";
+import useMediaQuery from "../../hooks/useMediaQuery.js";
 import CanvasFallback from "../scenes/CanvasFallback.jsx";
 import styles from "./hero.module.css";
 
@@ -16,6 +17,7 @@ export default function Hero() {
   const { t } = useTranslation();
   const reduced = useReducedMotion();
   const webglOk = useWebGLSupport();
+  const wideViewport = useMediaQuery("(min-width: 960px)");
 
   return (
     <section id="top" className={styles.hero}>
@@ -81,15 +83,17 @@ export default function Hero() {
           <p className={styles.focus}>{t("hero.focus")}</p>
         </div>
 
-        <div className={styles.sceneCol} aria-hidden={!webglOk}>
-          {webglOk ? (
-            <Suspense fallback={<div className={styles.sceneLoading} />}>
-              <HeroScene />
-            </Suspense>
-          ) : (
-            <CanvasFallback />
-          )}
-        </div>
+        {wideViewport && (
+          <div className={styles.sceneCol} aria-hidden={!webglOk}>
+            {webglOk ? (
+              <Suspense fallback={<div className={styles.sceneLoading} />}>
+                <HeroScene />
+              </Suspense>
+            ) : (
+              <CanvasFallback />
+            )}
+          </div>
+        )}
       </div>
     </section>
   );
