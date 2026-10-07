@@ -58,7 +58,7 @@ export const PROJECTS = [
     github: "https://github.com/Mohking999/zira3i.git",
     live: null,
   },
-   {
+  {
     id: "PHONE_STORE",
     category: ["web", "saas"],
     status: "completed",

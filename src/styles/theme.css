@@ -18,16 +18,16 @@
 }
 
 [data-theme="light"] {
-  --bg: #f7f5f0;
-  --bg-alt: #ffffff;
+  --bg: #f4f6fc;
+  --bg-alt: #eaf0fb;
   --surface: #ffffff;
-  --ink: #14140f;
-  --muted: #5b5e6b;
-  --gold: #a5790f;
-  --gold-soft: rgba(165, 121, 15, 0.12);
-  --thread: #3f6b64;
-  --line: rgba(20, 20, 15, 0.1);
-  --line-strong: rgba(20, 20, 15, 0.2);
+  --ink: #1b2540;
+  --muted: #5e6b85;
+  --gold: #554bd1;
+  --gold-soft: rgba(85, 75, 209, 0.12);
+  --thread: #28777d;
+  --line: rgba(31, 48, 84, 0.1);
+  --line-strong: rgba(31, 48, 84, 0.2);
 }
 
 /* Arabic gets its own readable display/body pairing */
