@@ -14,6 +14,13 @@ const LAYOUT = [
   [2.1, -0.5, 0.2],
   [0, 1.3, -0.8],
 ];
+const COMPACT_LAYOUT = [
+  [-1.15, 0.55, 0],
+  [0, 0.75, -0.25],
+  [1.15, 0.45, 0],
+  [-0.6, -0.5, -0.2],
+  [0.6, -0.55, 0],
+];
 
 function CameraEase({ target, reduced }) {
   useFrame(({ camera }) => {
@@ -27,20 +34,24 @@ function CameraEase({ target, reduced }) {
   return null;
 }
 
-export default function ProjectsScene({ onSelect, activeId }) {
+export default function ProjectsScene({ onSelect, activeId, compact = false }) {
   const { t } = useTranslation();
   const reduced = useReducedMotion();
   const [hovered, setHovered] = useState(null);
   const activePos = PROJECTS.findIndex((p) => p.id === activeId);
-  const target = activePos >= 0 ? LAYOUT[activePos] : null;
+  const layout = compact ? COMPACT_LAYOUT : LAYOUT;
+  const target = activePos >= 0 ? layout[activePos] : null;
 
   return (
     <div className={styles.wrap}>
       <Suspense fallback={<div className={styles.loading}>{t("scene.loading")}</div>}>
         <Canvas
-          dpr={[1, 1.75]}
-          camera={{ position: [0, 0.8, 5.5], fov: 44 }}
-          gl={{ antialias: true, alpha: true }}
+          dpr={compact ? 1 : [1, 1.75]}
+          camera={{
+            position: compact ? [0, 0.8, 7] : [0, 0.8, 5.5],
+            fov: compact ? 50 : 44,
+          }}
+          gl={{ antialias: !compact, alpha: true, powerPreference: compact ? "low-power" : "high-performance" }}
           style={{ touchAction: "pan-y" }}
         >
           <ambientLight intensity={0.6} />
@@ -50,9 +61,11 @@ export default function ProjectsScene({ onSelect, activeId }) {
             <AppWindow
               key={p.id}
               label={t(`projects.${p.id}.title`)}
-              position={LAYOUT[i]}
+              position={layout[i]}
               color={COLORS[i % COLORS.length]}
-              scale={p.id === activeId ? 1.15 : hovered === p.id ? 1.05 : 0.9}
+              scale={compact
+                ? p.id === activeId ? 0.82 : hovered === p.id ? 0.76 : 0.68
+                : p.id === activeId ? 1.15 : hovered === p.id ? 1.05 : 0.9}
               bobSpeed={0.4 + i * 0.05}
               bobOffset={i * 1.1}
               reduced={reduced}

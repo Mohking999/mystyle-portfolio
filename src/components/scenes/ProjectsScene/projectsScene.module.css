@@ -27,3 +27,8 @@
   color: var(--muted);
   pointer-events: none;
 }
+
+@media (max-width: 719px) {
+  .wrap { height: min(72vw, 280px); min-height: 230px; }
+  .hint { font-size: 0.62rem; }
+}

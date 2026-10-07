@@ -7,15 +7,16 @@ import Skills from "./components/sections/Skills.jsx";
 import Certificates from "./components/sections/Certificates.jsx";
 import Contact from "./components/sections/Contact.jsx";
 import useTheme from "./hooks/useTheme.js";
+import DesktopPet from "./components/ui/DesktopPet.jsx";
 
 export default function App() {
   const [theme, toggleTheme] = useTheme();
 
   return (
     <>
-      <a href="#top" className="visually-hidden">Skip to content</a>
+      <a href="#main-content" className="visually-hidden">Skip to content</a>
       <Navbar theme={theme} onToggleTheme={toggleTheme} />
-      <main>
+      <main id="main-content" tabIndex={-1}>
         <Hero />
         <About />
         <Projects />
@@ -24,6 +25,7 @@ export default function App() {
         <Contact />
       </main>
       <Footer />
+      <DesktopPet />
     </>
   );
 }

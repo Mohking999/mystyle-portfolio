@@ -63,7 +63,7 @@ export const PROJECTS = [
     category: ["web", "saas"],
     status: "completed",
     stack: ["React", "Node.js", "PostgreSQL"],
-    github: "https://github.com/Mohking999/zira3i.git",
+    github: "https://github.com/Mohking999/phone-store.git",
     live: "https://phone-store-frontend.vercel.app/",
   },
 ];

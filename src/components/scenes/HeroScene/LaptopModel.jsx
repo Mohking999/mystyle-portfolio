@@ -6,7 +6,7 @@ import * as THREE from "three";
 const modelUrl = `${import.meta.env.BASE_URL}models/classic-laptop/classic_laptop_1k.gltf`;
 const screenArtworkUrl = `${import.meta.env.BASE_URL}images/retro-anime-laptop-screen.svg`;
 
-export default function LaptopModel({ reduced }) {
+export default function LaptopModel({ reduced, compact = false }) {
   const group = useRef(null);
   const spinGroup = useRef(null);
   const spin = useRef({ angle: 0, startAngle: 0, elapsed: 0, active: false, queued: 0 });
@@ -56,18 +56,20 @@ export default function LaptopModel({ reduced }) {
     const time = state.clock.elapsedTime;
 
     if (!reduced) {
-      group.current.rotation.y = THREE.MathUtils.damp(
-        group.current.rotation.y,
-        state.pointer.x * 0.4,
-        4,
-        delta
-      );
-      group.current.rotation.x = THREE.MathUtils.damp(
-        group.current.rotation.x,
-        -0.12 + state.pointer.y * 0.22,
-        4,
-        delta
-      );
+      if (!compact) {
+        group.current.rotation.y = THREE.MathUtils.damp(
+          group.current.rotation.y,
+          state.pointer.x * 0.4,
+          4,
+          delta
+        );
+        group.current.rotation.x = THREE.MathUtils.damp(
+          group.current.rotation.x,
+          -0.12 + state.pointer.y * 0.22,
+          4,
+          delta
+        );
+      }
       group.current.position.y = Math.sin(time * 0.55) * 0.035;
 
       const currentSpin = spin.current;
@@ -93,7 +95,12 @@ export default function LaptopModel({ reduced }) {
   });
 
   return (
-    <group ref={group} position={[0, -0.2, 0]} scale={3.1} onClick={handleClick}>
+    <group
+      ref={group}
+      position={[0, -0.2, 0]}
+      scale={compact ? 2.45 : 3.1}
+      onClick={handleClick}
+    >
       <group ref={spinGroup}>
         <primitive object={laptop} />
       </group>

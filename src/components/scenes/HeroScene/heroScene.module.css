@@ -8,6 +8,9 @@
 .canvasWrap canvas {
   touch-action: pan-y;
 }
+.compact {
+  min-height: 230px;
+}
 .loading {
   display: flex;
   align-items: center;
@@ -17,4 +20,7 @@
   font-family: var(--font-mono);
   font-size: 0.8rem;
   color: var(--muted);
+}
+.compact .loading {
+  min-height: 230px;
 }

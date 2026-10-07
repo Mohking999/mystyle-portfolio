@@ -11,9 +11,9 @@ import styles from "./heroScene.module.css";
 // eases the camera toward a small offset — a gentle parallax response to
 // the cursor rather than free orbit controls, which keeps the scene feeling
 // controlled and professional instead of game-like.
-function CameraRig({ reduced }) {
+function CameraRig({ reduced, compact }) {
   useFrame((state) => {
-    if (reduced) return;
+    if (reduced || compact) return;
     const { pointer, camera } = state;
     const targetX = pointer.x * 0.6;
     const targetY = 0.9 + pointer.y * 0.2;
@@ -24,12 +24,18 @@ function CameraRig({ reduced }) {
   return null;
 }
 
-function SceneContents({ reduced }) {
-  const windows = [
-    { label: "MyStyle", color: "#c9a227", position: [-1.9, 1.25, -0.8], bobOffset: 0 },
-    { label: "GestionSalles", color: "#5b8c85", position: [1.85, 0.65, -0.6], bobOffset: 1.4 },
-    { label: "Adhahi", color: "#8a93c9", position: [-1.65, -0.15, -1.2], bobOffset: 2.6 },
-  ];
+function SceneContents({ reduced, compact }) {
+  const windows = compact
+    ? [
+      { label: "MyStyle", color: "#c9a227", position: [-1.05, 0.85, -0.8], bobOffset: 0 },
+      { label: "GestionSalles", color: "#5b8c85", position: [1.05, 0.5, -0.6], bobOffset: 1.4 },
+      { label: "Adhahi", color: "#8a93c9", position: [-0.95, -0.3, -1.2], bobOffset: 2.6 },
+    ]
+    : [
+      { label: "MyStyle", color: "#c9a227", position: [-1.9, 1.25, -0.8], bobOffset: 0 },
+      { label: "GestionSalles", color: "#5b8c85", position: [1.85, 0.65, -0.6], bobOffset: 1.4 },
+      { label: "Adhahi", color: "#8a93c9", position: [-1.65, -0.15, -1.2], bobOffset: 2.6 },
+    ];
 
   return (
     <>
@@ -38,38 +44,59 @@ function SceneContents({ reduced }) {
       <pointLight position={[-3, 2, 3]} intensity={0.4} color="#c9a227" />
       <pointLight position={[2, -1, 4]} intensity={0.25} color="#5b8c85" />
 
-      <LaptopModel reduced={reduced} />
+      <LaptopModel reduced={reduced} compact={compact} />
 
       {windows.map((w) => (
-        <AppWindow key={w.label} reduced={reduced} scale={0.62} bobSpeed={0.45} {...w} />
+        <AppWindow
+          key={w.label}
+          reduced={reduced}
+          scale={compact ? 0.42 : 0.62}
+          bobSpeed={0.45}
+          {...w}
+        />
       ))}
 
-      <ContactShadows position={[0, -0.85, 0]} opacity={0.35} scale={5} blur={2.4} far={2} />
+      {!compact && (
+        <ContactShadows position={[0, -0.85, 0]} opacity={0.35} scale={5} blur={2.4} far={2} />
+      )}
     </>
   );
 }
 
-export default function HeroScene() {
+export default function HeroScene({ compact = false }) {
   const { t } = useTranslation();
   const reduced = useReducedMotion();
-  const [dpr, setDpr] = useState(1.5);
+  const [dpr, setDpr] = useState(compact ? 1 : 1.5);
   const containerRef = useRef(null);
 
   return (
-    <div className={styles.canvasWrap} ref={containerRef}>
+    <div
+      className={`${styles.canvasWrap} ${compact ? styles.compact : ""}`}
+      ref={containerRef}
+    >
       <Suspense fallback={<div className={styles.loading}>{t("scene.loading")}</div>}>
         <Canvas
-          dpr={dpr}
-          gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-          camera={{ position: [0, 0.9, 4.8], fov: 42 }}
+          dpr={compact ? Math.min(dpr, 1.25) : dpr}
+          gl={{
+            antialias: !compact,
+            alpha: true,
+            powerPreference: compact ? "low-power" : "high-performance",
+          }}
+          camera={{
+            position: compact ? [0, 0.85, 5.8] : [0, 0.9, 4.8],
+            fov: compact ? 46 : 42,
+          }}
           // The 3D canvas is purely decorative background/foreground content;
           // it must never intercept scroll or block normal page interaction
           // outside of the intentional hover targets on AppWindow meshes.
           style={{ touchAction: "pan-y" }}
         >
-          <PerformanceMonitor onDecline={() => setDpr(1)} onIncline={() => setDpr(Math.min(2, dpr + 0.25))} />
-          <CameraRig reduced={reduced} />
-          <SceneContents reduced={reduced} />
+          <PerformanceMonitor
+            onDecline={() => setDpr(1)}
+            onIncline={() => setDpr((current) => Math.min(compact ? 1.25 : 2, current + 0.25))}
+          />
+          <CameraRig reduced={reduced} compact={compact} />
+          <SceneContents reduced={reduced} compact={compact} />
         </Canvas>
       </Suspense>
     </div>

@@ -35,14 +35,18 @@
   },
   "skills": {
     "eyebrow": "Skills",
-    "heading": "Toolkit",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "mobile": "Mobile",
-    "databases": "Databases",
-    "tools": "Tools & DevOps",
-    "learning": "Currently learning",
-    "note": "Grouped by area, not ranked by percentage — some of these are daily tools, others are actively being learned."
+    "heading": "Tech Stack",
+    "intro": "A considered toolkit for shaping, building, and shipping digital products.",
+    "categoryNavigation": "Technology categories",
+    "developmentWeb": "Development & Web",
+    "databasesBackend": "Databases & Backend",
+    "aiMachineLearning": "AI & Machine Learning",
+    "designCreative": "Design & Creative",
+    "devopsCicd": "DevOps & CI/CD",
+    "developmentTools": "Development Tools & Collaboration",
+    "systemsGraphics": "Systems, Hardware & Graphics",
+    "portfolio": "Portfolio",
+    "note": "Some are daily tools; others are actively explored — including system design patterns, AWS cloud architecture, and new web frameworks."
   },
   "certificates": {
     "eyebrow": "Certificates",
@@ -102,6 +106,12 @@
       "problem": "Farm management needed a simpler way to track operations and daily planning.",
       "description": "A practical agricultural platform designed to improve visibility over farm work, planning, and operational coordination.",
       "role": "Designed and built the platform with a workflow-first approach."
+    },
+    "PHONE_STORE": {
+      "title": "Phone Store",
+      "problem": "Shopping for a phone online should make comparing devices and choosing the right one straightforward.",
+      "description": "A full-stack phone storefront built with React, Node.js, and PostgreSQL, bringing product browsing and purchasing into one place.",
+      "role": "Full-stack development across the React storefront, Node.js services, and PostgreSQL data layer."
     }
   },
   "scene": {
@@ -127,6 +137,45 @@
   },
   "footer": {
     "built_with": "Built with React and Three.js",
-    "rights": "All rights reserved."
+    "rights": "All rights reserved.",
+    "home_link": "Mohamed Djebiri — home",
+    "navigation": "Footer navigation",
+    "social": "Social links",
+    "back_to_top": "Back to top"
+  },
+  "pet": {
+    "title": "Robo Assistant",
+    "panelIntro": "Hi! What would you like to do?",
+    "openLabel": "Open Robo Assistant",
+    "hide": "Hide Robo Assistant",
+    "restore": "Bring Robo Assistant back",
+    "explore": "Explore",
+    "help": "Help",
+    "about": "About",
+    "contact": "Contact",
+    "surpriseAction": "Surprise me",
+    "pauseWandering": "Pause roaming",
+    "resumeWandering": "Resume roaming",
+    "backToTop": "Back to top",
+    "surpriseMessage": "A little Robo surprise, just for you!",
+    "surprise": "Ta-da! ✨",
+    "close": "Close",
+    "helpMessage": "Choose Explore to see the projects, or About to learn about Mohamed.",
+    "greeting": "Hi! 👋",
+    "nearby": "I'm watching... 👀",
+    "sleepy": "I'm getting sleepy...",
+    "wake": "Nice to see you!",
+    "wave": "Hey there! 👋",
+    "surprised": "Whoa! Didn't see you there!",
+    "lookAround": "Where are we going?",
+    "clicked": "Hey! You clicked me!",
+    "doubleClick": "Whoa, double-click!",
+    "messages": [
+      "Need some help?",
+      "Let's explore!",
+      "Nice to see you!",
+      "I'm watching... 👀",
+      "Where are we going?"
+    ]
   }
 }

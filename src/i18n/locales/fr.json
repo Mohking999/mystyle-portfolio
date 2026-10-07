@@ -35,14 +35,18 @@
   },
   "skills": {
     "eyebrow": "Compétences",
-    "heading": "Boîte à outils",
-    "frontend": "Frontend",
-    "backend": "Backend",
-    "mobile": "Mobile",
-    "databases": "Bases de données",
-    "tools": "Outils & DevOps",
-    "learning": "En cours d'apprentissage",
-    "note": "Regroupées par domaine, sans pourcentage — certaines sont des outils quotidiens, d'autres sont en cours d'apprentissage."
+    "heading": "Stack technique",
+    "intro": "Une sélection d’outils pour concevoir, développer et livrer des produits numériques.",
+    "categoryNavigation": "Catégories technologiques",
+    "developmentWeb": "Développement & Web",
+    "databasesBackend": "Bases de données & Backend",
+    "aiMachineLearning": "IA & Machine Learning",
+    "designCreative": "Design & Création",
+    "devopsCicd": "DevOps & CI/CD",
+    "developmentTools": "Outils de développement & Collaboration",
+    "systemsGraphics": "Systèmes, Matériel & Graphisme",
+    "portfolio": "Portfolio",
+    "note": "Certaines technologies sont des outils du quotidien, d’autres sont en cours d’exploration — notamment les modèles de conception système, l’architecture cloud (AWS) et de nouveaux frameworks web."
   },
   "certificates": {
     "eyebrow": "Certifications",
@@ -102,6 +106,12 @@
       "problem": "La gestion agricole avait besoin d'un moyen plus simple pour suivre les opérations et la planification quotidienne.",
       "description": "Une plateforme agricole pratique conçue pour améliorer la visibilité des tâches, de la planification et de l'organisation.",
       "role": "Conception et développement de la plateforme avec un angle workflow."
+    },
+    "PHONE_STORE": {
+      "title": "Phone Store",
+      "problem": "Acheter un téléphone en ligne devrait permettre de comparer facilement les modèles et de faire le bon choix.",
+      "description": "Une boutique de téléphones full-stack réalisée avec React, Node.js et PostgreSQL, réunissant la découverte des produits et l'achat.",
+      "role": "Développement full-stack du catalogue React, des services Node.js et de la couche de données PostgreSQL."
     }
   },
   "scene": {
@@ -127,6 +137,45 @@
   },
   "footer": {
     "built_with": "Construit avec React et Three.js",
-    "rights": "Tous droits réservés."
+    "rights": "Tous droits réservés.",
+    "home_link": "Mohamed Djebiri — accueil",
+    "navigation": "Navigation de pied de page",
+    "social": "Réseaux sociaux",
+    "back_to_top": "Retour en haut"
+  },
+  "pet": {
+    "title": "Assistant Robo",
+    "panelIntro": "Salut ! Que souhaitez-vous faire ?",
+    "openLabel": "Ouvrir l’assistant Robo",
+    "hide": "Masquer l’assistant Robo",
+    "restore": "Faire revenir l’assistant Robo",
+    "explore": "Explorer",
+    "help": "Aide",
+    "about": "À propos",
+    "contact": "Contact",
+    "surpriseAction": "Surprends-moi",
+    "pauseWandering": "Arrêter la promenade",
+    "resumeWandering": "Reprendre la promenade",
+    "backToTop": "Haut de page",
+    "surpriseMessage": "Une petite surprise de Robo, rien que pour vous !",
+    "surprise": "Tada ! ✨",
+    "close": "Fermer",
+    "helpMessage": "Choisissez Explorer pour voir les projets ou À propos pour découvrir Mohamed.",
+    "greeting": "Salut ! 👋",
+    "nearby": "Je vous observe... 👀",
+    "sleepy": "Je commence à somnoler...",
+    "wake": "Content de vous revoir !",
+    "wave": "Salut ! 👋",
+    "surprised": "Oh ! Je ne vous avais pas vu !",
+    "lookAround": "Où allons-nous ?",
+    "clicked": "Hé ! Vous avez cliqué sur moi !",
+    "doubleClick": "Oh, double-clic !",
+    "messages": [
+      "Besoin d’un coup de main ?",
+      "Partons explorer !",
+      "Content de vous voir !",
+      "Je vous observe... 👀",
+      "Où allons-nous ?"
+    ]
   }
 }

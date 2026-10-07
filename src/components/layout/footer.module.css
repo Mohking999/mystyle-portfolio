@@ -1,16 +1,128 @@
 .footer {
-  padding: 34px 6vw;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  justify-content: space-between;
-  align-items: center;
+  padding: 34px 6vw 22px;
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--bg) 88%, transparent), var(--bg));
   color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.72rem;
-  letter-spacing: 0.05em;
-  border-top: 1px solid var(--line);
+  letter-spacing: 0.035em;
 }
-.links, .social { display: flex; gap: 18px; flex-wrap: wrap; }
-.links a, .social a { color: var(--muted); text-decoration: none; }
-.links a:hover, .social a:hover { color: var(--gold); }
+
+.inner {
+  width: min(100%, 1440px);
+  margin-inline: auto;
+}
+
+.top {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 22px 30px;
+  padding-bottom: 25px;
+}
+
+.brand {
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-decoration: none;
+}
+
+.brand span {
+  color: var(--gold);
+}
+
+.links,
+.social {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px 20px;
+}
+
+.links a,
+.social a,
+.backToTop {
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.social a {
+  padding: 7px 11px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
+.links a:hover,
+.social a:hover,
+.backToTop:hover {
+  color: var(--gold);
+}
+
+.social a:hover {
+  border-color: var(--gold);
+  background: var(--gold-soft);
+}
+
+.links a:focus-visible,
+.social a:focus-visible,
+.brand:focus-visible,
+.backToTop:focus-visible {
+  border-radius: 3px;
+  outline: 2px solid var(--gold);
+  outline-offset: 4px;
+}
+
+.bottom {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px 20px;
+  padding-top: 17px;
+  border-top: 1px solid var(--line);
+  font-size: 0.66rem;
+}
+
+.bottom p {
+  margin: 0;
+}
+
+.backToTop {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+}
+
+.backToTop span {
+  color: var(--gold);
+  font-size: 1rem;
+}
+
+@media (max-width: 680px) {
+  .top {
+    justify-content: flex-start;
+  }
+
+  .links {
+    order: 1;
+    width: 100%;
+  }
+
+  .bottom {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .links a,
+  .social a,
+  .backToTop {
+    transition: none;
+  }
+}

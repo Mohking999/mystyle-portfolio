@@ -19,11 +19,22 @@ export default function Hero() {
   const reduced = useReducedMotion();
   const webglOk = useWebGLSupport();
   const wideViewport = useMediaQuery("(min-width: 960px)");
+  const compactViewport = useMediaQuery("(max-width: 719px)");
 
   return (
     <section id="top" className={styles.hero}>
       <div className={styles.videoBg}>
-        <video className={styles.video} src={heroVideo} autoPlay muted loop playsInline />
+        <video
+          className={styles.video}
+          src={heroVideo}
+          autoPlay={!reduced}
+          muted
+          loop
+          playsInline
+          preload={reduced ? "none" : "metadata"}
+          aria-hidden="true"
+          tabIndex={-1}
+        />
       </div>
       <div className={styles.videoOverlay} />
       <div className={styles.grid}>
@@ -74,17 +85,19 @@ export default function Hero() {
           <p className={styles.focus}>{t("hero.focus")}</p>
         </div>
 
-        {wideViewport && (
-          <div className={styles.sceneCol} aria-hidden={!webglOk}>
-            {webglOk ? (
-              <Suspense fallback={<div className={styles.sceneLoading} />}>
-                <HeroScene />
-              </Suspense>
-            ) : (
-              <CanvasFallback />
-            )}
-          </div>
-        )}
+        <div
+          className={styles.sceneCol}
+          data-compact={compactViewport}
+          aria-hidden={!webglOk}
+        >
+          {webglOk ? (
+            <Suspense fallback={<div className={styles.sceneLoading} />}>
+              <HeroScene compact={compactViewport} />
+            </Suspense>
+          ) : wideViewport ? (
+            <CanvasFallback />
+          ) : null}
+        </div>
       </div>
     </section>
   );

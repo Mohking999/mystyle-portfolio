@@ -20,7 +20,7 @@ export default function Projects() {
   const { t } = useTranslation();
   const reduced = useReducedMotion();
   const webglOk = useWebGLSupport();
-  const wideViewport = useMediaQuery("(min-width: 960px)");
+  const compactViewport = useMediaQuery("(max-width: 719px)");
   const [filter, setFilter] = useState("all");
   const [openId, setOpenId] = useState(null);
   const [show3d, setShow3d] = useState(false);
@@ -57,7 +57,7 @@ export default function Projects() {
             </MotionButton>
           ))}
         </div>
-        {wideViewport && webglOk && (
+        {webglOk && (
           <MotionButton
             className={styles.toggle3d}
             variant={show3d ? "default" : "secondary"}
@@ -70,10 +70,14 @@ export default function Projects() {
         )}
       </Reveal>
 
-      {show3d && wideViewport && webglOk && (
+      {show3d && webglOk && (
         <Reveal className={styles.sceneWrap}>
           <Suspense fallback={<div className={styles.sceneLoading} />}>
-            <ProjectsScene onSelect={setOpenId} activeId={openId} />
+            <ProjectsScene
+              onSelect={setOpenId}
+              activeId={openId}
+              compact={compactViewport}
+            />
           </Suspense>
         </Reveal>
       )}
