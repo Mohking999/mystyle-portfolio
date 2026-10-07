@@ -68,21 +68,6 @@
 }
 
 .cta { margin-top: 36px; display: flex; gap: 16px; flex-wrap: wrap; }
-.btnSolid, .btnOutline {
-  font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 14px 24px;
-  border-radius: 2px;
-  text-decoration: none;
-  transition: all 0.2s;
-}
-.btnSolid { background: var(--gold); color: #14140f; }
-.btnSolid:hover { filter: brightness(1.08); }
-.btnOutline { border: 1px solid var(--line-strong); color: var(--ink); }
-.btnOutline:hover { border-color: var(--gold); color: var(--gold); }
-
 .focus {
   margin-top: 28px;
   font-family: var(--font-mono);

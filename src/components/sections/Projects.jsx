@@ -1,7 +1,7 @@
 import { lazy, Suspense, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { buttonHover } from "../ui/motionUtils.js";
 import { useTranslation } from "react-i18next";
+import { Button } from "../ui/Primitives.jsx";
 import Reveal from "../ui/Reveal.jsx";
 import ProjectCard from "./ProjectCard.jsx";
 import ProjectModal from "./ProjectModal.jsx";
@@ -14,6 +14,7 @@ import styles from "./projects.module.css";
 const projectsVideo = new URL("../../../asstes/4151303-hd_1920_1080_25fps.mp4", import.meta.url).href;
 
 const ProjectsScene = lazy(() => import("../scenes/ProjectsScene/ProjectsScene.jsx"));
+const MotionButton = motion.create(Button);
 
 export default function Projects() {
   const { t } = useTranslation();
@@ -43,31 +44,29 @@ export default function Projects() {
       <Reveal className={styles.toolbar}>
         <div className={styles.filters} role="group" aria-label={t("projects.heading")}>
           {FILTERS.map((f) => (
-            <motion.button
+            <MotionButton
               key={f}
               className={styles.filterBtn}
+              variant={filter === f ? "default" : "secondary"}
+              size="sm"
               data-active={filter === f}
               onClick={() => setFilter(f)}
-              variants={buttonHover}
-              initial="rest"
-              whileHover={reduced ? undefined : "hover"}
-              whileTap={reduced ? undefined : { scale: 0.98 }}
+              aria-pressed={filter === f}
             >
               {t(`projects.filters.${f}`)}
-            </motion.button>
+            </MotionButton>
           ))}
         </div>
         {wideViewport && webglOk && (
-          <motion.button
+          <MotionButton
             className={styles.toggle3d}
+            variant={show3d ? "default" : "secondary"}
+            size="sm"
             onClick={() => setShow3d((v) => !v)}
-            variants={buttonHover}
-            initial="rest"
-            whileHover={reduced ? undefined : "hover"}
-            whileTap={reduced ? undefined : { scale: 0.98 }}
+            aria-pressed={show3d}
           >
             {show3d ? "2D" : "3D"}
-          </motion.button>
+          </MotionButton>
         )}
       </Reveal>
 

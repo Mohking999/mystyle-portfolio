@@ -1,8 +1,7 @@
 import { useState } from "react";
-import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { buttonHover } from "../ui/motionUtils.js";
 import Reveal from "../ui/Reveal.jsx";
+import { Button } from "../ui/Primitives.jsx";
 import styles from "./contact.module.css";
 
 const contactVideo = new URL("../../../asstes/4153407-hd_1920_1080_25fps.mp4", import.meta.url).href;
@@ -78,17 +77,14 @@ export default function Contact() {
             {errors.message && <span id="message-error" className={styles.error}>{errors.message}</span>}
           </div>
 
-          <motion.button
+          <Button
             className={styles.submit}
             type="submit"
+            size="lg"
             disabled={status === "opening"}
-            variants={buttonHover}
-            initial="rest"
-            whileHover={status === "opening" ? undefined : "hover"}
-            whileTap={status === "opening" ? undefined : { scale: 0.98 }}
           >
             {t("contact.send")}
-          </motion.button>
+          </Button>
 
           <div role="status" aria-live="polite" className={styles.statusMsg}>
             {status === "success" && t("contact.success")}

@@ -14,38 +14,21 @@
   max-width: 560px;
   max-height: 86vh;
   overflow-y: auto;
-  background: var(--bg-alt);
+  background: var(--card);
+  color: var(--card-foreground);
   border: 1px solid var(--line-strong);
-  border-radius: 2px;
+  border-radius: var(--radius);
   padding: 40px;
 }
 .close {
   position: absolute;
   top: 14px;
   inset-inline-end: 16px;
-  background: none;
-  border: none;
   color: var(--muted);
   font-size: 1.6rem;
   line-height: 1;
-  padding: 6px 10px;
 }
 .close:hover { color: var(--gold); }
-
-.status {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
-  padding: 4px 10px;
-  border-radius: 20px;
-  border: 1px solid var(--line-strong);
-  color: var(--muted);
-  margin-bottom: 14px;
-}
-.status[data-status="completed"] { color: var(--thread); border-color: var(--thread); }
-.status[data-status="in_development"] { color: var(--gold); border-color: var(--gold-soft); background: var(--gold-soft); }
 
 .title { font-size: 1.6rem; margin-bottom: 12px; color: var(--ink); }
 .problem { font-size: 0.9rem; font-style: italic; color: var(--muted); margin-bottom: 12px; line-height: 1.6; }
@@ -56,15 +39,3 @@
 .value { font-size: 0.9rem; color: var(--ink); }
 
 .links { display: flex; gap: 14px; margin-top: 26px; flex-wrap: wrap; }
-.linkBtn, .linkBtnOutline {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  padding: 11px 20px;
-  border-radius: 2px;
-  text-decoration: none;
-}
-.linkBtn { background: var(--gold); color: #14140f; }
-.linkBtnOutline { border: 1px solid var(--line-strong); color: var(--ink); }
-.linkBtnOutline:hover { border-color: var(--gold); color: var(--gold); }

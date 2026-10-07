@@ -46,15 +46,11 @@
 
 .burger {
   display: inline-flex;
-  flex-direction: column;
-  gap: 4px;
-  background: none;
-  border: none;
-  padding: 8px;
 }
-.burger span {
+.burgerBar {
   width: 20px;
   height: 1.5px;
+  margin-block: 2px;
   background: var(--ink);
   display: block;
 }

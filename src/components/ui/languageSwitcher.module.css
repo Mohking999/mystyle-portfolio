@@ -1,21 +1,9 @@
 .wrap {
   display: flex;
-  gap: 2px;
-  border: 1px solid var(--line-strong);
-  border-radius: 2px;
-  overflow: hidden;
+  gap: 6px;
 }
 .btn {
-  background: none;
-  border: none;
-  color: var(--muted);
   font-family: var(--font-mono);
   font-size: 0.68rem;
   letter-spacing: 0.05em;
-  padding: 7px 9px;
-  transition: background 0.2s, color 0.2s;
-}
-.btn[data-active="true"] {
-  background: var(--gold-soft);
-  color: var(--gold);
 }

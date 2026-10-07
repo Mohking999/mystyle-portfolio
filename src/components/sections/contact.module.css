@@ -26,17 +26,11 @@
 
 .submit {
   align-self: flex-start;
-  background: var(--gold);
-  color: #14140f;
-  border: none;
   font-family: var(--font-mono);
   font-size: 0.78rem;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-  padding: 13px 26px;
-  border-radius: 2px;
 }
-.submit:disabled { opacity: 0.6; cursor: default; }
 
 .statusMsg { min-height: 1.2em; font-size: 0.85rem; color: var(--thread); }
 .directEmail { margin-top: 30px; font-size: 0.9rem; color: var(--muted); }

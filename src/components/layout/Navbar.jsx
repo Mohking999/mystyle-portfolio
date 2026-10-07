@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useTranslation } from "react-i18next";
 import LanguageSwitcher from "../ui/LanguageSwitcher.jsx";
 import ThemeToggle from "../ui/ThemeToggle.jsx";
+import { Button } from "../ui/Primitives.jsx";
 import MobileMenu from "./MobileMenu.jsx";
 import styles from "./navbar.module.css";
 
@@ -29,16 +30,18 @@ export default function Navbar({ theme, onToggleTheme }) {
         <div className={styles.controls}>
           <LanguageSwitcher />
           <ThemeToggle theme={theme} onToggle={onToggleTheme} />
-          <button
+          <Button
             className={styles.burger}
             aria-label={t("nav.menu")}
             aria-expanded={open}
+            variant="secondary"
+            size="icon"
             onClick={() => setOpen(true)}
           >
-            <span />
-            <span />
-            <span />
-          </button>
+            <span className={styles.burgerBar} />
+            <span className={styles.burgerBar} />
+            <span className={styles.burgerBar} />
+          </Button>
         </div>
       </header>
 

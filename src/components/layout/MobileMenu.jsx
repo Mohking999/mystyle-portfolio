@@ -1,9 +1,11 @@
 import { useEffect, useRef } from "react";
 import { useTranslation } from "react-i18next";
 import { AnimatePresence, motion } from "framer-motion";
-import { buttonHover } from "../ui/motionUtils.js";
+import { Button } from "../ui/Primitives.jsx";
 import useReducedMotion from "../../hooks/useReducedMotion.js";
 import styles from "./mobileMenu.module.css";
+
+const MotionButton = motion.create(Button);
 
 export default function MobileMenu({ open, onClose, links }) {
   const { t } = useTranslation();
@@ -35,18 +37,16 @@ export default function MobileMenu({ open, onClose, links }) {
           exit={{ opacity: 0 }}
           transition={{ duration: reduced ? 0 : 0.25 }}
         >
-          <motion.button
+          <MotionButton
             ref={closeRef}
             className={styles.close}
             onClick={onClose}
             aria-label={t("nav.close")}
-            variants={buttonHover}
-            initial="rest"
-            whileHover={reduced ? undefined : "hover"}
-            whileTap={reduced ? undefined : { scale: 0.98 }}
+            variant="secondary"
+            size="sm"
           >
             {t("nav.close")}
-          </motion.button>
+          </MotionButton>
           <motion.nav
             className={styles.links}
             initial={{ opacity: 0, y: 20 }}

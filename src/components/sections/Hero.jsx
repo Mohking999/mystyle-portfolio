@@ -5,6 +5,7 @@ import useReducedMotion from "../../hooks/useReducedMotion.js";
 import useWebGLSupport from "../../hooks/useWebGLSupport.js";
 import useMediaQuery from "../../hooks/useMediaQuery.js";
 import CanvasFallback from "../scenes/CanvasFallback.jsx";
+import { Button } from "../ui/Primitives.jsx";
 import styles from "./hero.module.css";
 
 // Lazy-loaded so the 3D scene (and three.js/@react-three/fiber) is only
@@ -62,22 +63,12 @@ export default function Hero() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.3 }}
           >
-            <motion.a
-              href="#work"
-              className={styles.btnSolid}
-              whileHover={reduced ? undefined : { scale: 1.03 }}
-              whileTap={reduced ? undefined : { scale: 0.98 }}
-            >
+            <Button as="a" href="#work" variant="default" size="lg">
               {t("hero.cta_work")}
-            </motion.a>
-            <motion.a
-              href="#contact"
-              className={styles.btnOutline}
-              whileHover={reduced ? undefined : { scale: 1.03 }}
-              whileTap={reduced ? undefined : { scale: 0.98 }}
-            >
+            </Button>
+            <Button as="a" href="#contact" variant="outline" size="lg">
               {t("hero.cta_contact")}
-            </motion.a>
+            </Button>
           </motion.div>
 
           <p className={styles.focus}>{t("hero.focus")}</p>

@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import { AnimatePresence, motion } from "framer-motion";
 import { PROJECTS } from "../../data/projects.js";
 import useReducedMotion from "../../hooks/useReducedMotion.js";
+import { Badge, Button } from "../ui/Primitives.jsx";
 import styles from "./projectModal.module.css";
 
 export default function ProjectModal({ projectId, onClose }) {
@@ -44,13 +45,13 @@ export default function ProjectModal({ projectId, onClose }) {
             exit={{ opacity: 0, y: 20 }}
             transition={{ duration: reduced ? 0 : 0.25 }}
           >
-            <button ref={closeRef} className={styles.close} onClick={onClose} aria-label={t("projects.close")}>
+            <Button ref={closeRef} className={styles.close} variant="ghost" size="icon" onClick={onClose} aria-label={t("projects.close")}>
               ×
-            </button>
+            </Button>
 
-            <span className={styles.status} data-status={project.status}>
+            <Badge variant={project.status === "completed" ? "success" : "warning"}>
               {t(`projects.status.${project.status}`)}
-            </span>
+            </Badge>
             <h3 id="project-modal-title" className={styles.title}>
               {t(`projects.${project.id}.title`)}
             </h3>
@@ -68,14 +69,14 @@ export default function ProjectModal({ projectId, onClose }) {
 
             <div className={styles.links}>
               {project.live && (
-                <a href={project.live} target="_blank" rel="noopener noreferrer" className={styles.linkBtn}>
+                <Button as="a" href={project.live} target="_blank" rel="noopener noreferrer" size="sm">
                   {t("projects.live_link")}
-                </a>
+                </Button>
               )}
               {project.github && (
-                <a href={project.github} target="_blank" rel="noopener noreferrer" className={styles.linkBtnOutline}>
+                <Button as="a" href={project.github} target="_blank" rel="noopener noreferrer" variant="outline" size="sm">
                   {t("projects.github_link")}
-                </a>
+                </Button>
               )}
             </div>
           </motion.div>

@@ -33,26 +33,13 @@
   font-size: 0.72rem;
   letter-spacing: 0.05em;
   text-transform: uppercase;
-  padding: 8px 14px;
-  border-radius: 20px;
-  border: 1px solid var(--line-strong);
-  background: none;
-  color: var(--muted);
-  transition: all 0.2s;
 }
-.filterBtn[data-active="true"] { color: var(--gold); border-color: var(--gold-soft); background: var(--gold-soft); }
 
 .toggle3d {
   font-family: var(--font-mono);
   font-size: 0.72rem;
   letter-spacing: 0.05em;
-  padding: 8px 16px;
-  border-radius: 20px;
-  border: 1px solid var(--line-strong);
-  background: none;
-  color: var(--ink);
 }
-.toggle3d:hover { border-color: var(--gold); color: var(--gold); }
 
 .sceneWrap { margin-bottom: 34px; }
 .sceneLoading {

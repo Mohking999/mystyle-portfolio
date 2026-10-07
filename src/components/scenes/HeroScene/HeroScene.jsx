@@ -2,7 +2,7 @@ import { Suspense, useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 import { PerformanceMonitor, ContactShadows } from "@react-three/drei";
 import { useTranslation } from "react-i18next";
-import Workspace from "./Workspace.jsx";
+import LaptopModel from "./LaptopModel.jsx";
 import AppWindow from "./AppWindow.jsx";
 import useReducedMotion from "../../../hooks/useReducedMotion.js";
 import styles from "./heroScene.module.css";
@@ -16,19 +16,19 @@ function CameraRig({ reduced }) {
     if (reduced) return;
     const { pointer, camera } = state;
     const targetX = pointer.x * 0.6;
-    const targetY = 1 + pointer.y * 0.25;
+    const targetY = 0.9 + pointer.y * 0.2;
     camera.position.x += (targetX - camera.position.x) * 0.03;
     camera.position.y += (targetY - camera.position.y) * 0.03;
-    camera.lookAt(0, 0.6, 0);
+    camera.lookAt(0, 0.28, 0);
   });
   return null;
 }
 
 function SceneContents({ reduced }) {
   const windows = [
-    { label: "MyStyle", color: "#c9a227", position: [-2.3, 1.4, -0.8], bobOffset: 0 },
-    { label: "GestionSalles", color: "#5b8c85", position: [2.3, 0.6, -0.6], bobOffset: 1.4 },
-    { label: "Adhahi", color: "#8a93c9", position: [-1.9, -0.4, -1.2], bobOffset: 2.6 },
+    { label: "MyStyle", color: "#c9a227", position: [-1.9, 1.25, -0.8], bobOffset: 0 },
+    { label: "GestionSalles", color: "#5b8c85", position: [1.85, 0.65, -0.6], bobOffset: 1.4 },
+    { label: "Adhahi", color: "#8a93c9", position: [-1.65, -0.15, -1.2], bobOffset: 2.6 },
   ];
 
   return (
@@ -38,13 +38,13 @@ function SceneContents({ reduced }) {
       <pointLight position={[-3, 2, 3]} intensity={0.4} color="#c9a227" />
       <pointLight position={[2, -1, 4]} intensity={0.25} color="#5b8c85" />
 
-      <Workspace reduced={reduced} />
+      <LaptopModel reduced={reduced} />
 
       {windows.map((w) => (
-        <AppWindow key={w.label} reduced={reduced} scale={0.85} bobSpeed={0.45} {...w} />
+        <AppWindow key={w.label} reduced={reduced} scale={0.62} bobSpeed={0.45} {...w} />
       ))}
 
-      <ContactShadows position={[0, -0.9, 0]} opacity={0.35} scale={6} blur={2.4} far={2} />
+      <ContactShadows position={[0, -0.85, 0]} opacity={0.35} scale={5} blur={2.4} far={2} />
     </>
   );
 }
@@ -61,7 +61,7 @@ export default function HeroScene() {
         <Canvas
           dpr={dpr}
           gl={{ antialias: true, alpha: true, powerPreference: "high-performance" }}
-          camera={{ position: [0, 1, 6.5], fov: 42 }}
+          camera={{ position: [0, 0.9, 4.8], fov: 42 }}
           // The 3D canvas is purely decorative background/foreground content;
           // it must never intercept scroll or block normal page interaction
           // outside of the intentional hover targets on AppWindow meshes.

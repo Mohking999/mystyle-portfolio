@@ -2,7 +2,10 @@ import { useRef } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import useReducedMotion from "../../hooks/useReducedMotion.js";
+import { Badge, Button, Card, CardContent, CardFooter, CardHeader } from "../ui/Primitives.jsx";
 import styles from "./projectCard.module.css";
+
+const MotionCard = motion.create(Card);
 
 const cardVariants = {
   rest: { scale: 1, boxShadow: "0 0 0 rgba(0,0,0,0)" },
@@ -32,7 +35,8 @@ export default function ProjectCard({ project, onOpen }) {
   }
 
   return (
-    <motion.article
+    <MotionCard
+      as="article"
       ref={ref}
       className={styles.card}
       onMouseMove={handleMove}
@@ -41,56 +45,57 @@ export default function ProjectCard({ project, onOpen }) {
       initial="rest"
       whileHover={reduced ? "rest" : "hover"}
     >
-      <div className={styles.top}>
-        <span className={styles.status} data-status={project.status}>
-          {t(`projects.status.${project.status}`)}
-        </span>
-      </div>
+      <CardHeader className={styles.header}>
+        <div className={styles.top}>
+          <Badge variant={project.status === "completed" ? "success" : "warning"}>
+            {t(`projects.status.${project.status}`)}
+          </Badge>
+        </div>
 
-      <h3 className={styles.title}>{t(`projects.${project.id}.title`)}</h3>
-      <p className={styles.problem}>{t(`projects.${project.id}.problem`)}</p>
-      <p className={styles.desc}>{t(`projects.${project.id}.description`)}</p>
+        <h3 className={styles.title}>{t(`projects.${project.id}.title`)}</h3>
+      </CardHeader>
 
-      <div className={styles.stack}>
-        {project.stack.map((s) => (
-          <span key={s} className={styles.tag}>{s}</span>
-        ))}
-      </div>
+      <CardContent className={styles.content}>
+        <p className={styles.problem}>{t(`projects.${project.id}.problem`)}</p>
+        <p className={styles.desc}>{t(`projects.${project.id}.description`)}</p>
+        <div className={styles.stack}>
+          {project.stack.map((s) => (
+            <Badge variant="outline" key={s}>{s}</Badge>
+          ))}
+        </div>
+      </CardContent>
 
-      <div className={styles.actions}>
-        <motion.button
-          className={styles.detailsBtn}
+      <CardFooter className={styles.actions}>
+        <Button
+          variant="default"
+          size="sm"
           onClick={() => onOpen(project.id)}
-          whileHover={reduced ? undefined : { y: -1, scale: 1.02 }}
-          whileTap={reduced ? undefined : { scale: 0.98 }}
         >
           {t("projects.view_details")}
-        </motion.button>
+        </Button>
         <div className={styles.linkRow}>
           {project.live && (
-            <motion.a
+            <a
               href={project.live}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
-              whileHover={reduced ? undefined : { y: -1 }}
             >
               {t("projects.live_link")}
-            </motion.a>
+            </a>
           )}
           {project.github && (
-            <motion.a
+            <a
               href={project.github}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.link}
-              whileHover={reduced ? undefined : { y: -1 }}
             >
               {t("projects.github_link")}
-            </motion.a>
+            </a>
           )}
         </div>
-      </div>
-    </motion.article>
+      </CardFooter>
+    </MotionCard>
   );
 }
