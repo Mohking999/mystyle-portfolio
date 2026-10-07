@@ -58,6 +58,14 @@ export const PROJECTS = [
     github: "https://github.com/Mohking999/zira3i.git",
     live: null,
   },
+   {
+    id: "PHONE_STORE",
+    category: ["web", "saas"],
+    status: "completed",
+    stack: ["React", "Node.js", "PostgreSQL"],
+    github: "https://github.com/Mohking999/zira3i.git",
+    live: "https://phone-store-frontend.vercel.app/",
+  },
 ];
 
 export const FILTERS = ["all", "web", "mobile", "saas", "java"];
