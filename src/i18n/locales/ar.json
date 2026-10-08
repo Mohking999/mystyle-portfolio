@@ -64,6 +64,16 @@
     "live_link": "عرض مباشر",
     "github_link": "GitHub",
     "view_details": "عرض التفاصيل",
+    "preview": "معاينة الموقع",
+    "hide_preview": "إخفاء المعاينة",
+    "open_new_tab": "فتح في علامة تبويب جديدة",
+    "preview_hint": "بعض المواقع تمنع العرض المضمّن. إذا لم يتم التحميل، افتح الموقع في علامة تبويب جديدة.",
+    "preview_frame_title": "معاينة الموقع",
+    "gallery_title": "لقطات الشاشة",
+    "gallery_previous": "لقطة الشاشة السابقة",
+    "gallery_next": "لقطة الشاشة التالية",
+    "gallery_select": "لقطة الشاشة {{number}}: {{title}}",
+    "gallery_open_full": "فتح لقطة الشاشة بالحجم الكامل: {{title}}",
     "close": "إغلاق",
     "mystyle": {
       "title": "MyStyle",
@@ -99,7 +109,15 @@
       "title": "Salle de Fêtes",
       "problem": "كانت حجوزات القاعات تحتاج إلى تدفق حجز أنظف وأكثر موثوقية.",
       "description": "تطبيق ويب موجه للحجوزات لإدارة قاعات المناسبات، ومراجعة المسؤول، وتسهيل جدولة الأحداث.",
-      "role": "بنيت تدفق الحجز وأدوات الإدارة."
+      "role": "بنيت تدفق الحجز وأدوات الإدارة.",
+      "screenshots": {
+        "calendar": "تقويم الحجوزات ولوحة تحكم الإدارة",
+        "new_reservation": "نموذج حجز جديد",
+        "kitchen_labs": "جدولة مختبرات المطبخ",
+        "identity_cards": "متابعة بطاقات هوية العملاء",
+        "revenue": "تقارير الإيرادات والمدفوعات",
+        "calendar_detail": "نظرة تفصيلية على التقويم والفترات المتاحة"
+      }
     },
     "zira3i": {
       "title": "Zira3i",
@@ -164,6 +182,8 @@
     "about": "نبذة",
     "contact": "تواصل",
     "surpriseAction": "فاجئني",
+    "soundOn": "الصوت: مفعل",
+    "soundOff": "الصوت: معطل",
     "pauseWandering": "أوقف التجول",
     "resumeWandering": "استأنف التجول",
     "backToTop": "إلى الأعلى",

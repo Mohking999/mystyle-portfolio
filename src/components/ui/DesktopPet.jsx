@@ -3,6 +3,7 @@ import { useTranslation } from "react-i18next";
 import styles from "./desktopPet.module.css";
 
 const STORAGE_KEY = "portfolio-robo-hidden";
+const SOUND_STORAGE_KEY = "portfolio-robo-sound";
 const DESKTOP_SIZE = { width: 76, height: 88 };
 const COMPACT_SIZE = { width: 66, height: 78 };
 const MOBILE_SIZE = { width: 60, height: 72 };
@@ -23,6 +24,23 @@ function saveHiddenPreference(hidden) {
     window.localStorage.setItem(STORAGE_KEY, String(hidden));
   } catch (error) {
     console.warn("Robo Assistant preference could not be saved.", error);
+  }
+}
+
+function readSoundPreference() {
+  try {
+    return window.localStorage.getItem(SOUND_STORAGE_KEY) === "true";
+  } catch (error) {
+    console.warn("Robo Assistant sound preference could not be read.", error);
+    return false;
+  }
+}
+
+function saveSoundPreference(enabled) {
+  try {
+    window.localStorage.setItem(SOUND_STORAGE_KEY, String(enabled));
+  } catch (error) {
+    console.warn("Robo Assistant sound preference could not be saved.", error);
   }
 }
 
@@ -141,6 +159,7 @@ function Robot({ sleeping }) {
 export default function DesktopPet() {
   const { t } = useTranslation();
   const [hidden, setHidden] = useState(readHiddenPreference);
+  const [soundEnabled, setSoundEnabled] = useState(readSoundPreference);
   const [panelOpen, setPanelOpen] = useState(false);
   const [wandering, setWandering] = useState(true);
   const [mode, setMode] = useState("idle");
@@ -171,6 +190,54 @@ export default function DesktopPet() {
   const activityAtRef = useRef(0);
   const lastActivityUpdateRef = useRef(0);
   const positionRef = useRef(position);
+  const audioContextRef = useRef(null);
+
+  const playRobotSound = useCallback((sound, allowWhenDisabled = false) => {
+    if ((!soundEnabled && !allowWhenDisabled) || document.visibilityState !== "visible") return;
+
+    const AudioContextConstructor = window.AudioContext;
+    if (!AudioContextConstructor) {
+      console.warn("Robo Assistant sound is unavailable in this browser.");
+      return;
+    }
+
+    const context = audioContextRef.current || new AudioContextConstructor();
+    audioContextRef.current = context;
+    const playNotes = () => {
+      const sequences = {
+        waving: [[660, 0], [880, 0.1]],
+        jumping: [[520, 0], [780, 0.09], [1040, 0.18]],
+        surprised: [[880, 0], [520, 0.12]],
+        waking: [[440, 0], [587, 0.12], [740, 0.24]],
+      };
+      const notes = sequences[sound];
+      if (!notes) return;
+
+      const startAt = context.currentTime + 0.015;
+      for (const [frequency, offset] of notes) {
+        const oscillator = context.createOscillator();
+        const gain = context.createGain();
+        const noteStart = startAt + offset;
+        oscillator.type = "sine";
+        oscillator.frequency.setValueAtTime(frequency, noteStart);
+        gain.gain.setValueAtTime(0.0001, noteStart);
+        gain.gain.exponentialRampToValueAtTime(0.07, noteStart + 0.025);
+        gain.gain.exponentialRampToValueAtTime(0.0001, noteStart + 0.18);
+        oscillator.connect(gain);
+        gain.connect(context.destination);
+        oscillator.start(noteStart);
+        oscillator.stop(noteStart + 0.19);
+      }
+    };
+
+    if (context.state === "suspended") {
+      context.resume().then(playNotes).catch((error) => {
+        console.error("Robo Assistant sound could not start.", error);
+      });
+    } else {
+      playNotes();
+    }
+  }, [soundEnabled]);
 
   const getPlacementSize = useCallback(() => {
     if (hidden) return { width: 46, height: 46 };
@@ -190,6 +257,9 @@ export default function DesktopPet() {
   const setPetMode = useCallback((nextMode, duration = 1100) => {
     modeRef.current = nextMode;
     setMode(nextMode);
+    if (nextMode === "waving" || nextMode === "jumping" || nextMode === "surprised" || nextMode === "waking") {
+      playRobotSound(nextMode);
+    }
     window.clearTimeout(modeTimerRef.current);
     if (nextMode !== "sleeping") {
       modeTimerRef.current = window.setTimeout(() => {
@@ -197,7 +267,7 @@ export default function DesktopPet() {
         setMode("idle");
       }, duration);
     }
-  }, []);
+  }, [playRobotSound]);
 
   const showMessage = useCallback((text) => {
     if (!text || document.visibilityState !== "visible") return;
@@ -425,6 +495,12 @@ export default function DesktopPet() {
     window.clearTimeout(modeTimerRef.current);
     window.clearTimeout(sleepTimerRef.current);
     window.clearTimeout(clickTimerRef.current);
+    if (audioContextRef.current) {
+      audioContextRef.current.close().catch((error) => {
+        console.warn("Robo Assistant audio could not be closed cleanly.", error);
+      });
+      audioContextRef.current = null;
+    }
   }, []);
 
   function handlePetClick(event) {
@@ -572,6 +648,13 @@ export default function DesktopPet() {
     showMessage(t("pet.surprise"));
   }
 
+  function toggleSound() {
+    const nextEnabled = !soundEnabled;
+    saveSoundPreference(nextEnabled);
+    setSoundEnabled(nextEnabled);
+    if (nextEnabled) playRobotSound("waking", true);
+  }
+
   function closePanel() {
     setPanelOpen(false);
   }
@@ -642,6 +725,13 @@ export default function DesktopPet() {
               <a href="#about" onClick={() => setPanelOpen(false)}>{t("pet.about")}</a>
               <a href="#contact" onClick={closePanel}>{t("pet.contact")}</a>
               <button type="button" onClick={handleSurprise}>{t("pet.surpriseAction")}</button>
+              <button
+                type="button"
+                onClick={toggleSound}
+                aria-pressed={soundEnabled}
+              >
+                {t(soundEnabled ? "pet.soundOn" : "pet.soundOff")}
+              </button>
               <button
                 type="button"
                 onClick={() => setWandering((enabled) => !enabled)}

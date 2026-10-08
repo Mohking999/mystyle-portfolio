@@ -15,6 +15,13 @@
 .stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
 
 .actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.primaryActions { display: flex; flex-wrap: wrap; gap: 8px; }
 .linkRow { display: flex; gap: 14px; }
 .link { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0.4rem 0; }
 .link:hover { color: var(--gold); }
+
+@media (max-width: 420px) {
+  .actions { align-items: flex-start; }
+  .primaryActions { width: 100%; }
+  .linkRow { width: 100%; }
+}

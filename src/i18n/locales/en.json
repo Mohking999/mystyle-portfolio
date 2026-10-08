@@ -64,6 +64,16 @@
     "live_link": "Live demo",
     "github_link": "GitHub",
     "view_details": "View details",
+    "preview": "Preview website",
+    "hide_preview": "Hide preview",
+    "open_new_tab": "Open in new tab",
+    "preview_hint": "Some websites block embedded previews. If it does not load, open it in a new tab.",
+    "preview_frame_title": "website preview",
+    "gallery_title": "Screenshots",
+    "gallery_previous": "Previous screenshot",
+    "gallery_next": "Next screenshot",
+    "gallery_select": "Screenshot {{number}}: {{title}}",
+    "gallery_open_full": "Open full-size screenshot: {{title}}",
     "close": "Close",
     "mystyle": {
       "title": "MyStyle",
@@ -99,7 +109,15 @@
       "title": "Salle de Fêtes",
       "problem": "Event hall bookings needed a cleaner and more reliable reservation flow.",
       "description": "A booking-focused web app for managing event space reservations, admin review, and easier scheduling.",
-      "role": "Built the reservation flow and admin tooling."
+      "role": "Built the reservation flow and admin tooling.",
+      "screenshots": {
+        "calendar": "Reservation calendar and admin dashboard",
+        "new_reservation": "New reservation form",
+        "kitchen_labs": "Kitchen laboratory scheduling",
+        "identity_cards": "Client identity card tracking",
+        "revenue": "Revenue and payment reports",
+        "calendar_detail": "Calendar and reservation slot overview"
+      }
     },
     "zira3i": {
       "title": "Zira3i",
@@ -164,6 +182,8 @@
     "about": "About",
     "contact": "Contact",
     "surpriseAction": "Surprise me",
+    "soundOn": "Sound: On",
+    "soundOff": "Sound: Off",
     "pauseWandering": "Pause roaming",
     "resumeWandering": "Resume roaming",
     "backToTop": "Back to top",

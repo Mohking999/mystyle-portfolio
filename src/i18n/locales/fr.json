@@ -64,6 +64,16 @@
     "live_link": "Voir le site",
     "github_link": "GitHub",
     "view_details": "Voir les détails",
+    "preview": "Aperçu du site",
+    "hide_preview": "Masquer l’aperçu",
+    "open_new_tab": "Ouvrir dans un nouvel onglet",
+    "preview_hint": "Certains sites bloquent l’affichage intégré. S’il ne se charge pas, ouvrez-le dans un nouvel onglet.",
+    "preview_frame_title": "aperçu du site",
+    "gallery_title": "Captures d’écran",
+    "gallery_previous": "Capture précédente",
+    "gallery_next": "Capture suivante",
+    "gallery_select": "Capture {{number}} : {{title}}",
+    "gallery_open_full": "Ouvrir la capture en taille réelle : {{title}}",
     "close": "Fermer",
     "mystyle": {
       "title": "MyStyle",
@@ -99,7 +109,15 @@
       "title": "Salle de Fêtes",
       "problem": "Les réservations de salles de réception nécessitaient un flux plus propre et plus fiable.",
       "description": "Une application web orientée réservation pour gérer les salles d'événements, le suivi admin et la planification plus simple.",
-      "role": "Développement du système de réservation et de l'admin."
+      "role": "Développement du système de réservation et de l'admin.",
+      "screenshots": {
+        "calendar": "Calendrier des réservations et tableau de bord admin",
+        "new_reservation": "Formulaire de nouvelle réservation",
+        "kitchen_labs": "Planification des laboratoires de cuisine",
+        "identity_cards": "Suivi des pièces d’identité des clients",
+        "revenue": "Rapports des revenus et des paiements",
+        "calendar_detail": "Vue détaillée du calendrier et des créneaux"
+      }
     },
     "zira3i": {
       "title": "Zira3i",
@@ -164,6 +182,8 @@
     "about": "À propos",
     "contact": "Contact",
     "surpriseAction": "Surprends-moi",
+    "soundOn": "Son : activé",
+    "soundOff": "Son : désactivé",
     "pauseWandering": "Arrêter la promenade",
     "resumeWandering": "Reprendre la promenade",
     "backToTop": "Haut de page",

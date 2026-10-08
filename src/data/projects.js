@@ -49,6 +49,32 @@ export const PROJECTS = [
     stack: ["PHP", "MySQL", "JavaScript"],
     github: "https://github.com/Mohking999/salle_de_fetes.git",
     live: null,
+    screenshots: [
+      {
+        src: new URL("../../asstes/salle de fate/Screenshot (72).png", import.meta.url).href,
+        title: "calendar",
+      },
+      {
+        src: new URL("../../asstes/salle de fate/Screenshot (74).png", import.meta.url).href,
+        title: "new_reservation",
+      },
+      {
+        src: new URL("../../asstes/salle de fate/Screenshot (75).png", import.meta.url).href,
+        title: "kitchen_labs",
+      },
+      {
+        src: new URL("../../asstes/salle de fate/Screenshot (76).png", import.meta.url).href,
+        title: "identity_cards",
+      },
+      {
+        src: new URL("../../asstes/salle de fate/Screenshot (73).png", import.meta.url).href,
+        title: "revenue",
+      },
+      {
+        src: new URL("../../asstes/salle de fate/Screenshot (77).png", import.meta.url).href,
+        title: "calendar_detail",
+      },
+    ],
   },
   {
     id: "zira3i",
@@ -64,7 +90,7 @@ export const PROJECTS = [
     status: "completed",
     stack: ["React", "Node.js", "PostgreSQL"],
     github: "https://github.com/Mohking999/phone-store.git",
-    live: "https://phone-store-frontend.vercel.app/",
+    live: "https://pixel-perfect-cyan-five.vercel.app/",
   },
 ];
 

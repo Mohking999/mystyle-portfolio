@@ -23,7 +23,13 @@ export default function Projects() {
   const compactViewport = useMediaQuery("(max-width: 719px)");
   const [filter, setFilter] = useState("all");
   const [openId, setOpenId] = useState(null);
+  const [previewOnOpen, setPreviewOnOpen] = useState(false);
   const [show3d, setShow3d] = useState(false);
+
+  function openProject(id, preview = false) {
+    setOpenId(id);
+    setPreviewOnOpen(preview);
+  }
 
   const visible = useMemo(
     () => (filter === "all" ? PROJECTS : PROJECTS.filter((p) => p.category.includes(filter))),
@@ -74,7 +80,7 @@ export default function Projects() {
         <Reveal className={styles.sceneWrap}>
           <Suspense fallback={<div className={styles.sceneLoading} />}>
             <ProjectsScene
-              onSelect={setOpenId}
+              onSelect={(id) => openProject(id)}
               activeId={openId}
               compact={compactViewport}
             />
@@ -85,12 +91,21 @@ export default function Projects() {
       <div className={styles.grid}>
         {visible.map((p) => (
           <Reveal key={p.id}>
-            <ProjectCard project={p} onOpen={setOpenId} />
+            <ProjectCard
+              project={p}
+              onOpen={(id) => openProject(id)}
+              onPreview={(id) => openProject(id, true)}
+            />
           </Reveal>
         ))}
       </div>
 
-      <ProjectModal projectId={openId} onClose={() => setOpenId(null)} />
+      <ProjectModal
+        projectId={openId}
+        previewOnOpen={previewOnOpen}
+        onPreviewChange={setPreviewOnOpen}
+        onClose={() => setOpenId(null)}
+      />
     </section>
   );
 }

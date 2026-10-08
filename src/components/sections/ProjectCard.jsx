@@ -16,7 +16,7 @@ const cardVariants = {
   },
 };
 
-export default function ProjectCard({ project, onOpen }) {
+export default function ProjectCard({ project, onOpen, onPreview }) {
   const { t } = useTranslation();
   const reduced = useReducedMotion();
   const ref = useRef(null);
@@ -66,13 +66,24 @@ export default function ProjectCard({ project, onOpen }) {
       </CardContent>
 
       <CardFooter className={styles.actions}>
-        <Button
-          variant="default"
-          size="sm"
-          onClick={() => onOpen(project.id)}
-        >
-          {t("projects.view_details")}
-        </Button>
+        <div className={styles.primaryActions}>
+          <Button
+            variant="default"
+            size="sm"
+            onClick={() => onOpen(project.id)}
+          >
+            {t("projects.view_details")}
+          </Button>
+          {project.live && (
+            <Button
+              variant="outline"
+              size="sm"
+              onClick={() => onPreview(project.id)}
+            >
+              {t("projects.preview")}
+            </Button>
+          )}
+        </div>
         <div className={styles.linkRow}>
           {project.live && (
             <a
