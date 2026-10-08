@@ -133,7 +133,16 @@
     "error_required": "هذا الحقل مطلوب.",
     "error_email": "أدخل بريداً إلكترونياً صالحاً.",
     "or_email": "أو راسلني مباشرة على:",
-    "not_configured": "يحتاج هذا النموذج إلى ربط خدمة إرسال (مثل Formspree) قبل أن يعمل — راجع ملف README."
+    "not_configured": "يحتاج هذا النموذج إلى ربط خدمة إرسال (مثل Formspree) قبل أن يعمل — راجع ملف README.",
+    "social_heading": "تواصل معي عبر الإنترنت",
+    "social_intro": "اختر وسيلة التواصل الأنسب لك.",
+    "social_profiles": {
+      "facebook": "عرض الملف الشخصي",
+      "whatsapp": "ابدأ محادثة",
+      "tiktok": "@rolaro.sm",
+      "telegram": "@Kingnight999333",
+      "x": "@DMohameddjebiri"
+    }
   },
   "footer": {
     "built_with": "بُني باستخدام React وThree.js",
@@ -147,6 +156,7 @@
     "title": "المساعد روبو",
     "panelIntro": "مرحباً! ماذا تود أن تفعل؟",
     "openLabel": "افتح المساعد روبو",
+    "moveInstructions": "اسحب روبو لتحريكه، أو استخدم مفاتيح الأسهم بعد تحديده.",
     "hide": "إخفاء المساعد روبو",
     "restore": "إعادة المساعد روبو",
     "explore": "استكشف",

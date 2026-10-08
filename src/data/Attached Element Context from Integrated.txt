@@ -1,0 +1,163 @@
+Attached Element Context from Integrated Browser
+
+Element: button._button_17ode_1._default_17ode_167._sm_17ode_233._btn_qoc6h_5
+
+URL: http://127.0.0.1:5173/mystyle-portfolio/#work
+
+HTML Path: div#root > header._nav_gy1op_1 > div._controls_gy1op_41 > div._wrap_qoc6h_1 > button._button_17ode_1._default_17ode_167._sm_17ode_233._btn_qoc6h_5
+
+Outer HTML:
+```html
+<button class="_button_17ode_1 _default_17ode_167 _sm_17ode_233 _btn_qoc6h_5" type="button" data-active="true" aria-pressed="true"><span class="_buttonLabel_17ode_125" data-label="EN">EN</span></button>
+```
+
+Dimensions:
+- top: 26px
+- left: 495px
+- width: 40px
+- height: 34px
+
+CSS:
+```css
+* { box-sizing: border-box; }
+button { font-family: inherit; cursor: pointer; }
+._button_17ode_1 { position: relative;
+  isolation: isolate;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-height: 2.5rem;
+  padding: 0.55rem 1rem;
+  border: 1px solid transparent;
+  border-radius: var(--radius);
+  color: var(--ink);
+  font: 500 0.875rem/1.2 var(--font-body);
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  overflow: hidden;
+  box-shadow: inset 0 1px 0 var(--button-highlight), 0 0.35rem 0 var(--button-shadow), 0 0 0 transparent;
+  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
+._default_17ode_167 { --button-shadow: var(--button-primary-shadow);
+  --button-base: var(--button-primary-base);
+  --button-pressed: var(--button-primary-pressed);
+  --button-bubble: var(--button-primary-bubble);
+  --button-glow: var(--button-primary-glow);
+  --button-wipe: var(--button-primary-wipe);
+  background: var(--button-primary-face);
+  color: var(--primary-foreground);
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.24); }
+._sm_17ode_233 { min-height: 2.15rem; padding: 0.4rem 0.75rem; font-size: 0.8rem; }
+._btn_qoc6h_5 { font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.05em; }
+._button_17ode_1:hover { transform: translateY(-1px);
+  box-shadow:
+    inset 0 1px 0 var(--button-highlight),
+    0 0.35rem 0 var(--button-shadow),
+    0 2px 22px var(--button-glow); }
+._default_17ode_167:hover, ._secondary_17ode_191:hover, ._outline_17ode_193:hover, ._ghost_17ode_195:hover, ._link_17ode_197:hover { filter: brightness(1.08); }
+
+/* Pseudo-elements */
+._button_17ode_1::before { position: absolute;
+  z-index: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 300%;
+  background:
+    radial-gradient(circle at 20% 35%, transparent 0 2px, var(--button-bubble) 3px 4px, transparent 5px),
+    radial-gradient(circle at 75% 44%, transparent 0 2px, var(--button-bubble) 3px 4px, transparent 5px),
+    radial-gradient(circle at 46% 52%, transparent 0 4px, var(--button-bubble) 5px 6px, transparent 7px);
+  content: "";
+  opacity: 0;
+  pointer-events: none;
+  animation: _button-bubbles_17ode_1 2s linear infinite;
+  animation-play-state: paused; }
+._button_17ode_1:hover::before, ._button_17ode_1:focus-visible::before { opacity: 0.65; animation-play-state: running; }
+._button_17ode_1::after { position: absolute;
+  z-index: -1;
+  inset: 4px -4px -0.75rem;
+  border-radius: inherit;
+  background: var(--button-base);
+  content: "";
+  transition: inset 120ms ease; }
+::selection { background: var(--gold-soft); color: var(--gold); }
+
+/* Inherited */
+body { font-family: var(--font-body); color: var(--ink) }
+
+/* Resolved values */
+margin: 0px /*UA*/;
+padding: 6.4px 12px;
+border-radius: 11.2px;
+border: 0.8px solid rgba(0, 0, 0, 0);
+text-decoration: rgb(255, 255, 255);
+white-space: nowrap;
+transition: background-color 0.16s, border-color 0.16s, color 0.16s, box-shadow 0.16s, transform 0.16s;
+animation: none;
+align-items: center;
+appearance: auto /*UA*/;
+background-color: rgb(23, 103, 168) /*UA*/;
+bottom: 0px;
+box-shadow: rgba(219, 239, 255, 0.5) 0px 1px 0px 0px inset, rgb(12, 59, 101) 0px 5.6px 0px 0px, rgba(35, 133, 231, 0.48) 0px 2px 22px 0px;
+box-sizing: border-box;
+color: rgb(255, 255, 255);
+column-gap: 8px;
+content: normal;
+cursor: pointer;
+display: flex;
+filter: brightness(1.08);
+font-family: "JetBrains Mono", monospace;
+font-size: 10.88px;
+height: 34.4px;
+isolation: isolate;
+justify-content: center;
+left: 0px;
+letter-spacing: 0.544px;
+line-height: 13.056px /*UA*/;
+min-height: 34.4px;
+opacity: 1;
+overflow-x: hidden;
+overflow-y: hidden;
+padding-block-end: 6.4px /*UA*/;
+padding-block-start: 6.4px /*UA*/;
+padding-inline-end: 12px /*UA*/;
+padding-inline-start: 12px /*UA*/;
+pointer-events: auto;
+position: relative;
+right: 0px;
+row-gap: 8px;
+text-align: center /*UA*/;
+text-indent: 0px /*UA*/;
+text-rendering: auto /*UA*/;
+text-shadow: rgba(0, 0, 0, 0.24) 0px 1px 0px;
+text-transform: none /*UA*/;
+top: 0px;
+transform: matrix(1, 0, 0, 1, 0, -0.41572);
+width: 39.75px;
+word-spacing: 0px /*UA*/;
+z-index: auto;
+
+/* CSS variables */
+--button-base: #061c32;
+--gold: #c9a227;
+--gold-soft: rgba(201, 162, 39, 0.14);
+--button-primary-glow: hsla(210, 80%, 52%, 0.48);
+--button-glow: hsla(210, 80%, 52%, 0.48);
+--button-primary-shadow: #0c3b65;
+--radius: 0.7rem;
+--primary-foreground: #ffffff;
+--font-body: "Inter", sans-serif;
+--button-shadow: #0c3b65;
+--ink: #eee9e0;
+--button-primary-wipe: #0f1119;
+--button-primary-face: #1769aa;
+--font-mono: "JetBrains Mono", monospace;
+--button-primary-pressed: #12558e;
+--button-primary-base: #061c32;
+--button-bubble: #d7efff;
+--button-primary-bubble: #d7efff;
+--button-highlight: rgba(219, 239, 255, 0.5);
+```

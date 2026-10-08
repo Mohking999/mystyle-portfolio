@@ -81,18 +81,18 @@
 }
 
 .sceneCol {
-  height: 420px;
+  height: 460px;
   border-radius: 2px;
   overflow: hidden;
   position: relative;
 }
-@media (min-width: 960px) { .sceneCol { height: 520px; } }
+@media (min-width: 960px) { .sceneCol { height: 560px; } }
 @media (max-width: 719px) {
   .hero { padding-block-end: 36px; }
   .grid { gap: 36px; }
   .sceneCol {
-    height: min(70vw, 270px);
-    min-height: 230px;
+    height: min(92vw, 350px);
+    min-height: 290px;
     margin-top: -24px;
   }
 }

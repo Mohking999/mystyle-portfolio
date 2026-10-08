@@ -28,9 +28,20 @@
   border: 0;
   border-radius: 24px;
   background: transparent;
-  cursor: pointer;
+  cursor: grab;
   pointer-events: auto;
+  touch-action: none;
+  -webkit-user-select: none;
+  user-select: none;
   -webkit-tap-highlight-color: transparent;
+}
+
+.petButton:active {
+  cursor: grabbing;
+}
+
+.pet[data-dragging="true"] .robot {
+  animation: none;
 }
 
 .petButton:focus-visible,

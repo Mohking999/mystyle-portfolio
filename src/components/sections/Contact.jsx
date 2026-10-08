@@ -10,6 +10,34 @@ const CONTACT_EMAIL = "djebiriabdrazak@gmail.com";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
+const SOCIAL_LINKS = [
+  {
+    id: "facebook",
+    name: "Facebook",
+    href: "https://www.facebook.com/profile.php?id=61572162223008",
+  },
+  {
+    id: "whatsapp",
+    name: "WhatsApp",
+    href: "https://wa.me/qr/CFPFHK5F67QLN1",
+  },
+  {
+    id: "tiktok",
+    name: "TikTok",
+    href: "https://www.tiktok.com/@rolaro.sm?_r=1&_t=ZS-9AMvNEBqbn6",
+  },
+  {
+    id: "telegram",
+    name: "Telegram",
+    href: "https://t.me/Kingnight999333",
+  },
+  {
+    id: "x",
+    name: "X",
+    href: "https://x.com/DMohameddjebiri",
+  },
+];
+
 export default function Contact() {
   const { t } = useTranslation();
   const [values, setValues] = useState({ name: "", email: "", message: "" });
@@ -96,6 +124,44 @@ export default function Contact() {
           {t("contact.or_email")}{" "}
           <a href={`mailto:${CONTACT_EMAIL}`}>{CONTACT_EMAIL}</a>
         </p>
+
+        <div className={styles.socialSection}>
+          <h3 className={styles.socialHeading}>{t("contact.social_heading")}</h3>
+          <p className={styles.socialIntro}>{t("contact.social_intro")}</p>
+          <nav className={styles.socialGrid} aria-label={t("contact.social_heading")}>
+            {SOCIAL_LINKS.map((social) => (
+              <a
+                className={styles.socialCard}
+                href={social.href}
+                key={social.name}
+                data-social={social.id}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={`${social.name}: ${t(`contact.social_profiles.${social.id}`)}`}
+              >
+                <span className={styles.socialMark}>
+                  <img
+                    className={styles.socialLogo}
+                    src={`${import.meta.env.BASE_URL}social-icons/${social.id}.svg`}
+                    alt=""
+                    aria-hidden="true"
+                    width="54"
+                    height="54"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </span>
+                <span className={styles.socialCopy}>
+                  <span className={styles.socialName}>{social.name}</span>
+                  <span className={styles.socialHandle}>
+                    {t(`contact.social_profiles.${social.id}`)}
+                  </span>
+                </span>
+                <span className={styles.socialArrow} aria-hidden="true">↗</span>
+              </a>
+            ))}
+          </nav>
+        </div>
       </Reveal>
     </section>
   );

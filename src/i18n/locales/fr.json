@@ -133,7 +133,16 @@
     "error_required": "Ce champ est requis.",
     "error_email": "Saisissez une adresse e-mail valide.",
     "or_email": "Ou écrivez directement à :",
-    "not_configured": "Ce formulaire a besoin d'un service configuré (ex. Formspree) pour envoyer des messages — voir le README."
+    "not_configured": "Ce formulaire a besoin d'un service configuré (ex. Formspree) pour envoyer des messages — voir le README.",
+    "social_heading": "Retrouvez-moi en ligne",
+    "social_intro": "Choisissez le moyen qui vous convient le mieux.",
+    "social_profiles": {
+      "facebook": "Voir le profil",
+      "whatsapp": "M'envoyer un message",
+      "tiktok": "@rolaro.sm",
+      "telegram": "@Kingnight999333",
+      "x": "@DMohameddjebiri"
+    }
   },
   "footer": {
     "built_with": "Construit avec React et Three.js",
@@ -147,6 +156,7 @@
     "title": "Assistant Robo",
     "panelIntro": "Salut ! Que souhaitez-vous faire ?",
     "openLabel": "Ouvrir l’assistant Robo",
+    "moveInstructions": "Faites glisser Robo pour le déplacer, ou utilisez les flèches du clavier lorsqu’il est sélectionné.",
     "hide": "Masquer l’assistant Robo",
     "restore": "Faire revenir l’assistant Robo",
     "explore": "Explorer",

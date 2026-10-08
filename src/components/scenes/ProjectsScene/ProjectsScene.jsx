@@ -46,10 +46,10 @@ export default function ProjectsScene({ onSelect, activeId, compact = false }) {
     <div className={styles.wrap}>
       <Suspense fallback={<div className={styles.loading}>{t("scene.loading")}</div>}>
         <Canvas
-          dpr={compact ? 1 : [1, 1.75]}
+          dpr={compact ? 1.25 : [1, 1.75]}
           camera={{
-            position: compact ? [0, 0.8, 7] : [0, 0.8, 5.5],
-            fov: compact ? 50 : 44,
+            position: compact ? [0, 0.8, 5.8] : [0, 0.8, 5.1],
+            fov: compact ? 44 : 40,
           }}
           gl={{ antialias: !compact, alpha: true, powerPreference: compact ? "low-power" : "high-performance" }}
           style={{ touchAction: "pan-y" }}
@@ -64,8 +64,8 @@ export default function ProjectsScene({ onSelect, activeId, compact = false }) {
               position={layout[i]}
               color={COLORS[i % COLORS.length]}
               scale={compact
-                ? p.id === activeId ? 0.82 : hovered === p.id ? 0.76 : 0.68
-                : p.id === activeId ? 1.15 : hovered === p.id ? 1.05 : 0.9}
+                ? p.id === activeId ? 1.04 : hovered === p.id ? 0.96 : 0.88
+                : p.id === activeId ? 1.28 : hovered === p.id ? 1.16 : 1.02}
               bobSpeed={0.4 + i * 0.05}
               bobOffset={i * 1.1}
               reduced={reduced}

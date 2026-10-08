@@ -66,7 +66,7 @@ function SceneContents({ reduced, compact }) {
 export default function HeroScene({ compact = false }) {
   const { t } = useTranslation();
   const reduced = useReducedMotion();
-  const [dpr, setDpr] = useState(compact ? 1 : 1.5);
+  const [dpr, setDpr] = useState(compact ? 1.25 : 1.5);
   const containerRef = useRef(null);
 
   return (
@@ -76,15 +76,15 @@ export default function HeroScene({ compact = false }) {
     >
       <Suspense fallback={<div className={styles.loading}>{t("scene.loading")}</div>}>
         <Canvas
-          dpr={compact ? Math.min(dpr, 1.25) : dpr}
+          dpr={compact ? Math.min(dpr, 1.5) : dpr}
           gl={{
             antialias: !compact,
             alpha: true,
             powerPreference: compact ? "low-power" : "high-performance",
           }}
           camera={{
-            position: compact ? [0, 0.85, 5.8] : [0, 0.9, 4.8],
-            fov: compact ? 46 : 42,
+            position: compact ? [0, 0.85, 5.2] : [0, 0.9, 4.5],
+            fov: compact ? 42 : 40,
           }}
           // The 3D canvas is purely decorative background/foreground content;
           // it must never intercept scroll or block normal page interaction
@@ -93,7 +93,7 @@ export default function HeroScene({ compact = false }) {
         >
           <PerformanceMonitor
             onDecline={() => setDpr(1)}
-            onIncline={() => setDpr((current) => Math.min(compact ? 1.25 : 2, current + 0.25))}
+            onIncline={() => setDpr((current) => Math.min(compact ? 1.5 : 2, current + 0.25))}
           />
           <CameraRig reduced={reduced} compact={compact} />
           <SceneContents reduced={reduced} compact={compact} />

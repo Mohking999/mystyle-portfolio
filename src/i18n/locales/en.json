@@ -133,7 +133,16 @@
     "error_required": "This field is required.",
     "error_email": "Enter a valid email address.",
     "or_email": "Or email directly:",
-    "not_configured": "This form needs a form endpoint (e.g. Formspree) configured before it can send messages — see README."
+    "not_configured": "This form needs a form endpoint (e.g. Formspree) configured before it can send messages — see README.",
+    "social_heading": "Find me around the web",
+    "social_intro": "Choose the channel that works best for you.",
+    "social_profiles": {
+      "facebook": "View profile",
+      "whatsapp": "Start a conversation",
+      "tiktok": "@rolaro.sm",
+      "telegram": "@Kingnight999333",
+      "x": "@DMohameddjebiri"
+    }
   },
   "footer": {
     "built_with": "Built with React and Three.js",
@@ -147,6 +156,7 @@
     "title": "Robo Assistant",
     "panelIntro": "Hi! What would you like to do?",
     "openLabel": "Open Robo Assistant",
+    "moveInstructions": "Drag to move, or focus and use the arrow keys.",
     "hide": "Hide Robo Assistant",
     "restore": "Bring Robo Assistant back",
     "explore": "Explore",

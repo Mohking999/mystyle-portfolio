@@ -98,7 +98,7 @@ export default function LaptopModel({ reduced, compact = false }) {
     <group
       ref={group}
       position={[0, -0.2, 0]}
-      scale={compact ? 2.45 : 3.1}
+      scale={compact ? 2.8 : 3.35}
       onClick={handleClick}
     >
       <group ref={spinGroup}>

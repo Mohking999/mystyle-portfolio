@@ -155,6 +155,7 @@ export default function DesktopPet() {
   }));
   const [direction, setDirection] = useState("left");
   const [moveDuration, setMoveDuration] = useState(0);
+  const [dragging, setDragging] = useState(false);
   const petRef = useRef(null);
   const stageRef = useRef(null);
   const panelRef = useRef(null);
@@ -163,6 +164,9 @@ export default function DesktopPet() {
   const modeTimerRef = useRef(null);
   const sleepTimerRef = useRef(null);
   const clickTimerRef = useRef(null);
+  const dragClickTimerRef = useRef(null);
+  const dragRef = useRef(null);
+  const suppressClickRef = useRef(false);
   const proximityAtRef = useRef(0);
   const activityAtRef = useRef(0);
   const lastActivityUpdateRef = useRef(0);
@@ -424,6 +428,12 @@ export default function DesktopPet() {
   }, []);
 
   function handlePetClick(event) {
+    if (suppressClickRef.current) {
+      suppressClickRef.current = false;
+      window.clearTimeout(dragClickTimerRef.current);
+      return;
+    }
+
     wakePet();
     setPanelOpen(true);
     setPanelMessage(t("pet.panelIntro"));
@@ -442,11 +452,95 @@ export default function DesktopPet() {
     }
 
     window.clearTimeout(clickTimerRef.current);
+    window.clearTimeout(dragClickTimerRef.current);
     clickTimerRef.current = window.setTimeout(() => {
       const actions = ["waving", "jumping", "surprised", "looking"];
       setPetMode(actions[Math.floor(Math.random() * actions.length)], 1300);
       showMessage(t("pet.clicked"));
     }, 260);
+  }
+
+  function handleDragStart(event) {
+    if (event.button !== 0 || !event.isPrimary) return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    dragRef.current = {
+      pointerId: event.pointerId,
+      offsetX: event.clientX - bounds.left,
+      offsetY: event.clientY - bounds.top,
+      startX: event.clientX,
+      startY: event.clientY,
+      x: positionRef.current.x,
+      rise: positionRef.current.rise,
+      active: false,
+    };
+    event.currentTarget.setPointerCapture(event.pointerId);
+  }
+
+  function handleDragMove(event) {
+    const drag = dragRef.current;
+    if (!drag || drag.pointerId !== event.pointerId) return;
+
+    if (!drag.active && Math.hypot(event.clientX - drag.startX, event.clientY - drag.startY) < 4) {
+      return;
+    }
+
+    if (!drag.active) {
+      drag.active = true;
+      setDragging(true);
+    }
+    suppressClickRef.current = true;
+
+    const viewportWidth = getViewportWidth();
+    const petSize = getPetSize(viewportWidth);
+    const placementSize = getPlacementSize();
+    const stageBottom = stageRef.current?.getBoundingClientRect().bottom ?? window.innerHeight - 8;
+    drag.x = Math.max(
+      placementSize.width / 2 + 8,
+      Math.min(viewportWidth - placementSize.width / 2 - 8, event.clientX - drag.offsetX + petSize.width / 2)
+    );
+    drag.rise = Math.max(
+      12,
+      Math.min(
+        stageBottom - placementSize.height - 8,
+        stageBottom - (event.clientY - drag.offsetY + petSize.height)
+      )
+    );
+    stageRef.current?.style.setProperty("--pet-x", `${drag.x}px`);
+    stageRef.current?.style.setProperty("--pet-rise", `${drag.rise}px`);
+    stageRef.current?.style.setProperty("--move-duration", "0ms");
+  }
+
+  function finishDrag(event) {
+    const drag = dragRef.current;
+    if (!drag || (event && drag.pointerId !== event.pointerId)) return;
+
+    dragRef.current = null;
+    setDragging(false);
+    if (drag.active) {
+      setDirection(drag.x < positionRef.current.x ? "left" : "right");
+      placePet(drag.x, drag.rise);
+      suppressClickRef.current = true;
+      window.clearTimeout(dragClickTimerRef.current);
+      dragClickTimerRef.current = window.setTimeout(() => {
+        suppressClickRef.current = false;
+      }, 350);
+    }
+  }
+
+  function handlePetKeyDown(event) {
+    const size = getPetSize(getViewportWidth());
+    const changes = {
+      ArrowLeft: [-Math.max(44, Math.round(size.width * 0.75)), 0],
+      ArrowRight: [Math.max(44, Math.round(size.width * 0.75)), 0],
+      ArrowUp: [0, size.height + 10],
+      ArrowDown: [0, -(size.height + 10)],
+    };
+    const change = changes[event.key];
+    if (!change) return;
+
+    event.preventDefault();
+    if (change[0]) setDirection(change[0] < 0 ? "left" : "right");
+    placePet(positionRef.current.x + change[0], positionRef.current.rise + change[1]);
   }
 
   function hidePet() {
@@ -566,6 +660,7 @@ export default function DesktopPet() {
         className={styles.pet}
         data-mode={mode}
         data-direction={direction}
+        data-dragging={dragging}
         data-panel-open={panelOpen}
       >
         {message && !panelOpen && (
@@ -580,7 +675,14 @@ export default function DesktopPet() {
           aria-label={t("pet.openLabel")}
           aria-expanded={panelOpen}
           aria-controls="robo-assistant-panel"
-          title={t("pet.openLabel")}
+          aria-description={t("pet.moveInstructions")}
+          title={`${t("pet.openLabel")} — ${t("pet.moveInstructions")}`}
+          onPointerDown={handleDragStart}
+          onPointerMove={handleDragMove}
+          onPointerUp={finishDrag}
+          onPointerCancel={finishDrag}
+          onLostPointerCapture={finishDrag}
+          onKeyDown={handlePetKeyDown}
         >
           <Robot sleeping={mode === "sleeping"} />
         </button>
