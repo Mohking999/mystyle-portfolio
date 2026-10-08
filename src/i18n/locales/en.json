@@ -22,7 +22,7 @@
   "about": {
     "eyebrow": "About",
     "p1": "I work across the stack: React and TypeScript on the frontend, Node.js, PHP and FastAPI on the backend, Flutter and Kotlin for mobile, and Java enterprise systems (EJB, Maven, multi-module EAR deployments) when the problem calls for it.",
-    "p2": "I'm most interested in products with a real operational model behind them — inventory, payments, bookings, bilingual interfaces — not just visual polish. MyStyle, my current focus, is a made-to-measure fashion platform with a 3D garment configurator and a zero-inventory production model.",
+    "p2": "I'm most interested in products with a real operational model behind them — inventory, payments, bookings, bilingual interfaces — not just visual polish. MyStyle is my current focus: an ANPT-affiliated fashion-tech startup building a made-to-measure platform with a 3D garment configurator and zero-inventory production.",
     "p3": "My approach: understand the real workflow first, then choose the simplest stack that can carry it reliably.",
     "stat_role": "Role",
     "stat_role_v": "Web & Mobile Developer",
@@ -57,7 +57,7 @@
   "projects": {
     "eyebrow": "Work",
     "heading": "Featured Projects",
-    "filters": { "all": "All", "web": "Web", "mobile": "Mobile", "saas": "SaaS", "java": "Java" },
+    "filters": { "all": "All", "web": "Web", "desktop": "Desktop", "mobile": "Mobile", "saas": "SaaS", "java": "Java" },
     "status": { "completed": "Completed", "in_development": "In Development", "concept": "Concept" },
     "role_label": "My role",
     "stack_label": "Technologies",
@@ -79,19 +79,19 @@
       "title": "MyStyle",
       "problem": "Buying made-to-measure clothing online usually means guessing how it will fit.",
       "description": "An AI-assisted fashion platform with 2D-to-3D garment generation, a FastAPI backend, and a React frontend. Built on a zero-inventory, made-to-measure production model for the Algerian market.",
-      "role": "Co-founder — product direction and the 3D/technical side of the platform."
+      "role": "Founder of MyStyle, an ANPT-affiliated fashion-tech startup — product direction and 3D/technical leadership."
     },
     "mohamed_service": {
       "title": "Mohamed Service",
       "problem": "Finding trustworthy electronics and repair advice locally is fragmented.",
-      "description": "An electronics services platform offering curated products, custom sourcing, and technical reviews for phones and computers, with an Arabic-first interface.",
-      "role": "Designed and built the platform end to end."
+      "description": "A sample landing page for an electronics service concept, presenting product sourcing, technical advice, and support for phones and computers in an Arabic-first interface.",
+      "role": "Designed and built the sample page."
     },
     "resto": {
       "title": "Resto Al Salam El Bayadh",
       "problem": "A local restaurant needed an online presence for its menu and reservations.",
-      "description": "A responsive restaurant website covering menus, reservations, and local cuisine, with a clean, fast layout.",
-      "role": "Designed and built the site."
+      "description": "A responsive PHP-powered restaurant website covering menus, reservations, and local cuisine, with a clean, fast layout.",
+      "role": "Designed and built the PHP restaurant site."
     },
     "adhahi": {
       "title": "Adhahi App Preview",
@@ -108,8 +108,8 @@
     "salle_de_fetes": {
       "title": "Salle de Fêtes",
       "problem": "Event hall bookings needed a cleaner and more reliable reservation flow.",
-      "description": "A booking-focused web app for managing event space reservations, admin review, and easier scheduling.",
-      "role": "Built the reservation flow and admin tooling.",
+      "description": "An Electron desktop application built with JavaScript for managing event-space reservations, administration, and scheduling.",
+      "role": "Built the Electron application and its reservation and administration workflows.",
       "screenshots": {
         "calendar": "Reservation calendar and admin dashboard",
         "new_reservation": "New reservation form",

@@ -22,7 +22,7 @@
   "about": {
     "eyebrow": "À propos",
     "p1": "Je travaille sur l'ensemble de la pile technique : React et TypeScript côté frontend, Node.js, PHP et FastAPI côté backend, Flutter et Kotlin pour le mobile, et Java entreprise (EJB, Maven, déploiements EAR multi-modules) quand le projet l'exige.",
-    "p2": "Ce qui m'intéresse, ce sont les produits avec un vrai modèle opérationnel derrière — inventaire, paiements, réservations, interfaces bilingues — pas seulement l'aspect visuel. MyStyle, mon projet actuel, est une plateforme de mode sur-mesure avec un configurateur 3D et une production sans stock.",
+    "p2": "Ce qui m'intéresse, ce sont les produits avec un vrai modèle opérationnel derrière — inventaire, paiements, réservations, interfaces bilingues — pas seulement l'aspect visuel. MyStyle est mon projet actuel : une startup de mode technologique affiliée à l'ANPT, qui développe une plateforme sur-mesure avec configurateur 3D et production sans stock.",
     "p3": "Ma méthode : comprendre d'abord le vrai flux de travail, puis choisir la pile la plus simple capable de le porter de façon fiable.",
     "stat_role": "Rôle",
     "stat_role_v": "Développeur Web & Mobile",
@@ -57,7 +57,7 @@
   "projects": {
     "eyebrow": "Projets",
     "heading": "Projets phares",
-    "filters": { "all": "Tous", "web": "Web", "mobile": "Mobile", "saas": "SaaS", "java": "Java" },
+    "filters": { "all": "Tous", "web": "Web", "desktop": "Bureau", "mobile": "Mobile", "saas": "SaaS", "java": "Java" },
     "status": { "completed": "Terminé", "in_development": "En développement", "concept": "Concept" },
     "role_label": "Mon rôle",
     "stack_label": "Technologies",
@@ -79,19 +79,19 @@
       "title": "MyStyle",
       "problem": "Acheter des vêtements sur-mesure en ligne revient souvent à deviner la coupe.",
       "description": "Une plateforme de mode assistée par IA avec génération de vêtements 2D vers 3D, un backend FastAPI et un frontend React. Basée sur un modèle de production sur-mesure sans stock, pour le marché algérien.",
-      "role": "Cofondateur — direction produit et volet 3D/technique de la plateforme."
+      "role": "Fondateur de MyStyle, une startup de mode technologique affiliée à l'ANPT — direction produit et expertise technique/3D."
     },
     "mohamed_service": {
       "title": "Mohamed Service",
       "problem": "Trouver des conseils fiables en électronique et en réparation localement est fragmenté.",
-      "description": "Une plateforme de services électroniques proposant des produits sélectionnés, du sourcing sur mesure et des tests techniques pour téléphones et ordinateurs, avec une interface pensée pour l'arabe.",
-      "role": "Conception et développement complets de la plateforme."
+      "description": "Une page de démonstration pour un concept de service électronique, présentant l'approvisionnement de produits, les conseils techniques et l'assistance pour téléphones et ordinateurs, avec une interface pensée pour l'arabe.",
+      "role": "Conception et développement de la page de démonstration."
     },
     "resto": {
       "title": "Resto Al Salam El Bayadh",
       "problem": "Un restaurant local avait besoin d'une présence en ligne pour son menu et ses réservations.",
-      "description": "Un site de restaurant responsive présentant menus, réservations et cuisine locale, avec une mise en page claire et rapide.",
-      "role": "Conception et développement du site."
+      "description": "Un site de restaurant responsive développé en PHP, présentant menus, réservations et cuisine locale avec une mise en page claire et rapide.",
+      "role": "Conception et développement du site PHP du restaurant."
     },
     "adhahi": {
       "title": "Adhahi App Preview",
@@ -108,8 +108,8 @@
     "salle_de_fetes": {
       "title": "Salle de Fêtes",
       "problem": "Les réservations de salles de réception nécessitaient un flux plus propre et plus fiable.",
-      "description": "Une application web orientée réservation pour gérer les salles d'événements, le suivi admin et la planification plus simple.",
-      "role": "Développement du système de réservation et de l'admin.",
+      "description": "Une application de bureau Electron développée en JavaScript pour gérer les réservations de salles, l'administration et la planification.",
+      "role": "Développement de l'application Electron et de ses flux de réservation et d'administration.",
       "screenshots": {
         "calendar": "Calendrier des réservations et tableau de bord admin",
         "new_reservation": "Formulaire de nouvelle réservation",

@@ -22,7 +22,7 @@ export const PROJECTS = [
     id: "resto",
     category: ["web"],
     status: "completed",
-    stack: ["HTML", "CSS", "JavaScript"],
+    stack: ["PHP", "HTML", "CSS", "JavaScript"],
     github: null,
     live: "https://restoalsalamelbayadh.online/",
   },
@@ -44,9 +44,9 @@ export const PROJECTS = [
   },
   {
     id: "salle_de_fetes",
-    category: ["web"],
+    category: ["desktop"],
     status: "completed",
-    stack: ["PHP", "MySQL", "JavaScript"],
+    stack: ["JavaScript", "Electron"],
     github: "https://github.com/Mohking999/salle_de_fetes.git",
     live: null,
     screenshots: [
@@ -94,4 +94,4 @@ export const PROJECTS = [
   },
 ];
 
-export const FILTERS = ["all", "web", "mobile", "saas", "java"];
+export const FILTERS = ["all", "web", "desktop", "mobile", "saas", "java"];
