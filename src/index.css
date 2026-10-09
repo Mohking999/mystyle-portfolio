@@ -105,6 +105,18 @@ img { max-width: 100%; display: block; }
 }
 @keyframes cursorBlink { 50% { opacity: 0; } }
 
+@media (pointer: fine) {
+  body.has-custom-cursor,
+  body.has-custom-cursor a,
+  body.has-custom-cursor button,
+  body.has-custom-cursor [role="button"],
+  body.has-custom-cursor input,
+  body.has-custom-cursor textarea,
+  body.has-custom-cursor select {
+    cursor: none !important;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after {
     animation-duration: 0.001ms !important;
@@ -114,3 +126,4 @@ img { max-width: 100%; display: block; }
   }
   .retro-reveal, .retro-reveal.visible { animation: none; opacity: 1; transform: none; }
 }
+

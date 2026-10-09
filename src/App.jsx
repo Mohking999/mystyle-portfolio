@@ -8,12 +8,14 @@ import Certificates from "./components/sections/Certificates.jsx";
 import Contact from "./components/sections/Contact.jsx";
 import useTheme from "./hooks/useTheme.js";
 import DesktopPet from "./components/ui/DesktopPet.jsx";
+import CustomCursor from "./components/ui/CustomCursor.jsx";
 
 export default function App() {
   const [theme, toggleTheme] = useTheme();
 
   return (
     <>
+      <CustomCursor />
       <a href="#main-content" className="visually-hidden">Skip to content</a>
       <Navbar theme={theme} onToggleTheme={toggleTheme} />
       <main id="main-content" tabIndex={-1}>

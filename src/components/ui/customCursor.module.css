@@ -1,0 +1,179 @@
+/* ── POWERFUL TERMINAL HUD CURSOR ───────────────────────────── */
+.cursorWrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 99999;
+  overflow: hidden;
+}
+
+@media (pointer: coarse), (hover: none) {
+  .cursorWrap {
+    display: none !important;
+  }
+}
+
+/* Central target dot */
+.dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  box-shadow: 0 0 6px var(--accent);
+  pointer-events: none;
+  z-index: 100000;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+}
+
+/* Trailing HUD reticle box */
+.reticle {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 38px;
+  height: 38px;
+  pointer-events: none;
+  z-index: 99999;
+  transform: translate(-50%, -50%);
+  will-change: transform;
+  transition: width 0.18s steps(3), height 0.18s steps(3);
+}
+
+/* 4 corner brackets */
+.bracketTL,
+.bracketTR,
+.bracketBL,
+.bracketBR {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-color: #ffffff;
+  border-style: solid;
+  pointer-events: none;
+  transition: border-color 0.15s, width 0.15s, height 0.15s;
+}
+
+.bracketTL { top: 0; left: 0; border-width: 2px 0 0 2px; }
+.bracketTR { top: 0; right: 0; border-width: 2px 2px 0 0; }
+.bracketBL { bottom: 0; left: 0; border-width: 0 0 2px 2px; }
+.bracketBR { bottom: 0; right: 0; border-width: 0 2px 2px 0; }
+
+/* Subtle crosshair lines */
+.crosshairH {
+  position: absolute;
+  top: 50%;
+  left: -8px;
+  right: -8px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-50%);
+}
+
+.crosshairV {
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  bottom: -8px;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateX(-50%);
+}
+
+/* Telemetry coordinates readout */
+.telemetry {
+  position: absolute;
+  top: 14px;
+  left: 18px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 2px 6px;
+  background: rgba(10, 10, 10, 0.9);
+  border: 1px solid var(--line-strong);
+  color: var(--muted);
+  font-family: var(--font-mono);
+  font-size: 0.54rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  pointer-events: none;
+}
+
+.telemetryTag {
+  color: var(--accent);
+}
+
+/* ── Interactive Hover State ── */
+.cursorWrap[data-hover="true"] .dot {
+  width: 8px;
+  height: 8px;
+  background: #ffffff;
+  box-shadow: 0 0 10px var(--accent);
+}
+
+.cursorWrap[data-hover="true"] .reticle {
+  width: 50px;
+  height: 50px;
+}
+
+.cursorWrap[data-hover="true"] .bracketTL,
+.cursorWrap[data-hover="true"] .bracketTR,
+.cursorWrap[data-hover="true"] .bracketBL,
+.cursorWrap[data-hover="true"] .bracketBR {
+  border-color: var(--accent);
+  width: 9px;
+  height: 9px;
+}
+
+.cursorWrap[data-hover="true"] .crosshairH,
+.cursorWrap[data-hover="true"] .crosshairV {
+  background: rgba(232, 83, 31, 0.4);
+}
+
+.cursorWrap[data-hover="true"] .telemetry {
+  border-color: var(--accent);
+  background: rgba(232, 83, 31, 0.12);
+  color: var(--ink);
+}
+
+.cursorWrap[data-hover="true"] .telemetryTag {
+  color: #ffffff;
+}
+
+/* ── Click Impulse Shockwave ── */
+.pulse {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 44px;
+  height: 44px;
+  border: 2px solid var(--accent);
+  transform: translate(-50%, -50%) scale(0.2);
+  opacity: 0;
+  pointer-events: none;
+  animation: shockwave 0.32s steps(5) forwards;
+}
+
+@keyframes shockwave {
+  0% {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(0.2);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(1.6);
+  }
+}
+
+/* ── Mouse Down compression ── */
+.cursorWrap[data-down="true"] .reticle {
+  width: 28px;
+  height: 28px;
+}
