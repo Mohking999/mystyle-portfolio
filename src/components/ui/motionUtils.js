@@ -1,9 +1,9 @@
 export const fadeInUp = {
-  hidden: { opacity: 0, y: 28 },
+  hidden: { opacity: 0, y: 20 },
   visible: (delay = 0) => ({
     opacity: 1,
     y: 0,
-    transition: { duration: 0.7, delay, ease: "easeOut" },
+    transition: { duration: 0.35, delay, ease: [0, 0, 1, 1] }, // stepped feel
   }),
 };
 

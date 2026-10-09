@@ -1,27 +1,62 @@
+/* ─ Project Card — file window ─────────────────────────────── */
 .card {
-  transition: border-color 0.2s, box-shadow 0.2s;
-  transform-style: preserve-3d;
+  transform-style: flat;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
-.card:hover { border-color: var(--line-strong); box-shadow: 0 14px 35px rgba(8, 14, 32, 0.12); }
+.card:hover { border-color: var(--accent); transform: translate(-3px, -3px); }
 
-.header { gap: 0.75rem; }
-.top { display: flex; justify-content: flex-end; }
+/* White title bar across top */
+.header { gap: 0; padding: 0 0 12px; }
+.top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+  padding: 6px 10px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #000;
+}
 
-.title { font-size: 1.25rem; margin: 0; color: var(--ink); }
-.content { gap: 0; flex: 1; }
-.problem { font-size: 0.85rem; color: var(--muted); font-style: italic; margin: 0 0 10px; line-height: 1.6; }
-.desc { font-size: 0.92rem; color: var(--muted); line-height: 1.65; margin: 0 0 16px; flex: 1; }
+.title {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: #000;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  margin: 0;
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+.content { gap: 0; flex: 1; padding: 0 14px; }
+.problem { font-family: var(--font-mono); font-size: 0.68rem; color: var(--accent); font-style: normal; margin: 0 0 6px; line-height: 1.5; letter-spacing: 0.04em; text-transform: uppercase; }
+.desc { font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); line-height: 1.6; margin: 0 0 14px; flex: 1; }
 
-.stack { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+.stack { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
 
-.actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; }
+.actions { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; padding: 10px 14px 14px; border-top: 1px solid var(--line); }
 .primaryActions { display: flex; flex-wrap: wrap; gap: 8px; }
-.linkRow { display: flex; gap: 14px; }
-.link { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); text-decoration: none; padding: 0.4rem 0; }
-.link:hover { color: var(--gold); }
+.linkRow { display: flex; gap: 12px; }
+.link {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 0.3rem 0;
+  transition: color 0.1s;
+}
+.link:hover { color: var(--accent); }
 
 @media (max-width: 420px) {
   .actions { align-items: flex-start; }
   .primaryActions { width: 100%; }
   .linkRow { width: 100%; }
 }
+

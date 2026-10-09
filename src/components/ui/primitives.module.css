@@ -1,145 +1,143 @@
+/* ────────────────────────────────────────────────────────────
+   BUTTON — retro brutalist hard-edge with offset shadow
+──────────────────────────────────────────────────────────── */
 .button {
   position: relative;
-  isolation: isolate;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
   min-height: 2.5rem;
-  padding: 0.55rem 1rem;
-  border: 1px solid transparent;
-  border-radius: var(--radius);
-  color: var(--ink);
-  font: 500 0.875rem/1.2 var(--font-body);
+  padding: 0.6rem 1.25rem;
+  border: 2px solid transparent;
+  border-radius: 0;                         /* HARD EDGE */
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
-  overflow: hidden;
-  box-shadow: inset 0 1px 0 var(--button-highlight), 0 0.35rem 0 var(--button-shadow), 0 0 0 transparent;
-  transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+  transition:
+    transform 0.1s steps(2, end),
+    box-shadow 0.1s steps(2, end),
+    background-color 0.1s steps(2, end);
 }
 
-.button::after {
-  position: absolute;
-  z-index: -1;
-  inset: 4px -4px -0.75rem;
-  border-radius: inherit;
-  background: var(--button-base);
-  content: "";
-  transition: inset 120ms ease;
-}
-.button::before {
-  position: absolute;
-  z-index: 0;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 300%;
-  background:
-    radial-gradient(circle at 20% 35%, transparent 0 2px, var(--button-bubble) 3px 4px, transparent 5px),
-    radial-gradient(circle at 75% 44%, transparent 0 2px, var(--button-bubble) 3px 4px, transparent 5px),
-    radial-gradient(circle at 46% 52%, transparent 0 4px, var(--button-bubble) 5px 6px, transparent 7px);
-  content: "";
-  opacity: 0;
-  pointer-events: none;
-  animation: button-bubbles 2s linear infinite;
-  animation-play-state: paused;
-}
-.button:hover {
-  transform: translateY(-1px);
-  box-shadow:
-    inset 0 1px 0 var(--button-highlight),
-    0 0.35rem 0 var(--button-shadow),
-    0 2px 22px var(--button-glow);
-}
-.button:hover::before,
-.button:focus-visible::before { opacity: 0.65; animation-play-state: running; }
-.button:active {
-  transform: translateY(0.4rem);
-  background: var(--button-pressed);
-  box-shadow: inset 0 1px 0 var(--button-highlight), inset 0 -3px 0 var(--button-shadow);
-}
-.button:active::after { inset-block-end: -0.25rem; }
-.button:disabled { pointer-events: none; opacity: 0.5; }
-.button:focus-visible { outline: 2px solid var(--button-focus-ring); outline-offset: 3px; }
+.button:disabled { pointer-events: none; opacity: 0.45; }
+.button:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 .buttonLabel { position: relative; z-index: 1; }
 
+/* PRIMARY — orange fill, white offset shadow */
 .default {
-  --button-shadow: var(--button-primary-shadow);
-  --button-base: var(--button-primary-base);
-  --button-pressed: var(--button-primary-pressed);
-  --button-bubble: var(--button-primary-bubble);
-  --button-glow: var(--button-primary-glow);
-  background: var(--button-primary-face);
-  color: var(--primary-foreground);
-  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.24);
+  background: var(--accent);
+  color: #000;
+  border-color: var(--white);
+  box-shadow: 6px 6px 0 var(--white);
 }
-.default:hover:not(:active) { background: var(--button-primary-hover); }
-.secondary:hover,
-.outline:hover,
-.ghost:hover,
-.link:hover { filter: brightness(1.08); }
-.secondary,
-.outline,
-.ghost,
-.link {
-  --button-shadow: var(--button-secondary-shadow);
-  --button-base: var(--button-secondary-base);
-  --button-pressed: var(--button-secondary-pressed);
-  --button-bubble: var(--button-secondary-bubble);
-  --button-glow: var(--button-secondary-glow);
-  border-color: var(--button-secondary-border);
-  background: var(--button-secondary-face);
-  color: var(--button-secondary-foreground);
+.default:hover {
+  transform: translate(3px, 3px);
+  box-shadow: 3px 3px 0 var(--white);
 }
-.link { color: var(--gold); }
+.default:active {
+  transform: translate(6px, 6px);
+  box-shadow: 0 0 0 var(--white);
+  background: var(--accent-dark);
+}
 
-.sm { min-height: 2.15rem; padding: 0.4rem 0.75rem; font-size: 0.8rem; }
-.lg { min-height: 2.85rem; padding: 0.75rem 1.35rem; }
+/* SECONDARY / OUTLINE — transparent, bordered */
+.secondary,
+.outline {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--line-strong);
+  box-shadow: 4px 4px 0 var(--line-strong);
+}
+.secondary:hover,
+.outline:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 4px 4px 0 var(--accent);
+  transform: translate(2px, 2px);
+}
+.secondary:active,
+.outline:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0;
+}
+
+/* GHOST / LINK */
+.ghost, .link {
+  background: transparent;
+  border-color: transparent;
+  box-shadow: none;
+  color: var(--muted);
+}
+.ghost:hover, .link:hover { color: var(--accent); }
+.link { color: var(--accent); }
+
+/* Sizes */
+.sm  { min-height: 2rem;   padding: 0.35rem 0.75rem; font-size: 0.65rem; }
+.lg  { min-height: 3rem;   padding: 0.75rem 1.5rem;  font-size: 0.8rem; }
 .icon { width: 2.5rem; min-width: 2.5rem; padding: 0; }
 
+/* ────────────────────────────────────────────────────────────
+   CARD — file-window aesthetic
+──────────────────────────────────────────────────────────── */
 .card {
   display: flex;
   flex-direction: column;
-  padding: 1.625rem;
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  background: var(--card);
-  color: var(--card-foreground);
+  border: 2px solid var(--line-strong);
+  border-radius: 0;
+  background: var(--bg-alt);
+  color: var(--ink);
+  transition:
+    transform 0.1s steps(2, end),
+    border-color 0.1s steps(2, end);
+  position: relative;
+}
+.card:hover {
+  border-color: var(--accent);
+  transform: translate(-3px, -3px);
 }
 
+/* ────────────────────────────────────────────────────────────
+   BADGE — monospace chip
+──────────────────────────────────────────────────────────── */
 .badge {
   display: inline-flex;
   align-items: center;
   width: fit-content;
-  min-height: 1.45rem;
-  padding: 0.2rem 0.65rem;
-  border: 1px solid transparent;
-  border-radius: 999px;
-  font: 500 0.7rem/1.2 var(--font-mono);
+  min-height: 1.4rem;
+  padding: 0.15rem 0.55rem;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;                        /* no pill shape */
+  font-family: var(--font-mono);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
   white-space: nowrap;
 }
 
-.badge.default { background: var(--primary); color: var(--primary-foreground); }
-.badge.secondary { background: var(--bg-alt); color: var(--muted); border-color: var(--border); }
-.badge.outline { background: transparent; color: var(--ink); border-color: var(--line-strong); }
-.badge.success { background: color-mix(in srgb, var(--thread) 14%, transparent); color: var(--thread); border-color: color-mix(in srgb, var(--thread) 35%, transparent); }
-.badge.warning { background: var(--gold-soft); color: var(--gold); border-color: color-mix(in srgb, var(--gold) 35%, transparent); }
+.badge.default   { background: var(--accent); color: #000; border-color: var(--accent); }
+.badge.secondary { background: transparent; color: var(--muted); border-color: var(--line-strong); }
+.badge.outline   { background: transparent; color: var(--ink); border-color: var(--line-strong); }
+.badge.success   { background: rgba(61,220,132,0.1); color: #3ddc84; border-color: rgba(61,220,132,0.4); }
+.badge.warning   { background: rgba(232,83,31,0.1); color: var(--accent); border-color: rgba(232,83,31,0.4); }
 
-.cardHeader { display: grid; gap: 0.5rem; }
+/* Card sub-sections */
+.cardHeader  { display: grid; gap: 0.5rem; }
 .cardContent { display: grid; gap: 0.75rem; }
-.cardFooter { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; }
-
-@keyframes button-bubbles {
-  from { transform: translateY(0); }
-  to { transform: translateY(-66.666%); }
-}
+.cardFooter  { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; }
 
 @media (prefers-reduced-motion: reduce) {
   .button,
-  .button::after,
-  .button::before {
+  .card {
     transition: none;
     animation: none;
   }
 }
+
+

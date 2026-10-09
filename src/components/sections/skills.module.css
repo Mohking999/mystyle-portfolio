@@ -1,84 +1,97 @@
+/* ── SKILLS — retro terminal OS ──────────────────────────────── */
 .section {
-  padding: clamp(76px, 9vw, 112px) clamp(20px, 6vw, 96px);
-  border-top: 1px solid var(--line);
+  padding: clamp(64px, 8vw, 100px) clamp(20px, 6vw, 80px);
+  border-top: 1px solid var(--line-strong);
+  background: var(--bg);
 }
 
 .head {
   display: flex;
   align-items: flex-start;
-  gap: 18px;
-  margin-bottom: 30px;
+  gap: 16px;
+  margin-bottom: 32px;
 }
 
 .num {
   flex: 0 0 auto;
-  padding-top: 8px;
   font-family: var(--font-mono);
   font-size: 0.85rem;
-  color: var(--thread);
+  font-weight: 700;
+  color: var(--accent);
+  padding-top: 6px;
 }
 
 .eyebrow {
   display: block;
-  margin-bottom: 8px;
-  color: var(--thread);
+  margin-bottom: 6px;
+  color: var(--accent);
   font-family: var(--font-mono);
-  font-size: 0.72rem;
-  letter-spacing: 0.12em;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
 }
 
 .heading {
   color: var(--ink);
-  font-size: clamp(2rem, 4vw, 3rem);
-  line-height: 1.12;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 800;
+  line-height: 0.96;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
 }
 
 .intro {
-  max-width: 58ch;
-  margin: 12px 0 0;
+  max-width: 60ch;
+  margin: 14px 0 0;
   color: var(--muted);
-  font-size: 0.98rem;
-  line-height: 1.7;
+  font-family: var(--font-mono);
+  font-size: 0.8rem;
+  line-height: 1.6;
 }
 
 .categoryNav {
   display: flex;
   flex-wrap: wrap;
-  gap: 9px;
-  margin-bottom: 48px;
+  gap: 8px;
+  margin-bottom: 40px;
 }
 
 .categoryNav a {
-  border: 1px solid var(--line);
-  border-radius: 999px;
-  padding: 8px 13px;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  padding: 6px 12px;
+  background: var(--bg-alt);
   color: var(--muted);
-  font-size: 0.8rem;
-  line-height: 1.3;
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   text-decoration: none;
-  transition: color 220ms ease, border-color 220ms ease, background-color 220ms ease;
+  transition: all 0.1s steps(2);
 }
 
 .categoryNav a:hover {
-  border-color: var(--line-strong);
-  background: var(--gold-soft);
-  color: var(--ink);
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #000;
 }
 
 .categoryNav a:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 3px;
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 .groups {
   display: grid;
-  gap: 42px;
+  gap: 40px;
 }
 
 .group {
   min-width: 0;
-  padding-bottom: 40px;
+  padding-bottom: 36px;
   border-bottom: 1px solid var(--line);
 }
 
@@ -88,39 +101,44 @@
 }
 
 .groupLabel {
-  margin: 0 0 19px;
+  margin: 0 0 20px;
   color: var(--ink);
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  font-weight: 600;
-  letter-spacing: -0.015em;
-  scroll-margin-top: 104px;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  scroll-margin-top: 80px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.groupLabel::before {
+  content: '>';
+  color: var(--accent);
 }
 
 .grid {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 18px;
+  gap: 16px;
 }
 
 .card {
   display: grid;
   min-width: 0;
-  min-height: 174px;
+  min-height: 160px;
   align-content: center;
   justify-items: center;
-  gap: 15px;
+  gap: 12px;
   padding: 20px 12px 16px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background:
-    linear-gradient(145deg, color-mix(in srgb, var(--surface) 94%, white 6%), var(--surface));
-  box-shadow: 0 6px 22px rgb(0 0 0 / 5%);
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: var(--surface);
+  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.4);
   text-align: center;
-  transition:
-    transform 240ms ease,
-    border-color 240ms ease,
-    box-shadow 240ms ease,
-    background-color 240ms ease;
+  transition: transform 0.12s steps(2), box-shadow 0.12s steps(2), border-color 0.12s steps(2);
 }
 
 .logoCluster {
@@ -133,135 +151,91 @@
 
 .logoSurface {
   display: grid;
-  width: 78px;
-  height: 78px;
-  flex: 0 0 78px;
+  width: 68px;
+  height: 68px;
+  flex: 0 0 68px;
   place-items: center;
-  border: 1px solid rgb(20 28 45 / 5%);
-  border-radius: 21px;
-  background: rgb(255 255 255 / 94%);
-  box-shadow: 0 3px 9px rgb(20 28 45 / 8%);
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  background: #ffffff;
 }
 
 .logoSurface img {
   display: block;
-  width: 70px;
-  height: 70px;
+  width: 52px;
+  height: 52px;
   object-fit: contain;
-  transition: transform 240ms ease;
 }
 
 .cardName {
   max-width: 100%;
   color: var(--ink);
-  font-size: 0.9rem;
-  font-weight: 500;
-  line-height: 1.35;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   overflow-wrap: anywhere;
 }
 
 @media (hover: hover) {
   .card:hover {
-    z-index: 1;
-    transform: translateY(-3px) scale(1.05);
-    border-color: color-mix(in srgb, var(--brand-color) 42%, var(--line));
-    box-shadow:
-      0 17px 35px color-mix(in srgb, var(--brand-color) 18%, transparent),
-      0 7px 18px rgb(0 0 0 / 9%);
-  }
-
-  .card:hover .logoSurface img {
-    transform: scale(1.06);
+    transform: translate(-3px, -3px);
+    border-color: var(--accent);
+    box-shadow: 4px 4px 0 var(--accent);
   }
 }
 
 .note {
   max-width: 72ch;
-  margin: 36px 0 0;
+  margin: 32px 0 0;
   color: var(--muted);
-  font-size: 0.85rem;
-  line-height: 1.7;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.6;
 }
 
 @media (max-width: 1050px) {
   .grid {
     grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 15px;
-  }
-
-  .logoSurface {
-    width: 68px;
-    height: 68px;
-    flex-basis: 68px;
-    border-radius: 19px;
-  }
-
-  .logoSurface img {
-    width: 60px;
-    height: 60px;
+    gap: 14px;
   }
 }
 
 @media (max-width: 640px) {
   .section {
-    padding-inline: 5vw;
-  }
-
-  .head {
-    gap: 12px;
-  }
-
-  .categoryNav {
-    gap: 7px;
-    margin-bottom: 38px;
-  }
-
-  .categoryNav a {
-    padding: 7px 10px;
-    font-size: 0.74rem;
-  }
-
-  .groups {
-    gap: 32px;
-  }
-
-  .group {
-    padding-bottom: 30px;
+    padding-inline: 16px;
   }
 
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
+    gap: 10px;
   }
 
   .card {
-    min-height: 142px;
-    gap: 11px;
+    min-height: 130px;
     padding: 14px 8px 12px;
-    border-radius: 15px;
   }
 
   .logoSurface {
-    width: 56px;
-    height: 56px;
-    flex-basis: 56px;
-    border-radius: 16px;
+    width: 54px;
+    height: 54px;
+    flex-basis: 54px;
   }
 
   .logoSurface img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
   }
 
   .cardName {
-    font-size: 0.8rem;
+    font-size: 0.7rem;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
   .categoryNav a,
-  .card,
-  .logoSurface img {
+  .card {
     transition: none;
   }
 }

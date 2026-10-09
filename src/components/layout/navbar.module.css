@@ -1,76 +1,116 @@
+/* ── NAVBAR — retro terminal OS ─────────────────────────────── */
 .nav {
   position: fixed;
   inset-inline: 0;
   top: 0;
-  z-index: 50;
+  z-index: 800;
   display: flex;
-  justify-content: space-between;
   align-items: center;
-  padding: 22px 6vw;
-  backdrop-filter: blur(12px) saturate(1.15);
-  background: color-mix(in srgb, var(--bg) 70%, transparent);
-  border-bottom: 1px solid var(--line);
-  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.08);
+  height: 56px;
+  padding: 0 32px;
+  gap: 24px;
+  background: rgba(10, 10, 10, 0.97);
+  border-bottom: 1px solid var(--line-strong);
+  backdrop-filter: blur(4px);
 }
 
+/* Brand */
 .brand {
   font-family: var(--font-display);
-  font-weight: 600;
   font-size: 1.05rem;
-  text-decoration: none;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
   color: var(--ink);
-  letter-spacing: 0.01em;
+  text-decoration: none;
+  white-space: nowrap;
+  flex-shrink: 0;
 }
-.brandAccent { color: var(--gold); }
+.brandAccent { color: var(--accent); }
 
+/* Live SYS status */
+.sysStatus {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  white-space: nowrap;
+  display: none;
+  padding: 4px 10px;
+  border: 1px solid var(--line-strong);
+  background: rgba(232, 83, 31, 0.05);
+}
+@media (min-width: 900px) { .sysStatus { display: inline-flex; align-items: center; } }
+
+
+/* Desktop links */
 .linksDesktop {
   display: none;
-  gap: 32px;
+  align-items: center;
+  gap: 28px;
+  flex: 1;
+  justify-content: center;
 }
+
 .link {
   position: relative;
   font-family: var(--font-mono);
-  font-size: 0.78rem;
-  letter-spacing: 0.08em;
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
   text-transform: uppercase;
+  color: var(--muted);
   text-decoration: none;
-  color: var(--ink);
-  opacity: 0.72;
-  padding-block: 8px;
-  transition: opacity 0.2s;
+  padding: 4px 0;
+  transition: color 0.15s;
+}
+.link::before {
+  content: '> ';
+  color: var(--accent);
+  opacity: 0;
+  transition: opacity 0.1s steps(1, end);
 }
 .link::after {
+  content: '';
   position: absolute;
-  inset-inline: 0;
-  inset-block-end: 2px;
-  height: 1px;
-  background: var(--gold);
-  content: "";
+  bottom: 0; left: 0; right: 0;
+  height: 1.5px;
+  background: var(--accent);
   transform: scaleX(0);
-  transform-origin: left center;
-  transition: transform 0.22s ease;
+  transform-origin: left;
+  transition: transform 0.2s steps(4, end);
 }
 .link:hover,
-.link:focus-visible { opacity: 1; }
+.link:focus-visible { color: var(--ink); }
+.link:hover::before,
+.link:focus-visible::before { opacity: 1; }
 .link:hover::after,
 .link:focus-visible::after { transform: scaleX(1); }
-:global([dir="rtl"]) .link::after { transform-origin: right center; }
 
+/* Right-side controls */
 .controls {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 10px;
+  margin-left: auto;
+  flex-shrink: 0;
 }
 
+/* Burger (mobile) */
 .burger {
   display: inline-flex;
+  border: 1px solid var(--line-strong) !important;
+  background: transparent !important;
+  color: var(--ink) !important;
+  box-shadow: none !important;
 }
 .burgerBar {
-  width: 20px;
-  height: 1.5px;
-  margin-block: 2px;
-  background: var(--ink);
   display: block;
+  width: 18px;
+  height: 1.5px;
+  margin-block: 2.5px;
+  background: currentColor;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -80,4 +120,9 @@
 @media (min-width: 900px) {
   .linksDesktop { display: flex; }
   .burger { display: none; }
+}
+
+@media (max-width: 480px) {
+  .nav { padding: 0 16px; }
+  .brand { font-size: 0.9rem; }
 }

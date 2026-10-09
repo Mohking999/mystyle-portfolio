@@ -11,8 +11,6 @@ import useMediaQuery from "../../hooks/useMediaQuery.js";
 import { PROJECTS, FILTERS } from "../../data/projects.js";
 import styles from "./projects.module.css";
 
-const projectsVideo = new URL("../../../asstes/4151303-hd_1920_1080_25fps.mp4", import.meta.url).href;
-
 const ProjectsScene = lazy(() => import("../scenes/ProjectsScene/ProjectsScene.jsx"));
 const MotionButton = motion.create(Button);
 
@@ -38,10 +36,6 @@ export default function Projects() {
 
   return (
     <section id="work" className={styles.section}>
-      <div className={styles.videoBg}>
-        <video className={styles.video} src={projectsVideo} autoPlay muted loop playsInline />
-      </div>
-      <div className={styles.videoOverlay} />
       <Reveal className={styles.head}>
         <span className={styles.num}>03</span>
         <h2 className={styles.heading}>{t("projects.heading")}</h2>

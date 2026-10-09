@@ -1,94 +1,82 @@
-/* Design tokens. One refined accent (gold), a secondary "thread" teal for
-   supporting accents, dark theme by default, optional light theme. */
+/*
+  ══════════════════════════════════════════════════════════════
+  RETRO-FUTURIST TERMINAL-OS DESIGN TOKENS
+  Edit the variables below to retheme the entire site.
+  ══════════════════════════════════════════════════════════════
+*/
 :root,
 [data-theme="dark"] {
-  --bg: #0f1119;
-  --bg-alt: #161927;
-  --surface: #1b1f30;
-  --ink: #eee9e0;
-  --muted: #9296a8;
-  --gold: #c9a227;
-  --gold-soft: rgba(201, 162, 39, 0.14);
-  --thread: #5b8c85;
-  --line: rgba(238, 233, 224, 0.12);
-  --line-strong: rgba(238, 233, 224, 0.22);
-  --primary: var(--gold);
-  --primary-foreground: #ffffff;
-  --secondary: var(--bg-alt);
+  /* ── Core palette ───────────────────────────────────────── */
+  --bg:            #0a0a0a;   /* near-black page background    */
+  --bg-alt:        #111111;   /* slightly raised surface       */
+  --surface:       #181818;   /* cards / panels                */
+  --ink:           #e8e8e8;   /* primary text                  */
+  --muted:         #8a8a8a;   /* secondary / body copy         */
+  --accent:        #e8531f;   /* burnt orange — single accent  */
+  --accent-dark:   #b83d12;   /* pressed state                 */
+  --white:         #ffffff;
+
+  /* ── Borders ────────────────────────────────────────────── */
+  --line:          rgba(255, 255, 255, 0.08);
+  --line-strong:   rgba(255, 255, 255, 0.18);
+
+  /* ── Semantic aliases (keep old names so existing JSX compiles) */
+  --gold:          var(--accent);
+  --gold-soft:     rgba(232, 83, 31, 0.14);
+  --thread:        var(--accent);
+  --primary:       var(--accent);
+  --primary-foreground: #000000;
+  --secondary:     var(--bg-alt);
   --secondary-foreground: var(--ink);
-  --card: var(--bg-alt);
+  --card:          var(--bg-alt);
   --card-foreground: var(--ink);
   --muted-foreground: var(--muted);
-  --border: var(--line);
-  --ring: var(--gold);
-  --radius: 0.7rem;
-  --button-primary-face: #2563eb;
-  --button-primary-hover: #1d4ed8;
-  --button-primary-pressed: #1e40af;
-  --button-primary-shadow: #172554;
-  --button-primary-base: #0b1734;
-  --button-secondary-face: #1b2942;
-  --button-secondary-pressed: #142033;
-  --button-secondary-shadow: #0c1728;
-  --button-secondary-base: #07111f;
-  --button-secondary-foreground: #e8efff;
-  --button-secondary-border: rgba(147, 197, 253, 0.24);
-  --button-highlight: rgba(191, 219, 254, 0.48);
-  --button-primary-bubble: #bfdbfe;
-  --button-primary-glow: hsla(221, 83%, 63%, 0.42);
-  --button-secondary-bubble: #93c5fd;
-  --button-secondary-glow: hsla(215, 90%, 66%, 0.25);
-  --button-focus-ring: #93c5fd;
-  --font-display: "Fraunces", serif;
-  --font-body: "Inter", sans-serif;
-  --font-mono: "JetBrains Mono", monospace;
+  --border:        var(--line);
+  --ring:          var(--accent);
+  --radius:        0px;       /* zero — everything hard-edged */
+
+  /* ── Button tokens ──────────────────────────────────────── */
+  --button-primary-face:     var(--accent);
+  --button-primary-hover:    var(--accent-dark);
+  --button-primary-pressed:  var(--accent-dark);
+  --button-primary-shadow:   var(--white);
+  --button-primary-base:     var(--accent-dark);
+  --button-highlight:        rgba(255,255,255,0.12);
+  --button-primary-bubble:   rgba(232,83,31,0.3);
+  --button-primary-glow:     rgba(232,83,31,0.0);
+  --button-secondary-face:   transparent;
+  --button-secondary-pressed: var(--bg-alt);
+  --button-secondary-shadow: var(--line-strong);
+  --button-secondary-base:   var(--bg);
+  --button-secondary-foreground: var(--ink);
+  --button-secondary-border: var(--line-strong);
+  --button-secondary-bubble: var(--accent);
+  --button-secondary-glow:   rgba(232,83,31,0.0);
+  --button-focus-ring:       var(--accent);
+
+  /* ── Typography ─────────────────────────────────────────── */
+  --font-display: 'Syne', sans-serif;         /* ultra-wide headlines  */
+  --font-body:    'Space Mono', monospace;    /* body = monospace too  */
+  --font-mono:    'Space Mono', monospace;
+
+  /* ── Shadows (hard offset, no blur) ─────────────────────── */
+  --shadow-card:  4px 4px 0 var(--line-strong);
+  --shadow-btn:   6px 6px 0 var(--white);
+  --shadow-accent: 6px 6px 0 var(--accent);
 }
 
+/* Light mode keeps the same dark terminal feel — portfolio stays dark */
 [data-theme="light"] {
-  --bg: #f4f6fc;
-  --bg-alt: #eaf0fb;
-  --surface: #ffffff;
-  --ink: #1b2540;
-  --muted: #5e6b85;
-  --gold: #554bd1;
-  --gold-soft: rgba(85, 75, 209, 0.12);
-  --thread: #28777d;
-  --line: rgba(31, 48, 84, 0.1);
-  --line-strong: rgba(31, 48, 84, 0.2);
-  --primary: var(--gold);
-  --primary-foreground: #ffffff;
-  --secondary: var(--bg-alt);
-  --secondary-foreground: var(--ink);
-  --card: var(--bg-alt);
-  --card-foreground: var(--ink);
-  --muted-foreground: var(--muted);
-  --border: var(--line);
-  --ring: var(--gold);
-  --button-primary-face: #2563eb;
-  --button-primary-hover: #1d4ed8;
-  --button-primary-pressed: #1e40af;
-  --button-primary-shadow: #172554;
-  --button-primary-base: #0b1734;
-  --button-secondary-face: #eff6ff;
-  --button-secondary-pressed: #dbeafe;
-  --button-secondary-shadow: #93c5fd;
-  --button-secondary-base: #60a5fa;
-  --button-secondary-foreground: #1e3a8a;
-  --button-secondary-border: rgba(37, 99, 235, 0.22);
-  --button-highlight: rgba(255, 255, 255, 0.72);
-  --button-primary-bubble: #dbeafe;
-  --button-primary-glow: hsla(221, 83%, 53%, 0.28);
-  --button-secondary-bubble: #3b82f6;
-  --button-secondary-glow: hsla(221, 83%, 53%, 0.2);
-  --button-focus-ring: #1d4ed8;
+  --bg:          #0a0a0a;
+  --bg-alt:      #111111;
+  --surface:     #181818;
+  --ink:         #e8e8e8;
+  --muted:       #8a8a8a;
 }
 
-/* Arabic gets its own readable display/body pairing */
+/* Arabic RTL support */
 [dir="rtl"] {
-  --font-display: "Cairo", sans-serif;
-  --font-body: "Cairo", sans-serif;
+  --font-display: 'Syne', sans-serif;
+  --font-body:    'Space Mono', monospace;
 }
-
-[dir="rtl"] body {
-  text-align: right;
-}
+[dir="rtl"] body { text-align: right; }

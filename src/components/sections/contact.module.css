@@ -1,239 +1,170 @@
-.section { position: relative; padding: 120px 6vw 100px; border-top: 1px solid var(--line); overflow: hidden; }
-.videoBg,
-.videoOverlay { position: absolute; inset: 0; z-index: 0; }
-.videoBg { overflow: hidden; }
-.video { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
-.videoOverlay { background: rgba(10, 11, 16, 0.5); }
-.inner { max-width: 1120px; margin: 0 auto; text-align: center; position: relative; z-index: 1; }
-.eyebrow { font-family: var(--font-mono); font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--thread); }
-.heading { font-size: clamp(1.8rem, 4.6vw, 2.8rem); margin: 18px 0 8px; color: var(--ink); }
-.subheading { color: var(--muted); margin-bottom: 40px; }
-
-.form { display: flex; max-width: 620px; margin-inline: auto; flex-direction: column; gap: 20px; text-align: start; }
-.field { display: flex; flex-direction: column; gap: 6px; }
-.field label { font-family: var(--font-mono); font-size: 0.72rem; text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted); }
-.field input, .field textarea {
-  background: var(--bg-alt);
-  border: 1px solid var(--line);
-  border-radius: 2px;
-  color: var(--ink);
-  padding: 12px 14px;
-  font-family: var(--font-body);
-  font-size: 0.95rem;
+/* â”€â”€ CONTACT SECTION â€” retro terminal OS â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.section {
+  position: relative;
+  padding: 90px 6vw 100px;
+  border-top: 1px solid var(--line-strong);
+  overflow: hidden;
 }
-.field input:focus, .field textarea:focus { border-color: var(--gold); outline: none; }
-.error { font-size: 0.78rem; color: #d16565; }
 
-.submit {
-  align-self: flex-start;
+.inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  position: relative;
+  z-index: 1;
+}
+
+/* Eyebrow & heading */
+.eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+.eyebrow::before { content: '// '; opacity: 0.5; }
+
+.heading {
+  font-family: var(--font-display);
+  font-size: clamp(2.5rem, 5vw, 5rem);
+  font-weight: 800;
+  color: var(--ink);
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  line-height: 0.93;
+  margin: 0 0 24px;
+}
+
+.subheading {
   font-family: var(--font-mono);
   font-size: 0.78rem;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  color: var(--muted);
+  margin-bottom: 40px;
+  line-height: 1.7;
 }
 
-.statusMsg { min-height: 1.2em; font-size: 0.85rem; color: var(--thread); }
-.directEmail { margin-top: 30px; font-size: 0.9rem; color: var(--muted); }
-.directEmail a { color: var(--gold); }
+/* Terminal Form */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  max-width: 600px;
+  background: var(--bg-alt);
+  border: 1px solid var(--line-strong);
+}
 
+.field { display: flex; flex-direction: column; gap: 4px; padding: 0 20px; }
+.field:first-child { padding-top: 16px; }
+
+.field label {
+  font-family: var(--font-mono);
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.field label::before { content: '>'; }
+
+.field input,
+.field textarea {
+  background: var(--bg);
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  color: var(--ink);
+  padding: 10px 12px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.04em;
+  outline: none;
+  transition: border-color 0.1s;
+  resize: none;
+}
+.field input:focus,
+.field textarea:focus { border-color: var(--accent); }
+.field textarea { min-height: 100px; }
+
+.error { font-family: var(--font-mono); font-size: 0.6rem; color: #d16565; letter-spacing: 0.05em; text-transform: uppercase; }
+
+.submit {
+  align-self: stretch !important;
+  font-family: var(--font-mono) !important;
+  font-size: 0.72rem !important;
+  letter-spacing: 0.15em !important;
+  text-transform: uppercase !important;
+  margin: 4px 20px 20px;
+}
+
+.statusMsg { min-height: 1.2em; font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent); padding: 0 20px 8px; letter-spacing: 0.06em; }
+.directEmail { margin-top: 24px; font-family: var(--font-mono); font-size: 0.72rem; color: var(--muted); }
+.directEmail a { color: var(--accent); text-decoration: none; }
+.directEmail a:hover { text-decoration: underline; }
+
+/* Social links â€” terminal list style */
 .socialSection {
-  margin-top: 46px;
-  padding-top: 30px;
-  border-top: 1px solid var(--line);
-  text-align: start;
+  margin-top: 40px;
+  padding-top: 28px;
+  border-top: 1px solid var(--line-strong);
 }
 
 .socialHeading {
-  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 2rem);
+  font-weight: 800;
   color: var(--ink);
-  font-size: clamp(1.1rem, 2vw, 1.35rem);
-  font-weight: 600;
-  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  letter-spacing: -0.02em;
+  margin: 0 0 8px;
 }
 
 .socialIntro {
-  margin: 0 0 19px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   color: var(--muted);
-  font-size: 0.88rem;
+  margin: 0 0 20px;
 }
 
 .socialGrid {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
 }
 
+/* Social card: terminal list row */
 .socialCard {
-  position: relative;
-  display: grid;
-  min-width: 0;
-  min-height: 174px;
-  align-content: center;
-  justify-items: center;
-  gap: 15px;
-  padding: 20px 12px 16px;
-  border: 1px solid var(--line);
-  border-radius: 18px;
-  background:
-    linear-gradient(145deg, color-mix(in srgb, var(--surface) 94%, white 6%), var(--surface));
-  box-shadow: 0 6px 22px rgb(0 0 0 / 5%);
-  color: var(--ink);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
   text-decoration: none;
-  transition:
-    transform 240ms ease,
-    border-color 240ms ease,
-    box-shadow 240ms ease,
-    background-color 240ms ease;
-}
-
-.socialCard:focus-visible {
-  outline: 2px solid var(--gold);
-  outline-offset: 3px;
-}
-
-.socialMark {
-  display: grid;
-  width: 78px;
-  height: 78px;
-  flex: 0 0 78px;
-  place-items: center;
-  border: 1px solid rgb(20 28 45 / 5%);
-  border-radius: 21px;
-  background: rgb(255 255 255 / 94%);
-  box-shadow: 0 3px 9px rgb(20 28 45 / 8%);
-  color: var(--social-accent, var(--gold));
-}
-
-.socialLogo {
-  display: block;
-  width: 54px;
-  height: 54px;
-  object-fit: contain;
-  transition: transform 240ms ease;
-}
-
-.socialCard[data-social="facebook"] {
-  --social-accent: #0866ff;
-}
-
-.socialCard[data-social="whatsapp"] {
-  --social-accent: #25d366;
-}
-
-.socialCard[data-social="tiktok"] {
-  --social-accent: #111111;
-}
-
-.socialCard[data-social="telegram"] {
-  --social-accent: #26a5e4;
-}
-
-.socialCard[data-social="x"] {
-  --social-accent: #171717;
-}
-
-.socialCopy {
-  display: grid;
-  min-width: 0;
-  gap: 3px;
-  justify-items: center;
-  text-align: center;
-}
-
-.socialName {
-  max-width: 100%;
-  color: var(--ink);
-  font-size: 0.9rem;
-  font-weight: 500;
-  line-height: 1.35;
-  overflow-wrap: anywhere;
-}
-
-.socialHandle {
-  max-width: 100%;
-  overflow: hidden;
-  color: var(--muted);
   font-family: var(--font-mono);
-  font-size: 0.66rem;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 0.1s, border-bottom-color 0.1s, padding-left 0.1s;
 }
+.socialCard::before { content: '>'; color: var(--accent); font-family: var(--font-mono); }
+.socialCard:hover { color: var(--ink); border-bottom-color: var(--accent); padding-left: 8px; }
+.socialCard:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 
-.socialArrow {
-  position: absolute;
-  inset-block-start: 12px;
-  inset-inline-end: 14px;
-  color: var(--muted);
-  font-size: 0.9rem;
-}
+.socialMark { display: none; }
+.socialLogo { display: none; }
 
-@media (hover: hover) {
-  .socialCard:hover {
-    z-index: 1;
-    transform: translateY(-3px) scale(1.03);
-    border-color: color-mix(in srgb, var(--social-accent) 42%, var(--line));
-    box-shadow:
-      0 17px 35px color-mix(in srgb, var(--social-accent) 18%, transparent),
-      0 7px 18px rgb(0 0 0 / 9%);
-  }
+.socialCopy { display: flex; flex-direction: column; gap: 2px; }
+.socialName { color: var(--ink); }
+.socialHandle { font-size: 0.6rem; color: var(--muted); }
 
-  .socialCard:hover .socialLogo {
-    transform: scale(1.06);
-  }
-}
-
-@media (max-width: 1050px) {
-  .socialGrid {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
-    gap: 15px;
-  }
-
-  .socialMark {
-    width: 68px;
-    height: 68px;
-    flex-basis: 68px;
-    border-radius: 19px;
-  }
-
-  .socialLogo {
-    width: 48px;
-    height: 48px;
-  }
-}
-
-@media (max-width: 640px) {
-  .socialGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 12px;
-  }
-
-  .socialCard {
-    min-height: 142px;
-    gap: 11px;
-    padding: 14px 8px 12px;
-    border-radius: 15px;
-  }
-
-  .socialMark {
-    width: 56px;
-    height: 56px;
-    flex-basis: 56px;
-    border-radius: 16px;
-  }
-
-  .socialLogo {
-    width: 42px;
-    height: 42px;
-  }
-
-  .socialName {
-    font-size: 0.8rem;
-  }
-}
+.socialArrow { margin-left: auto; color: var(--accent); }
 
 @media (prefers-reduced-motion: reduce) {
-  .socialCard,
-  .socialLogo {
-    transition: none;
-  }
+  .socialCard { transition: none; }
 }
+

@@ -4,8 +4,6 @@ import Reveal from "../ui/Reveal.jsx";
 import { Button } from "../ui/Primitives.jsx";
 import styles from "./contact.module.css";
 
-const contactVideo = new URL("../../../asstes/4153407-hd_1920_1080_25fps.mp4", import.meta.url).href;
-
 const CONTACT_EMAIL = "djebiriabdrazak@gmail.com";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -77,10 +75,6 @@ export default function Contact() {
 
   return (
     <section id="contact" className={styles.section}>
-      <div className={styles.videoBg}>
-        <video className={styles.video} src={contactVideo} autoPlay muted loop playsInline />
-      </div>
-      <div className={styles.videoOverlay} />
       <Reveal className={styles.inner}>
         <span className={styles.eyebrow}>{t("contact.eyebrow")}</span>
         <h2 className={styles.heading}>{t("contact.heading")}</h2>
