@@ -163,7 +163,7 @@
     }
   },
   "footer": {
-    "built_with": "Built with React and Three.js",
+    "built_with": "Built with React",
     "rights": "All rights reserved.",
     "home_link": "Mohamed Djebiri — home",
     "navigation": "Footer navigation",

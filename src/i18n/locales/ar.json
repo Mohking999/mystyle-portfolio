@@ -163,7 +163,7 @@
     }
   },
   "footer": {
-    "built_with": "بُني باستخدام React وThree.js",
+    "built_with": "بُني باستخدام React",
     "rights": "جميع الحقوق محفوظة.",
     "home_link": "محمد جبيري — الصفحة الرئيسية",
     "navigation": "روابط التذييل",
