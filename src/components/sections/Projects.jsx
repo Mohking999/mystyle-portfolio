@@ -1,28 +1,20 @@
-import { lazy, Suspense, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { Button } from "../ui/Primitives.jsx";
 import Reveal from "../ui/Reveal.jsx";
 import ProjectCard from "./ProjectCard.jsx";
 import ProjectModal from "./ProjectModal.jsx";
-import useReducedMotion from "../../hooks/useReducedMotion.js";
-import useWebGLSupport from "../../hooks/useWebGLSupport.js";
-import useMediaQuery from "../../hooks/useMediaQuery.js";
 import { PROJECTS, FILTERS } from "../../data/projects.js";
 import styles from "./projects.module.css";
 
-const ProjectsScene = lazy(() => import("../scenes/ProjectsScene/ProjectsScene.jsx"));
 const MotionButton = motion.create(Button);
 
 export default function Projects() {
   const { t } = useTranslation();
-  const reduced = useReducedMotion();
-  const webglOk = useWebGLSupport();
-  const compactViewport = useMediaQuery("(max-width: 719px)");
   const [filter, setFilter] = useState("all");
   const [openId, setOpenId] = useState(null);
   const [previewOnOpen, setPreviewOnOpen] = useState(false);
-  const [show3d, setShow3d] = useState(false);
 
   function openProject(id, preview = false) {
     setOpenId(id);
@@ -57,30 +49,7 @@ export default function Projects() {
             </MotionButton>
           ))}
         </div>
-        {webglOk && (
-          <MotionButton
-            className={styles.toggle3d}
-            variant={show3d ? "default" : "secondary"}
-            size="sm"
-            onClick={() => setShow3d((v) => !v)}
-            aria-pressed={show3d}
-          >
-            {show3d ? "2D" : "3D"}
-          </MotionButton>
-        )}
       </Reveal>
-
-      {show3d && webglOk && (
-        <Reveal className={styles.sceneWrap}>
-          <Suspense fallback={<div className={styles.sceneLoading} />}>
-            <ProjectsScene
-              onSelect={(id) => openProject(id)}
-              activeId={openId}
-              compact={compactViewport}
-            />
-          </Suspense>
-        </Reveal>
-      )}
 
       <div className={styles.grid}>
         {visible.map((p) => (

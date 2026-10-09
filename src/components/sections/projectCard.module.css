@@ -13,19 +13,20 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #fff;
-  padding: 6px 10px;
+  background: #ffffff;
+  padding: 7px 12px;
   margin-bottom: 12px;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid #000000;
+  gap: 10px;
 }
 
 .title {
   font-family: var(--font-mono);
-  font-size: 0.65rem;
-  font-weight: 700;
-  color: #000;
+  font-size: 0.74rem;
+  font-weight: 800;
+  color: #000000;
   text-transform: uppercase;
-  letter-spacing: 0.07em;
+  letter-spacing: 0.08em;
   margin: 0;
   flex: 1;
   overflow: hidden;

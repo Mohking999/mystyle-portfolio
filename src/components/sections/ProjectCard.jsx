@@ -47,12 +47,11 @@ export default function ProjectCard({ project, onOpen, onPreview }) {
     >
       <CardHeader className={styles.header}>
         <div className={styles.top}>
+          <h3 className={styles.title}>{t(`projects.${project.id}.title`)}</h3>
           <Badge variant={project.status === "completed" ? "success" : "warning"}>
             {t(`projects.status.${project.status}`)}
           </Badge>
         </div>
-
-        <h3 className={styles.title}>{t(`projects.${project.id}.title`)}</h3>
       </CardHeader>
 
       <CardContent className={styles.content}>

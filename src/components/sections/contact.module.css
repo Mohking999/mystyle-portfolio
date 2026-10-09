@@ -151,16 +151,40 @@
   text-transform: uppercase;
   transition: color 0.1s, border-bottom-color 0.1s, padding-left 0.1s;
 }
-.socialCard::before { content: '>'; color: var(--accent); font-family: var(--font-mono); }
+.socialCard::before { content: '>'; color: var(--accent); font-family: var(--font-mono); font-size: 0.9rem; }
 .socialCard:hover { color: var(--ink); border-bottom-color: var(--accent); padding-left: 8px; }
 .socialCard:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+.socialMark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  flex: 0 0 48px;
+  background: #ffffff;
+  border: 1px solid var(--line-strong);
+  box-shadow: 2px 2px 0 rgba(0, 0, 0, 0.5);
+  padding: 8px;
+  transition: transform 0.12s steps(2), background-color 0.12s, box-shadow 0.12s, border-color 0.12s;
+}
 
-.socialMark { display: none; }
-.socialLogo { display: none; }
+.socialLogo {
+  display: block;
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
 
-.socialCopy { display: flex; flex-direction: column; gap: 2px; }
-.socialName { color: var(--ink); }
-.socialHandle { font-size: 0.6rem; color: var(--muted); }
+.socialCard:hover .socialMark {
+  background: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 4px 4px 0 var(--accent);
+  transform: translate(-2px, -2px);
+}
+
+.socialCopy { display: flex; flex-direction: column; gap: 3px; }
+.socialName { color: var(--ink); font-size: 0.8rem; font-weight: 800; }
+.socialHandle { font-size: 0.65rem; color: var(--muted); }
 
 .socialArrow { margin-left: auto; color: var(--accent); }
 

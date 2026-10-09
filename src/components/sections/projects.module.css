@@ -54,19 +54,7 @@
   letter-spacing: 0.1em !important;
   text-transform: uppercase !important;
 }
-.toggle3d {
-  font-family: var(--font-mono) !important;
-  font-size: 0.6rem !important;
-  letter-spacing: 0.1em !important;
-}
 
-/* 3D scene */
-.sceneWrap { margin-bottom: 34px; position: relative; z-index: 1; }
-.sceneLoading {
-  height: 440px;
-  border: 2px solid var(--line-strong);
-  background: var(--bg-alt);
-}
 
 /* Cards grid */
 .grid {

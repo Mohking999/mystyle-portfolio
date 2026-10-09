@@ -1,16 +1,11 @@
-import { lazy, Suspense, useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
-import { motion } from "framer-motion";
 import useReducedMotion from "../../hooks/useReducedMotion.js";
-import useWebGLSupport from "../../hooks/useWebGLSupport.js";
-import useMediaQuery from "../../hooks/useMediaQuery.js";
-import CanvasFallback from "../scenes/CanvasFallback.jsx";
 import { Button } from "../ui/Primitives.jsx";
+import portraitImg from "../../../asstes/Picsart_26-10-04_20-22-38-416.jpg";
 import styles from "./hero.module.css";
 
-const HeroScene = lazy(() => import("../scenes/HeroScene/HeroScene.jsx"));
-
-/* â”€â”€ Typewriter hook â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Typewriter hook ─────────────────────────────────────────── */
 const PHRASES = [
   "[ INITIALIZING PROTOCOL... ]",
   "[ LOADING PORTFOLIO_SYS... ]",
@@ -45,7 +40,7 @@ function useTypewriter(phrases, reduced) {
     }
     tick();
     return () => clearTimeout(raf);
-  }, [reduced]);  // eslint-disable-line
+  }, [reduced]); // eslint-disable-line
 
   return text;
 }
@@ -53,15 +48,12 @@ function useTypewriter(phrases, reduced) {
 export default function Hero() {
   const { t } = useTranslation();
   const reduced = useReducedMotion();
-  const webglOk = useWebGLSupport();
-  const wideViewport = useMediaQuery("(min-width: 960px)");
-  const compactViewport = useMediaQuery("(max-width: 719px)");
   const twText = useTypewriter(PHRASES, reduced);
 
   return (
     <section id="top" className={styles.hero}>
       <div className={styles.grid}>
-        {/* â”€â”€ Left: Copy â”€â”€ */}
+        {/* ── Left: Copy ── */}
         <div className={styles.copy}>
           {/* Typewriter label */}
           <span className={styles.eyebrow} aria-label="Initializing protocol">
@@ -94,23 +86,30 @@ export default function Hero() {
           <p className={styles.focus}>{t("hero.focus")}</p>
         </div>
 
-        {/* â”€â”€ Right: 3D Scene / Fallback â”€â”€ */}
-        <div
-          className={styles.sceneCol}
-          data-compact={compactViewport}
-          aria-hidden={!webglOk}
-        >
-          {webglOk ? (
-            <Suspense fallback={<div className={styles.sceneLoading} />}>
-              <HeroScene compact={compactViewport} />
-            </Suspense>
-          ) : wideViewport ? (
-            <CanvasFallback />
-          ) : null}
+        {/* ── Right: Portrait Window (PORTRAIT_01.JPG) ── */}
+        <div className={styles.portraitCol}>
+          <div className={styles.portraitWindow}>
+            <div className={styles.portraitTitlebar}>
+              <span className={styles.portraitTitle}>PORTRAIT_01.JPG</span>
+              <div className={styles.portraitControls} aria-hidden="true">
+                <span className={styles.portraitBtn}>_</span>
+                <span className={styles.portraitBtn}>□</span>
+                <span className={styles.portraitBtn}>✕</span>
+              </div>
+            </div>
+            <div className={styles.portraitBody}>
+              <img
+                src={portraitImg}
+                alt="Mohamed Djebiri — Portrait"
+                className={styles.portraitImg}
+                loading="eager"
+                decoding="async"
+              />
+              <div className={styles.portraitScanlines} aria-hidden="true" />
+            </div>
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
-
