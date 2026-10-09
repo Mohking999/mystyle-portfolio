@@ -126,32 +126,49 @@ function findSafePosition(
 function Robot({ sleeping }) {
   return (
     <svg className={styles.robot} viewBox="0 0 76 88" aria-hidden="true">
-      <path className={styles.antenna} d="M38 15V9" />
-      <circle className={styles.antennaTip} cx="38" cy="7" r="3" />
-      <rect className={styles.ear} x="8" y="34" width="7" height="17" rx="3.5" />
-      <rect className={styles.ear} x="61" y="34" width="7" height="17" rx="3.5" />
-      <rect className={styles.head} x="13" y="16" width="50" height="42" rx="15" />
-      <rect className={styles.face} x="18" y="21" width="40" height="31" rx="11" />
+      {/* Stepped antenna with beacon diode */}
+      <path className={styles.antenna} d="M38 16V6" />
+      <rect className={styles.antennaTip} x="35" y="3" width="6" height="5" />
+
+      {/* Side comm bolts / ears */}
+      <rect className={styles.ear} x="5" y="28" width="7" height="16" />
+      <rect className={styles.ear} x="64" y="28" width="7" height="16" />
+
+      {/* Sharp CRT monitor head */}
+      <rect className={styles.head} x="12" y="16" width="52" height="40" />
+
+      {/* Screen visor */}
+      <rect className={styles.face} x="16" y="20" width="44" height="32" />
+
+      {/* Digital HUD Eyes */}
       <g className={styles.openEyes}>
-        <ellipse className={styles.eye} cx="30" cy="34" rx="5.2" ry="6.4" />
-        <ellipse className={styles.eye} cx="46" cy="34" rx="5.2" ry="6.4" />
-        <circle className={styles.pupil} cx="31" cy="35" r="2.6" />
-        <circle className={styles.pupil} cx="47" cy="35" r="2.6" />
-        <circle className={styles.eyeShine} cx="32" cy="33" r="1.1" />
-        <circle className={styles.eyeShine} cx="48" cy="33" r="1.1" />
+        <rect className={styles.eye} x="23" y="29" width="10" height="10" />
+        <rect className={styles.eye} x="43" y="29" width="10" height="10" />
+        <rect className={styles.pupil} x="26" y="32" width="4" height="4" />
+        <rect className={styles.pupil} x="46" y="32" width="4" height="4" />
       </g>
+
+      {/* Low-power standby sleeping eyes */}
       <g className={styles.sleepEyes}>
-        <path d="M25 35q5 5 10 0M41 35q5 5 10 0" />
+        <path d="M23 34h10M43 34h10" />
       </g>
-      <path className={styles.smile} d="M33 44q5 4 10 0" />
-      <rect className={styles.body} x="22" y="60" width="32" height="20" rx="8" />
-      <rect className={styles.bodyPanel} x="30" y="65" width="16" height="8" rx="3" />
-      <circle className={styles.statusLight} cx="38" cy="69" r="2" />
-      <path className={`${styles.arm} ${styles.leftArm}`} d="M22 65l-6 8" />
-      <path className={`${styles.arm} ${styles.rightArm}`} d="M54 65l6 8" />
-      <path className={`${styles.leg} ${styles.leftLeg}`} d="M31 80l-2 5" />
-      <path className={`${styles.leg} ${styles.rightLeg}`} d="M45 80l2 5" />
-      {sleeping && <text className={styles.sleepZ} x="55" y="15">z</text>}
+
+      {/* Digital mouth / telemetry line */}
+      <path className={styles.smile} d="M29 44h18" />
+
+      {/* Chassis / Torso */}
+      <rect className={styles.body} x="20" y="60" width="36" height="20" />
+      <rect className={styles.bodyPanel} x="27" y="64" width="22" height="9" />
+      <rect className={styles.statusLight} x="36" y="66.5" width="4" height="4" />
+
+      {/* Arms & Legs */}
+      <path className={`${styles.arm} ${styles.leftArm}`} d="M20 64l-7 10" />
+      <path className={`${styles.arm} ${styles.rightArm}`} d="M56 64l7 10" />
+      <path className={`${styles.leg} ${styles.leftLeg}`} d="M29 80v6" />
+      <path className={`${styles.leg} ${styles.rightLeg}`} d="M47 80v6" />
+
+      {/* Sleep Z in retro monospace font */}
+      {sleeping && <text className={styles.sleepZ} x="56" y="14">Z</text>}
     </svg>
   );
 }
