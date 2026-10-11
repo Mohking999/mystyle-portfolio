@@ -82,7 +82,17 @@ export const PROJECTS = [
     status: "completed",
     stack: ["React", "Node.js", "MongoDB"],
     github: "https://github.com/Mohking999/zira3i.git",
-    live: null,
+    live: "https://zira3i-ai-cyber-agronomic-plant-doc.vercel.app/",
+    previewLinks: [
+      {
+        label: "v1",
+        url: "https://zira3i-ai-cyber-agronomic-plant-doc.vercel.app/",
+      },
+      {
+        label: "v2",
+        url: "https://zira3i-ai-cyber-agronomic-plant-doc.vercel.app/",
+      },
+    ],
   },
   {
     id: "PHONE_STORE",

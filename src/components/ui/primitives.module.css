@@ -50,15 +50,15 @@
 .secondary,
 .outline {
   background: transparent;
-  color: var(--ink);
-  border-color: var(--line-strong);
-  box-shadow: 4px 4px 0 var(--line-strong);
+  color: var(--accent);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 transparent;
 }
 .secondary:hover,
 .outline:hover {
   border-color: var(--accent);
   color: var(--accent);
-  box-shadow: 4px 4px 0 var(--accent);
+  box-shadow: 4px 4px 0 rgba(232, 83, 31, 0.55);
   transform: translate(2px, 2px);
 }
 .secondary:active,
