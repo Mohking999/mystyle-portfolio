@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import useReducedMotion from "../../hooks/useReducedMotion.js";
 import { Button } from "../ui/Primitives.jsx";
-import portraitImg from "../../../asstes/Picsart_26-10-04_20-22-38-416.jpg";
+import portraitImg from "../../../asstes/portrait.jpg";
 import styles from "./hero.module.css";
 
 /* ── Typewriter hook ─────────────────────────────────────────── */
