@@ -10,8 +10,13 @@ export default defineConfig({
     chunkSizeWarningLimit: 700,
     rollupOptions: {
       output: {
-        manualChunks: {
-          "three-vendor": ["three", "@react-three/fiber", "@react-three/drei"],
+        codeSplitting: {
+          groups: [
+            {
+              name: "three-vendor",
+              test: /node_modules[\\/](?:three|@react-three[\\/](?:fiber|drei))[\\/]/,
+            },
+          ],
         },
       },
     },
