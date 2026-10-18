@@ -72,7 +72,6 @@ export default function ProjectCard({ project, onOpen, onPreview }) {
               loading="lazy"
               decoding="async"
             />
-            <div className={styles.thumbScanlines} aria-hidden="true" />
           </div>
         ) : (
           <div className={styles.terminalPlaceholder}>

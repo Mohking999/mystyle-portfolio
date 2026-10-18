@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { createPortal } from "react-dom";
 import { useTranslation } from "react-i18next";
 import { AnimatePresence, motion } from "framer-motion";
 import { PROJECTS } from "../../data/projects.js";
@@ -8,11 +9,31 @@ import styles from "./projectModal.module.css";
 
 function ProjectScreenshotGallery({ screenshots, projectId, t }) {
   const [activeIndex, setActiveIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
   const activeScreenshot = screenshots[activeIndex];
 
   function selectScreenshot(index) {
     setActiveIndex((index + screenshots.length) % screenshots.length);
   }
+
+  useEffect(() => {
+    if (!lightboxOpen) return;
+    function onKey(e) {
+      if (e.key === "Escape") {
+        e.stopPropagation();
+        e.stopImmediatePropagation?.();
+        setLightboxOpen(false);
+      } else if (e.key === "ArrowLeft") {
+        e.stopPropagation();
+        selectScreenshot(activeIndex - 1);
+      } else if (e.key === "ArrowRight") {
+        e.stopPropagation();
+        selectScreenshot(activeIndex + 1);
+      }
+    }
+    window.addEventListener("keydown", onKey, true);
+    return () => window.removeEventListener("keydown", onKey, true);
+  }, [lightboxOpen, activeIndex, screenshots.length]);
 
   return (
     <section className={styles.gallery} aria-labelledby="project-gallery-title">
@@ -24,11 +45,10 @@ function ProjectScreenshotGallery({ screenshots, projectId, t }) {
       </div>
 
       <figure className={styles.galleryFigure}>
-        <a
+        <button
+          type="button"
           className={styles.galleryImageLink}
-          href={activeScreenshot.src}
-          target="_blank"
-          rel="noopener noreferrer"
+          onClick={() => setLightboxOpen(true)}
           aria-label={t("projects.gallery_open_full", {
             title: t(`projects.${projectId}.screenshots.${activeScreenshot.title}`),
           })}
@@ -42,7 +62,10 @@ function ProjectScreenshotGallery({ screenshots, projectId, t }) {
             loading="eager"
             decoding="async"
           />
-        </a>
+          <span className={styles.galleryZoomBadge}>
+            🔍 {t("projects.gallery_open_full", { title: "" }).split(":")[0] || "Full View"}
+          </span>
+        </button>
         <figcaption>
           {t(`projects.${projectId}.screenshots.${activeScreenshot.title}`)}
         </figcaption>
@@ -98,6 +121,97 @@ function ProjectScreenshotGallery({ screenshots, projectId, t }) {
           </div>
         </>
       )}
+
+      {/* Lightbox full view without CRT scanlines or filters */}
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {lightboxOpen && (
+              <motion.div
+                className={styles.lightboxOverlay}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.18 }}
+                onClick={(e) => {
+                  if (e.target === e.currentTarget) setLightboxOpen(false);
+                }}
+                role="dialog"
+                aria-modal="true"
+                aria-label={t(`projects.${projectId}.screenshots.${activeScreenshot.title}`)}
+              >
+                <div className={styles.lightboxHeader}>
+                  <span className={styles.lightboxCounter}>
+                    {activeIndex + 1} / {screenshots.length} —{" "}
+                    {t(`projects.${projectId}.screenshots.${activeScreenshot.title}`)}
+                  </span>
+                  <div className={styles.lightboxActions}>
+                    <a
+                      href={activeScreenshot.src}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className={styles.lightboxActionLink}
+                      title="Open raw file in new tab"
+                      aria-label="Open in new tab"
+                    >
+                      ↗
+                    </a>
+                    <button
+                      type="button"
+                      className={styles.lightboxClose}
+                      onClick={() => setLightboxOpen(false)}
+                      aria-label="Close full view"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </div>
+
+                {screenshots.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      className={`${styles.lightboxNav} ${styles.lightboxPrev}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        selectScreenshot(activeIndex - 1);
+                      }}
+                      aria-label={t("projects.gallery_previous")}
+                    >
+                      ←
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.lightboxNav} ${styles.lightboxNext}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        selectScreenshot(activeIndex + 1);
+                      }}
+                      aria-label={t("projects.gallery_next")}
+                    >
+                      →
+                    </button>
+                  </>
+                )}
+
+                <div
+                  className={styles.lightboxContent}
+                  onClick={(e) => {
+                    if (e.target === e.currentTarget) setLightboxOpen(false);
+                  }}
+                >
+                  <img
+                    className={styles.lightboxImg}
+                    src={activeScreenshot.src}
+                    alt={t(`projects.${projectId}.screenshots.${activeScreenshot.title}`)}
+                    loading="eager"
+                  />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
     </section>
   );
 }
