@@ -29,7 +29,7 @@ export default function Projects() {
   return (
     <section id="work" className={styles.section}>
       <Reveal className={styles.head}>
-        <span className={styles.num}>03</span>
+        <span className={styles.num}>02</span>
         <h2 className={styles.heading}>{t("projects.heading")}</h2>
       </Reveal>
 

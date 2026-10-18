@@ -49,12 +49,25 @@ export default function Hero() {
   const { t } = useTranslation();
   const reduced = useReducedMotion();
   const twText = useTypewriter(PHRASES, reduced);
+  const [minimized, setMinimized] = useState(false);
+  const [scanlinesActive, setScanlinesActive] = useState(true);
 
   return (
     <section id="top" className={styles.hero}>
+      <div className={styles.ambientGlow} aria-hidden="true" />
       <div className={styles.grid}>
         {/* ── Left: Copy ── */}
         <div className={styles.copy}>
+          {/* Live system telemetry badge */}
+          <div className={styles.telemetryPill}>
+            <span className={styles.radarDot} aria-hidden="true" />
+            <span className={styles.telemetryItem}>SYS: ONLINE</span>
+            <span className={styles.divider}>//</span>
+            <span className={styles.telemetryItem}>LOC: ALGERIA</span>
+            <span className={styles.divider}>//</span>
+            <span className={styles.telemetryItemActive}>STATUS: READY</span>
+          </div>
+
           {/* Typewriter label */}
           <span className={styles.eyebrow} aria-label="Initializing protocol">
             {twText}
@@ -88,25 +101,55 @@ export default function Hero() {
 
         {/* ── Right: Portrait Window (PORTRAIT_01.JPG) ── */}
         <div className={styles.portraitCol}>
-          <div className={styles.portraitWindow}>
+          <div className={`${styles.portraitWindow} ${minimized ? styles.windowMinimized : ""}`}>
             <div className={styles.portraitTitlebar}>
               <span className={styles.portraitTitle}>PORTRAIT_01.JPG</span>
-              <div className={styles.portraitControls} aria-hidden="true">
-                <span className={styles.portraitBtn}>_</span>
-                <span className={styles.portraitBtn}>□</span>
-                <span className={styles.portraitBtn}>✕</span>
+              <div className={styles.portraitControls}>
+                <button
+                  type="button"
+                  className={styles.portraitBtn}
+                  onClick={() => setMinimized((m) => !m)}
+                  title={minimized ? "Restore" : "Minimize"}
+                  aria-label={minimized ? "Restore window" : "Minimize window"}
+                >
+                  _
+                </button>
+                <button
+                  type="button"
+                  className={styles.portraitBtn}
+                  onClick={() => setMinimized(false)}
+                  title="Maximize"
+                  aria-label="Maximize window"
+                >
+                  □
+                </button>
+                <button
+                  type="button"
+                  className={styles.portraitBtn}
+                  onClick={() => setScanlinesActive((s) => !s)}
+                  title="Toggle CRT Scanlines"
+                  aria-label="Toggle CRT Scanlines"
+                >
+                  ✕
+                </button>
               </div>
             </div>
-            <div className={styles.portraitBody}>
-              <img
-                src={portraitImg}
-                alt="Mohamed Djebiri — Portrait"
-                className={styles.portraitImg}
-                loading="eager"
-                decoding="async"
-              />
-              <div className={styles.portraitScanlines} aria-hidden="true" />
-            </div>
+            {!minimized && (
+              <div className={styles.portraitBody}>
+                <img
+                  src={portraitImg}
+                  alt="Mohamed Djebiri — Portrait"
+                  className={styles.portraitImg}
+                  loading="eager"
+                  decoding="async"
+                />
+                {scanlinesActive && (
+                  <div className={styles.portraitScanlines} aria-hidden="true" />
+                )}
+                <div className={styles.portraitCornerTL} aria-hidden="true" />
+                <div className={styles.portraitCornerBR} aria-hidden="true" />
+              </div>
+            )}
           </div>
         </div>
       </div>

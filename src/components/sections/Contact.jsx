@@ -76,11 +76,20 @@ export default function Contact() {
   return (
     <section id="contact" className={styles.section}>
       <Reveal className={styles.inner}>
-        <span className={styles.eyebrow}>{t("contact.eyebrow")}</span>
-        <h2 className={styles.heading}>{t("contact.heading")}</h2>
+        <div className={styles.head}>
+          <span className={styles.num}>05</span>
+          <div>
+            <span className={styles.eyebrow}>{t("contact.eyebrow")}</span>
+            <h2 className={styles.heading}>{t("contact.heading")}</h2>
+          </div>
+        </div>
         <p className={styles.subheading}>{t("contact.subheading")}</p>
 
         <form className={styles.form} onSubmit={handleSubmit} noValidate>
+          <div className={styles.formTitlebar}>
+            <span className={styles.formDocId}>TERMINAL_MSG_DISPATCHER.EXE</span>
+            <span className={styles.formStatusDot}>● READY</span>
+          </div>
           <div className={styles.field}>
             <label htmlFor="name">{t("contact.name")}</label>
             <input id="name" type="text" {...field("name")} />

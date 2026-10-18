@@ -62,7 +62,8 @@
   /* ── Shadows (hard offset, no blur) ─────────────────────── */
   --shadow-card:  4px 4px 0 var(--line-strong);
   --shadow-btn:   6px 6px 0 var(--white);
-  --shadow-accent: 6px 6px 0 var(--accent);
+  --glow-accent:   0 0 16px rgba(232, 83, 31, 0.45);
+  --glow-accent-sm: 0 0 8px rgba(232, 83, 31, 0.35);
 }
 
 /* Light mode keeps the same dark terminal feel — portfolio stays dark */
@@ -74,9 +75,14 @@
   --muted:       #8a8a8a;
 }
 
-/* Arabic RTL support */
+/* Arabic RTL support with geometric modern Cairo font */
 [dir="rtl"] {
-  --font-display: 'Syne', sans-serif;
-  --font-body:    'Space Mono', monospace;
+  --font-display: 'Cairo', 'Syne', sans-serif;
+  --font-body:    'Cairo', 'Space Mono', monospace;
+  --font-mono:    'Cairo', 'Space Mono', monospace;
 }
-[dir="rtl"] body { text-align: right; }
+[dir="rtl"] body {
+  text-align: right;
+  letter-spacing: normal;
+}
+

@@ -46,7 +46,7 @@ export default function Certificates() {
   return (
     <section id="certificates" className={styles.section}>
       <Reveal className={styles.head}>
-        <span className={styles.num}>03</span>
+        <span className={styles.num}>04</span>
         <div>
           <span className={styles.eyebrow}>{t("certificates.eyebrow")}</span>
           <h2 className={styles.heading}>{t("certificates.heading")}</h2>
@@ -58,12 +58,17 @@ export default function Certificates() {
       </Reveal>
 
       <div className={styles.grid}>
-        {CERTIFICATES.map((item) => (
+        {CERTIFICATES.map((item, idx) => (
           <Reveal key={item.title}>
             <a className={styles.card} href={item.url} target="_blank" rel="noreferrer" aria-label={item.title}>
+              <div className={styles.cardTitlebar}>
+                <span className={styles.cardDocId}>CERT_0{idx + 1}.DOC</span>
+                <span className={styles.badgeVerify}>VERIFIED</span>
+              </div>
               {item.image ? (
                 <div className={styles.imageWrap}>
-                  <img src={item.image} alt={item.title} className={styles.image} />
+                  <img src={item.image} alt={item.title} className={styles.image} loading="lazy" decoding="async" />
+                  <div className={styles.scanlineOverlay} aria-hidden="true" />
                 </div>
               ) : (
                 <div className={styles.fallback}>
@@ -72,8 +77,8 @@ export default function Certificates() {
               )}
 
               <div className={styles.meta}>
-                <span className={styles.label}>{t("certificates.view")}</span>
-                <h3>{item.title}</h3>
+                <span className={styles.label}>{t("certificates.view")} →</span>
+                <h3 className={styles.itemTitle}>{item.title}</h3>
               </div>
             </a>
           </Reveal>

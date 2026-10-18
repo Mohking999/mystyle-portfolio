@@ -9,7 +9,7 @@ export default function Skills() {
   return (
     <section id="skills" className={styles.section}>
       <Reveal className={styles.head}>
-        <span className={styles.num}>02</span>
+        <span className={styles.num}>03</span>
         <div>
           <span className={styles.eyebrow}>{t("skills.eyebrow")}</span>
           <h2 className={styles.heading}>{t("skills.heading")}</h2>

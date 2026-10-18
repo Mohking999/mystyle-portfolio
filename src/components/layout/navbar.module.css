@@ -44,6 +44,18 @@
 @media (min-width: 900px) { .sysStatus { display: inline-flex; align-items: center; } }
 
 
+.progressBar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 10px var(--accent);
+  transition: width 0.12s ease-out;
+  z-index: 10;
+  pointer-events: none;
+}
+
 /* Desktop links */
 .linksDesktop {
   display: none;
@@ -82,11 +94,23 @@
   transition: transform 0.2s steps(4, end);
 }
 .link:hover,
-.link:focus-visible { color: var(--ink); }
+.link:focus-visible,
+.link[data-active="true"] {
+  color: var(--ink);
+}
+.link[data-active="true"] {
+  color: var(--accent);
+}
 .link:hover::before,
-.link:focus-visible::before { opacity: 1; }
+.link:focus-visible::before,
+.link[data-active="true"]::before {
+  opacity: 1;
+}
 .link:hover::after,
-.link:focus-visible::after { transform: scaleX(1); }
+.link:focus-visible::after,
+.link[data-active="true"]::after {
+  transform: scaleX(1);
+}
 
 /* Right-side controls */
 .controls {

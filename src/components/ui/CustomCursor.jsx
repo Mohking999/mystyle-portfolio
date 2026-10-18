@@ -6,7 +6,6 @@ function pad(n) {
 }
 
 export default function CustomCursor() {
-  const [coords, setCoords] = useState({ x: -100, y: -100 });
   const [isHover, setIsHover] = useState(false);
   const [isDown, setIsDown] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
@@ -14,6 +13,8 @@ export default function CustomCursor() {
 
   const dotRef = useRef(null);
   const reticleRef = useRef(null);
+  const coordXRef = useRef(null);
+  const coordYRef = useRef(null);
   const mousePos = useRef({ x: -100, y: -100 });
   const reticlePos = useRef({ x: -100, y: -100 });
   const animFrameId = useRef(null);
@@ -34,8 +35,6 @@ export default function CustomCursor() {
       if (dotRef.current) {
         dotRef.current.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
       }
-
-      setCoords({ x: e.clientX, y: e.clientY });
 
       // Detect interactive element hover
       const target = e.target;
@@ -76,6 +75,13 @@ export default function CustomCursor() {
 
       if (reticleRef.current) {
         reticleRef.current.style.transform = `translate3d(${reticlePos.current.x}px, ${reticlePos.current.y}px, 0) translate(-50%, -50%)`;
+      }
+
+      if (coordXRef.current && mousePos.current.x >= 0) {
+        coordXRef.current.textContent = `X:${pad(mousePos.current.x)}`;
+      }
+      if (coordYRef.current && mousePos.current.y >= 0) {
+        coordYRef.current.textContent = `Y:${pad(mousePos.current.y)}`;
       }
 
       animFrameId.current = requestAnimationFrame(loop);
@@ -123,8 +129,8 @@ export default function CustomCursor() {
 
         {/* Telemetry coordinates readout */}
         <div className={styles.telemetry}>
-          <span>X:{pad(coords.x)}</span>
-          <span>Y:{pad(coords.y)}</span>
+          <span ref={coordXRef}>X:0000</span>
+          <span ref={coordYRef}>Y:0000</span>
           <span className={styles.telemetryTag}>
             {isHover ? "[LOCKED]" : "[SYS_TRK]"}
           </span>

@@ -54,6 +54,45 @@ export default function ProjectCard({ project, onOpen, onPreview }) {
         </div>
       </CardHeader>
 
+      {/* Visual terminal preview banner */}
+      <div
+        className={styles.previewBanner}
+        onClick={() => onOpen(project.id)}
+        role="button"
+        tabIndex={0}
+        onKeyDown={(e) => { if (e.key === 'Enter') onOpen(project.id); }}
+        aria-label={`Open preview for ${t(`projects.${project.id}.title`)}`}
+      >
+        {project.screenshots && project.screenshots[0] ? (
+          <div className={styles.thumbWrap}>
+            <img
+              src={project.screenshots[0].src}
+              alt={t(`projects.${project.id}.title`)}
+              className={styles.thumbImg}
+              loading="lazy"
+              decoding="async"
+            />
+            <div className={styles.thumbScanlines} aria-hidden="true" />
+          </div>
+        ) : (
+          <div className={styles.terminalPlaceholder}>
+            <div className={styles.terminalGridBg} aria-hidden="true" />
+            <div className={styles.terminalCodeSnippet}>
+              <div className={styles.codeLine}>
+                <span className={styles.codeKey}>const</span> <span className={styles.codeVar}>target</span> = <span className={styles.codeVal}>"{project.id}"</span>;
+              </div>
+              <div className={styles.codeLine}>
+                <span className={styles.codeKey}>deploy</span>: [<span className={styles.codeStr}>{project.category.join(", ")}</span>];
+              </div>
+              <div className={styles.codeLine}>
+                <span className={styles.codeKey}>status</span>: <span className={styles.codeOk}>● READY</span>
+              </div>
+            </div>
+            <span className={styles.terminalWatermark}>SYS_MODULE // 0{project.id.length}</span>
+          </div>
+        )}
+      </div>
+
       <CardContent className={styles.content}>
         <p className={styles.problem}>{t(`projects.${project.id}.problem`)}</p>
         <p className={styles.desc}>{t(`projects.${project.id}.description`)}</p>

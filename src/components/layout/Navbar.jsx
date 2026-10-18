@@ -5,7 +5,7 @@ import { Button } from "../ui/Primitives.jsx";
 import MobileMenu from "./MobileMenu.jsx";
 import styles from "./navbar.module.css";
 
-const LINKS = ["about", "work", "skills", "contact"];
+const LINKS = ["about", "work", "skills", "certificates", "contact"];
 
 function pad(n) { return String(n).padStart(2, "0"); }
 
@@ -13,6 +13,8 @@ export default function Navbar({ theme, onToggleTheme }) {
   const { t } = useTranslation();
   const [open, setOpen] = useState(false);
   const [status, setStatus] = useState("SYS_UP: 00:00:00 | CPU: 12%");
+  const [scrollProgress, setScrollProgress] = useState(0);
+  const [activeSection, setActiveSection] = useState("");
   const startRef = useRef(Date.now());
 
   useEffect(() => {
@@ -27,16 +29,50 @@ export default function Navbar({ theme, onToggleTheme }) {
     return () => clearInterval(id);
   }, []);
 
+  useEffect(() => {
+    function handleScroll() {
+      const total = document.documentElement.scrollHeight - window.innerHeight;
+      const current = window.scrollY;
+      const progress = total > 0 ? (current / total) * 100 : 0;
+      setScrollProgress(progress);
+
+      // Detect active section
+      const scrollPos = window.scrollY + 120;
+      for (let i = LINKS.length - 1; i >= 0; i--) {
+        const el = document.getElementById(LINKS[i]);
+        if (el && el.offsetTop <= scrollPos) {
+          setActiveSection(LINKS[i]);
+          return;
+        }
+      }
+      setActiveSection("");
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
       <header className={styles.nav}>
+        <div
+          className={styles.progressBar}
+          style={{ width: `${scrollProgress}%` }}
+          aria-hidden="true"
+        />
         <a href="#top" className={styles.brand} aria-label="Mohamed Djebiri — home">
           MD<span className={styles.brandAccent}>//</span>dev<span className={styles.brandAccent}>.REF</span>
         </a>
 
         <nav className={styles.linksDesktop} aria-label="Primary">
           {LINKS.map((key) => (
-            <a key={key} href={`#${key}`} className={styles.link}>
+            <a
+              key={key}
+              href={`#${key}`}
+              className={styles.link}
+              data-active={activeSection === key}
+            >
               {t(`nav.${key}`)}
             </a>
           ))}
