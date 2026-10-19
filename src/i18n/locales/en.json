@@ -53,7 +53,10 @@
     "eyebrow": "Certificates",
     "heading": "Certificates & Projects",
     "subtitle": "A snapshot of the certificates, projects, and learning achievements I’ve earned along the way.",
-    "view": "Open"
+    "view": "Open",
+    "view_full": "View Full Size",
+    "verify_online": "Verify Online",
+    "open_file": "Raw File"
   },
   "projects": {
     "eyebrow": "Work",

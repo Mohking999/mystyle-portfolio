@@ -53,7 +53,10 @@
     "eyebrow": "Certifications",
     "heading": "Certifications & Projets",
     "subtitle": "Un aperçu des certificats, projets et réalisations de formation obtenus au fil du parcours.",
-    "view": "Ouvrir"
+    "view": "Ouvrir",
+    "view_full": "Voir en grand",
+    "verify_online": "Vérifier en ligne",
+    "open_file": "Fichier brut"
   },
   "projects": {
     "eyebrow": "Projets",

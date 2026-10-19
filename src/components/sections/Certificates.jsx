@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import Reveal from "../ui/Reveal.jsx";
 import styles from "./certificates.module.css";
@@ -42,6 +45,24 @@ const CERTIFICATES = [
 
 export default function Certificates() {
   const { t } = useTranslation();
+  const [activeIdx, setActiveIdx] = useState(null);
+
+  useEffect(() => {
+    if (activeIdx === null) return;
+    function onKey(e) {
+      if (e.key === "Escape") {
+        setActiveIdx(null);
+      } else if (e.key === "ArrowLeft") {
+        setActiveIdx((i) => (i - 1 + CERTIFICATES.length) % CERTIFICATES.length);
+      } else if (e.key === "ArrowRight") {
+        setActiveIdx((i) => (i + 1) % CERTIFICATES.length);
+      }
+    }
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [activeIdx]);
+
+  const currentCert = activeIdx !== null ? CERTIFICATES[activeIdx] : null;
 
   return (
     <section id="certificates" className={styles.section}>
@@ -58,32 +79,185 @@ export default function Certificates() {
       </Reveal>
 
       <div className={styles.grid}>
-        {CERTIFICATES.map((item, idx) => (
-          <Reveal key={item.title}>
-            <a className={styles.card} href={item.url} target="_blank" rel="noreferrer" aria-label={item.title}>
-              <div className={styles.cardTitlebar}>
-                <span className={styles.cardDocId}>CERT_0{idx + 1}.DOC</span>
-                <span className={styles.badgeVerify}>VERIFIED</span>
-              </div>
-              {item.image ? (
-                <div className={styles.imageWrap}>
-                  <img src={item.image} alt={item.title} className={styles.image} loading="lazy" decoding="async" />
-                  <div className={styles.scanlineOverlay} aria-hidden="true" />
+        {CERTIFICATES.map((item, idx) => {
+          const isExternal = item.url && item.url !== item.image;
+          return (
+            <Reveal key={item.title}>
+              <div
+                className={styles.card}
+                onClick={() => setActiveIdx(idx)}
+                role="button"
+                tabIndex={0}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter" || e.key === " ") {
+                    e.preventDefault();
+                    setActiveIdx(idx);
+                  }
+                }}
+                aria-label={`${item.title} — ${t("certificates.view_full")}`}
+              >
+                <div className={styles.cardTitlebar}>
+                  <span className={styles.cardDocId}>CERT_0{idx + 1}.DOC</span>
+                  <span className={styles.badgeVerify}>VERIFIED</span>
                 </div>
-              ) : (
-                <div className={styles.fallback}>
-                  <span>{item.title}</span>
-                </div>
-              )}
+                {item.image ? (
+                  <div className={styles.imageWrap}>
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className={styles.image}
+                      loading="lazy"
+                      decoding="async"
+                    />
+                    <span className={styles.zoomBadge}>
+                      🔍 {t("certificates.view_full")}
+                    </span>
+                  </div>
+                ) : (
+                  <div className={styles.fallback}>
+                    <span>{item.title}</span>
+                  </div>
+                )}
 
-              <div className={styles.meta}>
-                <span className={styles.label}>{t("certificates.view")} →</span>
-                <h3 className={styles.itemTitle}>{item.title}</h3>
+                <div className={styles.meta}>
+                  <div className={styles.metaRow}>
+                    <span className={styles.label}>
+                      {t("certificates.view_full")} 🔍
+                    </span>
+                    {isExternal && (
+                      <a
+                        href={item.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={styles.verifyLink}
+                        onClick={(e) => e.stopPropagation()}
+                        title={t("certificates.verify_online")}
+                      >
+                        {t("certificates.verify_online")} ↗
+                      </a>
+                    )}
+                  </div>
+                  <h3 className={styles.itemTitle}>{item.title}</h3>
+                </div>
               </div>
-            </a>
-          </Reveal>
-        ))}
+            </Reveal>
+          );
+        })}
       </div>
+
+      {/* Full size crystal-clear lightbox viewer */}
+      {typeof document !== "undefined" &&
+        createPortal(
+          <AnimatePresence>
+            {activeIdx !== null && currentCert && (
+              <motion.div
+                className={styles.lightboxOverlay}
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.18 }}
+                onClick={(e) => {
+                  if (e.target === e.currentTarget) setActiveIdx(null);
+                }}
+                role="dialog"
+                aria-modal="true"
+                aria-label={currentCert.title}
+              >
+                <div className={styles.lightboxHeader}>
+                  <div className={styles.lightboxDocInfo}>
+                    <span className={styles.lightboxDocId}>
+                      CERT_0{activeIdx + 1}.DOC
+                    </span>
+                    <span className={styles.lightboxCounter}>
+                      {activeIdx + 1} / {CERTIFICATES.length}
+                    </span>
+                    <span className={styles.lightboxTitle}>
+                      {currentCert.title}
+                    </span>
+                  </div>
+
+                  <div className={styles.lightboxActions}>
+                    {currentCert.url && currentCert.url !== currentCert.image && (
+                      <a
+                        href={currentCert.url}
+                        target="_blank"
+                        rel="noreferrer"
+                        className={styles.lightboxActionBtn}
+                        title={t("certificates.verify_online")}
+                      >
+                        <span>{t("certificates.verify_online")}</span>
+                        <span aria-hidden="true">↗</span>
+                      </a>
+                    )}
+                    <a
+                      href={currentCert.image}
+                      target="_blank"
+                      rel="noreferrer"
+                      className={styles.lightboxActionIcon}
+                      title={t("certificates.open_file")}
+                      aria-label={t("certificates.open_file")}
+                    >
+                      ↗
+                    </a>
+                    <button
+                      type="button"
+                      className={styles.lightboxClose}
+                      onClick={() => setActiveIdx(null)}
+                      aria-label="Close"
+                    >
+                      ✕
+                    </button>
+                  </div>
+                </div>
+
+                {CERTIFICATES.length > 1 && (
+                  <>
+                    <button
+                      type="button"
+                      className={`${styles.lightboxNav} ${styles.lightboxPrev}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveIdx(
+                          (activeIdx - 1 + CERTIFICATES.length) %
+                            CERTIFICATES.length
+                        );
+                      }}
+                      aria-label="Previous Certificate"
+                    >
+                      ←
+                    </button>
+                    <button
+                      type="button"
+                      className={`${styles.lightboxNav} ${styles.lightboxNext}`}
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setActiveIdx((activeIdx + 1) % CERTIFICATES.length);
+                      }}
+                      aria-label="Next Certificate"
+                    >
+                      →
+                    </button>
+                  </>
+                )}
+
+                <div
+                  className={styles.lightboxContent}
+                  onClick={(e) => {
+                    if (e.target === e.currentTarget) setActiveIdx(null);
+                  }}
+                >
+                  <img
+                    src={currentCert.image}
+                    alt={currentCert.title}
+                    className={styles.lightboxImg}
+                    loading="eager"
+                  />
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>,
+          document.body
+        )}
     </section>
   );
 }
